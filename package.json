@@ -1,6 +1,6 @@
 {
   "name": "ut-portal",
-  "version": "7.1.0",
+  "version": "7.2.0",
   "main": "index.js",
   "browser": "browser.js",
   "pkg": {
@@ -8,8 +8,7 @@
       "api/sql/**/*.sql"
     ]
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "immutable": "^4.0.0-rc.12",
     "react": "^16.14.0",
