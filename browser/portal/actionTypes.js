@@ -1,0 +1,1 @@
+exports.REDUCE = Symbol('REDUCE');

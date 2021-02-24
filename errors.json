@@ -1,0 +1,5 @@
+{
+    "portal":"Portal error",
+    "portal.fooNotFound": "Foo ({fooId}) not found",
+    "portal.colorNotFound": "Color {color} not found"
+}

@@ -1,0 +1,68 @@
+{
+  "name": "ut-portal",
+  "version": "7.0.0",
+  "main": "index.js",
+  "browser": "browser.js",
+  "pkg": {
+    "assets": [
+      "api/sql/**/*.sql"
+    ]
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "immutable": "^4.0.0-rc.12",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
+    "react-router-redux": "^4.0.8",
+    "redux": "^4.0.5",
+    "redux-devtools-extension": "^2.13.8",
+    "redux-thunk": "^2.3.0",
+    "tap": "^14.10.8",
+    "ut-front-devextreme": "^1.4.1",
+    "ut-port-script": "^7.1.1",
+    "ut-run": "^10.45.0",
+    "ut-tools": "^6.36.0"
+  },
+  "peerDependencies": {
+    "immutable": "^4.0.0-rc.12",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
+    "react-router-redux": "^4.0.8",
+    "redux": "^4.0.5",
+    "redux-devtools-extension": "^2.13.8",
+    "redux-thunk": "^2.3.0",
+    "ut-front-devextreme": "^1.4.1",
+    "ut-port-script": "^7.1.1",
+    "ut-run": "^10.45.0"
+  },
+  "description": "Microservice portal",
+  "scripts": {
+    "lint": "ut-lint .",
+    "release": "ut-release",
+    "changelog": "ut-changelog",
+    "check": "ut-check",
+    "cover": "ut-cover-parallel",
+    "lint-js": "ut-lint-js .",
+    "postpublish": "ut-postpublish",
+    "postversion": "ut-postversion",
+    "precommit": "ut-precommit",
+    "precover": "ut-precover",
+    "prepublish": "ut-prepublish",
+    "prepush": "ut-prepush",
+    "pretest": "ut-pretest",
+    "preversion": "ut-preversion",
+    "test": "ut-test-parallel",
+    "version": "ut-version",
+    "jenkins": "ut-jenkins",
+    "gitlab": "ut-gitlab"
+  },
+  "publishConfig": {
+    "registry": "https://nexus.softwaregroup.com/repository/npm-internal"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:softwaregroup-bg/ut-portal.git"
+  },
+  "license": "Apache-2.0"
+}
