@@ -13,7 +13,6 @@
     "immutable": "^4.0.0-rc.12",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
-    "react-router-redux": "^4.0.8",
     "redux": "^4.0.5",
     "redux-devtools-extension": "^2.13.8",
     "redux-thunk": "^2.3.0",
@@ -24,10 +23,11 @@
     "ut-tools": "^6.36.0"
   },
   "peerDependencies": {
+    "connected-react-router": "^6.9.1",
+    "history": "^4.10.1",
     "immutable": "^4.0.0-rc.12",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
-    "react-router-redux": "^4.0.8",
     "redux": "^4.0.5",
     "redux-devtools-extension": "^2.13.8",
     "redux-thunk": "^2.3.0",

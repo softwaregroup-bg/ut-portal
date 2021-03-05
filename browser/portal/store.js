@@ -1,6 +1,6 @@
 const {combineReducers, createStore} = require('redux');
-const {routerReducer: routing} = require('react-router-redux');
 const front = require('ut-front-devextreme/core/reducers');
+const {connectRouter} = require('connected-react-router');
 
 const {REDUCE} = require('./actionTypes');
 
@@ -9,22 +9,27 @@ const pages = (state = {}, {type, payload, reducer}) => {
     return reducer({state, payload});
 };
 
+const tabMenu = (state = {tabs: []}) => {
+    return state;
+};
+
 /** @type { import("../../handlers").libFactory } */
 module.exports = ({
     lib: {
         middleware
     }
 }) => ({
-    store(reducers, preloadedState) {
+    store(reducers, history, preloadedState) {
         return createStore(
             combineReducers({
-                routing,
+                router: connectRouter(history),
                 pages,
+                tabMenu, // TODO! remove after ut-front-react is gone
                 ...front,
                 ...reducers
             }),
             preloadedState,
-            middleware()
+            middleware(history)
         );
     }
 });

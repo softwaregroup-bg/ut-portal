@@ -2,6 +2,9 @@
 const thunk = require('redux-thunk').default;
 const {isImmutable, fromJS} = require('immutable');
 const {composeWithDevTools} = require('redux-devtools-extension');
+const {routerMiddleware} = require('connected-react-router');
+const {middleware: front} = require('ut-front-devextreme/core');
+
 const {REDUCE} = require('./actionTypes');
 const {applyMiddleware} = require('redux');
 
@@ -43,7 +46,22 @@ const composeEnhancers = composeWithDevTools({
 module.exports = ({
     utMethod
 }) => ({
-    middleware() {
+    middleware(history) {
+        const route = store => next => async action => {
+            if (action.type !== 'portal.route.find') return next(action);
+            const {path} = action;
+            if (typeof path !== 'string' || !path.includes('/')) return next(action);
+            const [, method, ...params] = path.split('/');
+            if (!method) return next(action);
+            next({
+                type: 'front.tab.show',
+                component: utMethod('component/' + method),
+                params,
+                title: method,
+                path
+            });
+        };
+
         const rpc = store => next => action => {
             if (action.method) {
                 let importMethodParams = {};
@@ -88,6 +106,6 @@ module.exports = ({
             return next(action);
         };
 
-        return composeEnhancers(applyMiddleware(thunk, rpc));
+        return composeEnhancers(applyMiddleware(thunk, front, route, rpc, routerMiddleware(history)));
     }
 });
