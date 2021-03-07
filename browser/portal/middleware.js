@@ -1,12 +1,5 @@
 // @ts-check
-const thunk = require('redux-thunk').default;
 const {isImmutable, fromJS} = require('immutable');
-const {composeWithDevTools} = require('redux-devtools-extension');
-const {routerMiddleware} = require('connected-react-router');
-const {middleware: front} = require('ut-front-devextreme/core');
-
-const {REDUCE} = require('./actionTypes');
-const {applyMiddleware} = require('redux');
 
 /**
  * Convert action.params to plain js when action.params is immutable
@@ -21,32 +14,11 @@ const cloneParams = (params) => {
     }
 };
 
-const composeEnhancers = composeWithDevTools({
-    serialize: true,
-    actionSanitizer: action => {
-        // @ts-ignore
-        if (action.type === REDUCE && action.reducer) {
-            return {
-                ...action,
-                // @ts-ignore
-                type: `handler ${action.reducer.name}`
-            };
-        } else if (typeof action.type === 'symbol') {
-            const actionCopy = {
-                ...action
-            }; // Don't change the original action
-            actionCopy.type = action.type.toString(); // DevTools doesn't work with Symbols
-            return actionCopy;
-        }
-        return action;
-    }
-});
-
 /** @type { import("../../handlers").libFactory } */
 module.exports = ({
     utMethod
 }) => ({
-    middleware(history) {
+    middleware() {
         const route = store => next => async action => {
             if (action.type !== 'portal.route.find') return next(action);
             const {path} = action;
@@ -106,6 +78,6 @@ module.exports = ({
             return next(action);
         };
 
-        return composeEnhancers(applyMiddleware(thunk, front, route, rpc, routerMiddleware(history)));
+        return [route, rpc];
     }
 });

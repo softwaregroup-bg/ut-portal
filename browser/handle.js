@@ -23,15 +23,27 @@ module.exports = (...params) => class handle extends require('ut-port-script')(.
         return super.request(event, ...rest);
     }
 
-    async ready() {
-        this.store = await this.bus.importMethod('portal.store.get')({});
-    }
-
     exec(...params) {
         const $meta = params && params.length > 1 && params[params.length - 1];
         const method = ($meta && $meta.method);
+        switch (method) {
+            case 'handle.dispatch.set':
+                this.dispatch = params[0];
+                return true;
+            case 'handle.tab.show':
+                return this.dispatch({
+                    ...(typeof params[0] === 'function') ? {
+                        component: params[0],
+                        title: params[0].title || params.name
+                    } : (Array.isArray(params[0])) ? {
+                        component: params[0][0],
+                        title: params[0][1]
+                    } : params[0],
+                    type: 'front.tab.show'
+                });
+        }
         const reducer = method && this.findHandler(method + 'Reduce');
-        this.store.dispatch(async(dispatch, getState) => {
+        return this.dispatch(async(dispatch, getState) => {
             const payload = await super.exec(...arguments);
             if (reducer) dispatch({type: REDUCE, reducer, payload});
         });

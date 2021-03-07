@@ -2,30 +2,44 @@
 const {createElement} = require('react');
 const {render} = require('react-dom');
 const {renderToString} = require('react-dom/server');
-const {createHashHistory, createMemoryHistory} = require('history');
 
 const App = require('ut-front-devextreme/core/App');
+
+const {REDUCE} = require('./actionTypes');
+
+const pages = (state = {}, {type, payload, reducer}) => {
+    if (type !== REDUCE) return state;
+    return reducer({state, payload});
+};
+
+const tabMenu = (state = {tabs: []}) => {
+    return state;
+};
 
 /** @type { import("../../handlers").handlerFactory } */
 module.exports = ({
     import: {
-        portalParamsGet
+        portalParamsGet,
+        handleDispatchSet
     },
     lib: {
-        store
+        middleware
     }
 }) => ({
     async ready() {
         const {menu, ...params} = await portalParamsGet({});
+        const reducers = Object.assign({}, ...await this.fireEvent('reducer', {}, 'asyncMap'), {pages, tabMenu});
 
-        this.history = (typeof window !== 'undefined') ? createHashHistory() : createMemoryHistory();
-        this.store = store(
-            Object.assign({}, ...await this.fireEvent('reducer', {}, 'asyncMap')),
-            this.history,
-            {portal: {menu}}
-        );
         // @ts-ignore
-        const container = createElement(App, {...params, store: this.store, history: this.history});
+        const container = createElement(App, {
+            ...params,
+            state: {
+                portal: {menu}
+            },
+            reducers,
+            middleware: middleware(),
+            onDispatcher: handleDispatchSet
+        });
         if (typeof document !== 'undefined') {
             render(container, document.getElementById('root'));
         } else {
