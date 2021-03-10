@@ -31,16 +31,17 @@ module.exports = (...params) => class handle extends require('ut-port-script')(.
                 this.dispatch = params[0];
                 return true;
             case 'handle.tab.show':
-                return this.dispatch({
-                    ...(typeof params[0] === 'function') ? {
-                        component: params[0],
-                        title: params[0].title || params.name
-                    } : (Array.isArray(params[0])) ? {
-                        component: params[0][0],
-                        title: params[0][1]
-                    } : params[0],
-                    type: 'front.tab.show'
-                });
+                if (typeof params[0] === 'function') {
+                    return this.dispatch({type: 'front.tab.show', component: params[0]});
+                } else {
+                    return this.dispatch({
+                        ...(Array.isArray(params[0])) ? {
+                            component: params[0][0],
+                            params: params[0][1]
+                        } : params[0],
+                        type: 'front.tab.show'
+                    });
+                }
         }
         const reducer = method && this.findHandler(method + 'Reduce');
         return this.dispatch(async(dispatch, getState) => {

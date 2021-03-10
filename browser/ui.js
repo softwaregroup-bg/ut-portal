@@ -2,7 +2,7 @@ module.exports = (...params) => class ui extends require('ut-port-script')(...pa
     get defaults() {
         return {
             logLevel: 'trace',
-            namespace: ['portal'],
+            namespace: ['portal', 'component'],
             imports: [/\.portal$/, /\.component$/, 'portal']
         };
     }

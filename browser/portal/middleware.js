@@ -23,12 +23,16 @@ module.exports = ({
             if (action.type !== 'portal.route.find') return next(action);
             const {path} = action;
             if (typeof path !== 'string' || !path.includes('/')) return next(action);
-            const [, method, ...params] = path.split('/');
+            const [, method, ...rest] = path.split('/');
             if (!method) return next(action);
             next({
                 type: 'front.tab.show',
                 component: utMethod('component/' + method),
-                params,
+                ...rest.length > 0 && {
+                    params: {
+                        id: rest.join('/')
+                    }
+                },
                 title: method,
                 path
             });
