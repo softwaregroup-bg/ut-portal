@@ -1,3 +1,12 @@
+## [7.3.3](https://github.com/softwaregroup-bg/ut-portal/compare/v7.3.2...v7.3.3) (2021-03-10)
+
+
+### Bug Fixes
+
+* improve handling of tab title and path ([693951e](https://github.com/softwaregroup-bg/ut-portal/commit/693951ed80ab7f88982523b2c13580567f9f693f))
+
+
+
 ## [7.3.2](https://github.com/softwaregroup-bg/ut-portal/compare/v7.3.1...v7.3.2) (2021-03-07)
 
 
