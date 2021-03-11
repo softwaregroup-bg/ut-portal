@@ -1,3 +1,12 @@
+# [7.4.0](https://github.com/softwaregroup-bg/ut-portal/compare/v7.3.3...v7.4.0) (2021-03-11)
+
+
+### Features
+
+* include UI and build deps ([9dce0ff](https://github.com/softwaregroup-bg/ut-portal/commit/9dce0ffa0f85ced2157eee7d719534719a46501b))
+
+
+
 ## [7.3.3](https://github.com/softwaregroup-bg/ut-portal/compare/v7.3.2...v7.3.3) (2021-03-10)
 
 
