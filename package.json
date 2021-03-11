@@ -1,6 +1,6 @@
 {
   "name": "ut-portal",
-  "version": "7.4.0",
+  "version": "7.4.1",
   "main": "index.js",
   "browser": "browser.js",
   "pkg": {
@@ -8,8 +8,7 @@
       "api/sql/**/*.sql"
     ]
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "@rollup/plugin-babel": "^5.2.2",
     "@rollup/plugin-commonjs": "^17.0.0",

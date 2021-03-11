@@ -1,3 +1,12 @@
+## [7.4.1](https://github.com/softwaregroup-bg/ut-portal/compare/v7.4.0...v7.4.1) (2021-03-11)
+
+
+### Bug Fixes
+
+* peer deps ([3795812](https://github.com/softwaregroup-bg/ut-portal/commit/3795812df97d7cdf1b063884bd039c223316467f))
+
+
+
 # [7.4.0](https://github.com/softwaregroup-bg/ut-portal/compare/v7.3.3...v7.4.0) (2021-03-11)
 
 
