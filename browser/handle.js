@@ -32,11 +32,11 @@ module.exports = (...params) => class handle extends require('ut-port-script')(.
                 return true;
             case 'handle.tab.show':
                 if (typeof params[0] === 'function') {
-                    return this.dispatch({type: 'front.tab.show', component: params[0]});
+                    return this.dispatch({type: 'front.tab.show', tab: params[0]});
                 } else {
                     return this.dispatch({
                         ...(Array.isArray(params[0])) ? {
-                            component: params[0][0],
+                            tab: params[0][0],
                             params: params[0][1]
                         } : params[0],
                         type: 'front.tab.show'

@@ -27,7 +27,7 @@ module.exports = ({
             if (!method) return next(action);
             next({
                 type: 'front.tab.show',
-                component: utMethod('component/' + method),
+                tab: utMethod('component/' + method),
                 ...rest.length > 0 && {
                     params: {
                         id: rest.join('/')
