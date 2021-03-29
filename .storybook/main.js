@@ -31,7 +31,7 @@ module.exports = {
         check: false,
         reactDocgen: false,
     },
-    stories: ['../portal/**/*.stories.js'],
+    stories: [process.cwd().replace(/\\/g, '/') + '/portal/**/*.stories.js'],
     addons: [
         'storybook-readme',
         '@storybook/addon-actions',
