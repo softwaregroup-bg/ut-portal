@@ -1,3 +1,13 @@
+# [7.5.0](https://github.com/softwaregroup-bg/ut-portal/compare/v7.4.2...v7.5.0) (2021-03-29)
+
+
+### Features
+
+* storybook ([cce04bf](https://github.com/softwaregroup-bg/ut-portal/commit/cce04bf2d4479101a48b2776bdeb04179c0768fc))
+* ut-portal bin ([e672a69](https://github.com/softwaregroup-bg/ut-portal/commit/e672a69717315f38671efe67e615e955acf44476))
+
+
+
 ## [7.4.2](https://github.com/softwaregroup-bg/ut-portal/compare/v7.4.1...v7.4.2) (2021-03-16)
 
 
