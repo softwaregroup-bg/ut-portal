@@ -26,9 +26,9 @@ a portal configuration module after `ut-portal`:
 
 ```js
 module.exports = (...params) => [
+    // other modules,
     require('ut-portal')(...params),
-    require('ut-portal-hello')(...params),
-    // other modules
+    require('ut-portal-hello')(...params)
 ]
 ```
 
@@ -90,4 +90,32 @@ module.exports = function portal({
         }
     };
 };
+```
+
+## Portal pages
+
+Portal pages open as tabs in the UI. Portal pages are usually defined
+in dedicated files with the standard structure for defining handlers.
+The handler function should return an object, as shown below:
+
+```js
+// @ts-check
+import React from 'react';
+
+/** @type { import("../../handlers").handlerFactory } */
+export default ({
+    import: {
+    }
+}) => ({
+    'subject.object.predicate': () => ({
+        title: 'Page title',
+        permission: 'some.permission.id',
+        component:() => function ComponentName {
+            return (
+                <div>Page content</div>
+            );
+        }
+
+    })
+});
 ```

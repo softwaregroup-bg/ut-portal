@@ -18,6 +18,7 @@ const tabMenu = (state = {tabs: []}) => {
 
 /** @type { import("../../handlers").handlerFactory } */
 module.exports = ({
+    config = {},
     import: {
         portalParamsGet,
         handleDispatchSet
@@ -27,23 +28,27 @@ module.exports = ({
     }
 }) => ({
     async ready() {
-        const {menu, ...params} = await portalParamsGet({});
         const reducers = Object.assign({}, ...await this.fireEvent('reducer', {}, 'asyncMap'), {pages, tabMenu});
 
         // @ts-ignore
-        const container = createElement(App, {
+        const container = ({menu, state, ...params} = {}) => createElement(App, {
             ...params,
             state: {
-                portal: {menu}
+                portal: {menu},
+                ...state
             },
             reducers,
             middleware: middleware(),
             onDispatcher: handleDispatchSet
         });
+        this.container = container;
+
+        if (config.render === undefined || !config.render) return;
+        // @ts-ignore
         if (typeof document !== 'undefined') {
-            render(container, document.getElementById('root'));
+            render(this.container(await portalParamsGet({})), document.getElementById('root'));
         } else {
-            console.log(renderToString(container)); // eslint-disable-line
+            console.log(renderToString(this.container(await portalParamsGet({})))); // eslint-disable-line
         }
     }
 });
