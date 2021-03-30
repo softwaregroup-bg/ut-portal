@@ -1,6 +1,9 @@
 module.exports = () => ({
     // environments
     storybook: {
-        browser: true
+        browser: true,
+        portal: {
+            render: false
+        }
     }
 });

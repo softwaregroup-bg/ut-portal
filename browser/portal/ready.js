@@ -43,7 +43,7 @@ module.exports = ({
         });
         this.container = container;
 
-        if (config.render === undefined || !config.render) return;
+        if (config.render !== undefined && !config.render) return;
         // @ts-ignore
         if (typeof document !== 'undefined') {
             render(this.container(await portalParamsGet({})), document.getElementById('root'));
