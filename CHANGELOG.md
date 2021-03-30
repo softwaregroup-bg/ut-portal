@@ -1,3 +1,12 @@
+## [7.5.1](https://github.com/softwaregroup-bg/ut-portal/compare/v7.5.0...v7.5.1) (2021-03-30)
+
+
+### Bug Fixes
+
+* storybook render ([35f390b](https://github.com/softwaregroup-bg/ut-portal/commit/35f390b79543e943c694a051bcda1be3ae36a3ba))
+
+
+
 # [7.5.0](https://github.com/softwaregroup-bg/ut-portal/compare/v7.4.2...v7.5.0) (2021-03-29)
 
 
