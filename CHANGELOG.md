@@ -1,3 +1,12 @@
+## [7.6.4](https://github.com/softwaregroup-bg/ut-portal/compare/v7.6.3...v7.6.4) (2021-03-31)
+
+
+### Bug Fixes
+
+* args ([466d53c](https://github.com/softwaregroup-bg/ut-portal/commit/466d53c56b5a76fc2a1259d1017b5b4116baa130))
+
+
+
 ## [7.6.3](https://github.com/softwaregroup-bg/ut-portal/compare/v7.6.2...v7.6.3) (2021-03-31)
 
 
