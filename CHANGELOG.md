@@ -1,3 +1,12 @@
+## [7.6.5](https://github.com/softwaregroup-bg/ut-portal/compare/v7.6.4...v7.6.5) (2021-03-31)
+
+
+### Bug Fixes
+
+* deps ([0f37193](https://github.com/softwaregroup-bg/ut-portal/commit/0f37193b83e664c5b8c85d2a26ee07a6e772f474))
+
+
+
 ## [7.6.4](https://github.com/softwaregroup-bg/ut-portal/compare/v7.6.3...v7.6.4) (2021-03-31)
 
 
