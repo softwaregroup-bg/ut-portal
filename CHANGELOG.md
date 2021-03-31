@@ -1,3 +1,12 @@
+## [7.6.8](https://github.com/softwaregroup-bg/ut-portal/compare/v7.6.7...v7.6.8) (2021-03-31)
+
+
+### Bug Fixes
+
+* publish at npm ([f81c3c9](https://github.com/softwaregroup-bg/ut-portal/commit/f81c3c9e927dec1530c986949c084fcbce8500aa))
+
+
+
 ## [7.6.7](https://github.com/softwaregroup-bg/ut-portal/compare/v7.6.6...v7.6.7) (2021-03-31)
 
 
