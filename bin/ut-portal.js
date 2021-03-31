@@ -33,6 +33,7 @@ program
             'build-storybook',
             [
                 '-c',
+                '--quiet',
                 resolve(__dirname, '..', '.storybook'),
                 '-o',
                 '.lint/storybook',
