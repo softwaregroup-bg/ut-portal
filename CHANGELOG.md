@@ -1,3 +1,12 @@
+## [7.6.1](https://github.com/softwaregroup-bg/ut-portal/compare/v7.6.0...v7.6.1) (2021-03-31)
+
+
+### Bug Fixes
+
+* dependency ([13413b9](https://github.com/softwaregroup-bg/ut-portal/commit/13413b920dd7b8ba22bd6f77af3339003c2c1829))
+
+
+
 # [7.6.0](https://github.com/softwaregroup-bg/ut-portal/compare/v7.5.1...v7.6.0) (2021-03-31)
 
 
