@@ -1,3 +1,12 @@
+# [7.7.0](https://github.com/softwaregroup-bg/ut-portal/compare/v7.6.8...v7.7.0) (2021-03-31)
+
+
+### Features
+
+* postcss ([9edd430](https://github.com/softwaregroup-bg/ut-portal/commit/9edd430ebe0855ccbb6f60a861f160e25defa39b))
+
+
+
 ## [7.6.8](https://github.com/softwaregroup-bg/ut-portal/compare/v7.6.7...v7.6.8) (2021-03-31)
 
 
