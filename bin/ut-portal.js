@@ -23,4 +23,44 @@ program
         );
     });
 
+program
+    .command('build')
+    .description('Build storybook')
+    .allowUnknownOption()
+    .allowExcessArguments()
+    .action((_, {args}) => {
+        spawnSync(
+            'build-storybook',
+            [
+                '-c',
+                resolve(__dirname, '..', '.storybook'),
+                '-o',
+                '.lint/storybook',
+                ...args
+            ], {
+                stdio: 'inherit',
+                shell: true
+            }
+        );
+    });
+
+program
+    .command('publish')
+    .description('Publish storybook')
+    .allowUnknownOption()
+    .allowExcessArguments()
+    .action((_, {args}) => {
+        spawnSync(
+            'chromatic',
+            [
+                '-d',
+                '.lint/storybook',
+                ...args
+            ], {
+                stdio: 'inherit',
+                shell: true
+            }
+        );
+    });
+
 program.parse();
