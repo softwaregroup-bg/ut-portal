@@ -57,6 +57,7 @@ program
                 '-d',
                 '.lint/storybook',
                 '--exit-zero-on-changes',
+                '--exit-once-uploaded',
                 ...args
             ], {
                 stdio: 'inherit',
