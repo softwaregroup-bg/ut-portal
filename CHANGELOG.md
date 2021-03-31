@@ -1,3 +1,13 @@
+## [7.6.3](https://github.com/softwaregroup-bg/ut-portal/compare/v7.6.2...v7.6.3) (2021-03-31)
+
+
+### Bug Fixes
+
+* deps ([928b1b1](https://github.com/softwaregroup-bg/ut-portal/commit/928b1b1bea63a8f62e0f036d676811f9a391149a))
+* storybook quiet ([35c1cdc](https://github.com/softwaregroup-bg/ut-portal/commit/35c1cdc95699a9696e5da290a8366419da424ec5))
+
+
+
 ## [7.6.2](https://github.com/softwaregroup-bg/ut-portal/compare/v7.6.1...v7.6.2) (2021-03-31)
 
 
