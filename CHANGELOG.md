@@ -1,3 +1,12 @@
+## [7.7.1](https://github.com/softwaregroup-bg/ut-portal/compare/v7.7.0...v7.7.1) (2021-03-31)
+
+
+### Bug Fixes
+
+* publish ([2ef99de](https://github.com/softwaregroup-bg/ut-portal/commit/2ef99debce54891f3f81e5d7c7ca229cb308d299))
+
+
+
 # [7.7.0](https://github.com/softwaregroup-bg/ut-portal/compare/v7.6.8...v7.7.0) (2021-03-31)
 
 
