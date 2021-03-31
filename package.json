@@ -44,6 +44,7 @@
     "ut-browser": "^7.4.1",
     "ut-front-devextreme": "^1.9.0",
     "ut-function.dispatch": "^1.2.1",
+    "ut-port-http": "^8.7.0",
     "ut-port-jsonrpc": "^7.3.0"
   },
   "devDependencies": {
