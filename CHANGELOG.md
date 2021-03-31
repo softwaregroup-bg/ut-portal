@@ -1,3 +1,17 @@
+# [7.6.0](https://github.com/softwaregroup-bg/ut-portal/compare/v7.5.1...v7.6.0) (2021-03-31)
+
+
+### Bug Fixes
+
+* exit-zero-on-changes ([1d7df83](https://github.com/softwaregroup-bg/ut-portal/commit/1d7df83d2b0bd4e38f16a4897cb58b8800ab4af1))
+
+
+### Features
+
+* publish storybook ([7c6dd14](https://github.com/softwaregroup-bg/ut-portal/commit/7c6dd1485aabba24c4cae57da91990ac3a04da1b))
+
+
+
 ## [7.5.1](https://github.com/softwaregroup-bg/ut-portal/compare/v7.5.0...v7.5.1) (2021-03-30)
 
 
