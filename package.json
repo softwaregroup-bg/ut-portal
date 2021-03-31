@@ -19,6 +19,7 @@
     "chromatic": "^5.7.0",
     "commander": "^7.2.0",
     "storybook-readme": "^5.0.9",
+    "ut-browser": "^7.4.1",
     "ut-function.dispatch": "^1.2.1"
   },
   "devDependencies": {
@@ -38,7 +39,6 @@
     "tap": "^14.10.8",
     "tslib": "^2.0.3",
     "typescript": "4.1.2",
-    "ut-browser": "^7.4.1",
     "ut-tools": "^6.37.0"
   },
   "peerDependencies": {
