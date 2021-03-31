@@ -55,6 +55,7 @@ program
             [
                 '-d',
                 '.lint/storybook',
+                '--exit-zero-on-changes',
                 ...args
             ], {
                 stdio: 'inherit',
