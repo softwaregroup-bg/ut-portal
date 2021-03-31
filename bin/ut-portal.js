@@ -32,8 +32,8 @@ program
         spawnSync(
             'build-storybook',
             [
-                '-c',
                 '--quiet',
+                '-c',
                 resolve(__dirname, '..', '.storybook'),
                 '-o',
                 '.lint/storybook',
