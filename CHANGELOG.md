@@ -1,3 +1,12 @@
+# [7.8.0](https://github.com/softwaregroup-bg/ut-portal/compare/v7.7.2...v7.8.0) (2021-04-05)
+
+
+### Features
+
+* portal.menu.item ([147b441](https://github.com/softwaregroup-bg/ut-portal/commit/147b441754d1be7715037cbde07f711011ea4150))
+
+
+
 ## [7.7.2](https://github.com/softwaregroup-bg/ut-portal/compare/v7.7.1...v7.7.2) (2021-04-02)
 
 
