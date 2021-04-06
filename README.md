@@ -19,6 +19,18 @@ module.exports = (...params) => [
 ]
 ```
 
+## API
+
+- `handle.tab.show({tab, params})` - Shows a new tab
+- `portal.menu.item(definition)` or `portal.menu.item({component, id , title})` -
+  Define a menu item, which when clicked opens a page.
+  - `definition` - Component definition function
+  - `component` - React component function
+  - `id` - Passed as the `id` property to the component
+    function
+  - `title` - Title of the menu
+
+
 ## Portal menu
 
 To provide configuration for the portal, include it in
@@ -60,12 +72,14 @@ const classes = require('./admin.css');
 
 module.exports = function portal({
     import: {
+        component$microserviceFooNew,
+        component$microserviceFooBrowse,
         component$microserviceFooOpen,
-        component$microserviceFooBrowse
+        portalMenuItem
     }
 }) {
     return {
-        'portal.params.get'() {
+        async 'portal.params.get'() {
             return {
                 // return the theme parameters
                 theme: {
@@ -78,13 +92,15 @@ module.exports = function portal({
                 // return the portal menu
                 menu: [{
                     title: 'Hello Menu',
-                    items: [{
-                        title: 'Browse',
-                        page: component$microserviceFooBrowse
-                    }, {
-                        title: 'Open',
-                        page: component$microserviceFooOpen
-                    }]
+                    items: [
+                        await portalMenuItem(component$microserviceFooNew),
+                        await portalMenuItem(component$microserviceFooBrowse),
+                        await portalMenuItem({
+                            component: component$microserviceFooOpen,
+                            id: 1,
+                            title: 'Open Foo 1'
+                        })
+                    ]
                 }]
             };
         }
