@@ -1,3 +1,12 @@
+# [7.9.0](https://github.com/softwaregroup-bg/ut-portal/compare/v7.8.1...v7.9.0) (2021-04-16)
+
+
+### Features
+
+* pass right menu items ([396aa70](https://github.com/softwaregroup-bg/ut-portal/commit/396aa70f571e2cc14b9405734cd44d9c0b7c595a))
+
+
+
 ## [7.8.1](https://github.com/softwaregroup-bg/ut-portal/compare/v7.8.0...v7.8.1) (2021-04-06)
 
 
