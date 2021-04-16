@@ -31,10 +31,10 @@ module.exports = ({
         const reducers = Object.assign({}, ...await this.fireEvent('reducer', {}, 'asyncMap'), {pages, tabMenu});
 
         // @ts-ignore
-        const container = ({menu, state, ...params} = {}) => createElement(App, {
+        const container = ({menu, rightMenu, rightMenuItems, state, ...params} = {}) => createElement(App, {
             ...params,
             state: {
-                portal: {menu},
+                portal: {menu, rightMenu, rightMenuItems},
                 ...state
             },
             reducers,

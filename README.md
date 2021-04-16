@@ -30,7 +30,6 @@ module.exports = (...params) => [
     function
   - `title` - Title of the menu
 
-
 ## Portal menu
 
 To provide configuration for the portal, include it in
@@ -57,7 +56,7 @@ module.exports = () => function utPortalHello() {
 };
 ```
 
-Implement a `portal.params.get` handler a function named `portal`.
+Implement a `portal.params.get` handler function named `portal`.
 The handler can reference components from other modules by using
 one of the destructuring syntaxes:
 
