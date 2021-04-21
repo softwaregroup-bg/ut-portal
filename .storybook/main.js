@@ -5,6 +5,11 @@ module.exports = {
                 rule.exclude = /node_modules[\\/](?!(impl|ut)-)/i;
                 rule.include.push(/node_modules[\\/]ut-/i)
             }
+            if (rule && rule.test && rule.test.toString() === '/\\.css$/') {
+                rule.use[1].options = rule.use[1].options || {};
+                rule.use[1].options.modules = rule.use[1].options.modules || {}
+                rule.use[1].options.modules.auto = /\.module\.css$|node_modules[/\\]ut-.+\.css|(?:^\/app\/|impl-[^/\\]+[/\\])(?!node_modules[/\\]).+\.css$/;
+            }
         });
         config.plugins.forEach(plugin => {
             if (plugin?.options?.exclude?.toString().startsWith('/node_modules/')) {
@@ -37,7 +42,22 @@ module.exports = {
         '@storybook/addon-actions',
         '@storybook/addon-links',
         '@storybook/addon-viewport',
-        '@storybook/addon-postcss',
+        {
+            name: '@storybook/addon-postcss',
+            options: {
+                postcssLoaderOptions: {
+                    postcssOptions: {
+                        plugins: [
+                            require('postcss-import')({path: [__dirname]}),
+                            require('postcss-preset-env')({preserve: false}),
+                            require('postcss-assets')({relative: true}),
+                            require('postcss-merge-rules')(),
+                            require('postcss-clean')({level: 2, rebase: false})
+                        ]
+                    }
+                }
+            }
+        },
         '@storybook/addon-a11y',
         '@storybook/addon-storysource',
     ],
