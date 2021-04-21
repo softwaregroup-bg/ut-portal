@@ -1,8 +1,9 @@
 const dispatch = require('ut-function.dispatch');
+const immutable = require('immutable');
 
-const main = async(config, name, mock, dependencies) => {
+const main = async(config, name, id, mock, dependencies) => {
     // fix: Storybook tries to keep the old hash, which we do not want
-    history.replaceState({}, '', `#/${name}`);
+    history.replaceState({}, '', `#/${name}${id ? '/' + id : ''}`);
 
     const {portsMap: {'utPortal.ui': {container}}, serviceBus: {publicApi: {importMethod}}} = await require('ut-run').run({
         main: (...params) => [
@@ -47,7 +48,8 @@ const main = async(config, name, mock, dependencies) => {
         method: 'debug'
     });
     const page = await importMethod('component/' + name)({});
-    page.path = '/' + name;
+    page.path = '/' + name + (id ? '/' + id : '');
+    page.params = {id};
     page.Component = await page.component();
     return {
         page() {
@@ -63,7 +65,13 @@ const main = async(config, name, mock, dependencies) => {
                 portalName: 'Test Portal',
                 state: {
                     error: {},
-                    login: {},
+                    login: immutable.fromJS({
+                        result: {
+                            'identity.check': {
+                                actorId: 1
+                            }
+                        }
+                    }),
                     portal: {
                         menu: [],
                         tabs: [page]
@@ -74,9 +82,9 @@ const main = async(config, name, mock, dependencies) => {
     };
 };
 
-module.exports.app = (config = {}, mock = {}, dependencies = []) => name => {
+module.exports.app = (config = {}, mock = {}, dependencies = []) => (name, id) => {
     const result = (args, {loaded: {page}}) => page();
-    result.loaders = [() => main(config, name, mock, dependencies)];
-    result.storyName = name;
+    result.loaders = [() => main(config, name, id, mock, dependencies)];
+    result.storyName = name + (id ? '/' + id : '');
     return result;
 };
