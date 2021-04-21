@@ -1,3 +1,17 @@
+# [7.10.0](https://github.com/softwaregroup-bg/ut-portal/compare/v7.9.0...v7.10.0) (2021-04-21)
+
+
+### Bug Fixes
+
+* postcss ([a07d01d](https://github.com/softwaregroup-bg/ut-portal/commit/a07d01d16c857b1cf199c46f158e4bf7552b6b2f))
+
+
+### Features
+
+* page parameter ([c5a40fa](https://github.com/softwaregroup-bg/ut-portal/commit/c5a40fa4f584ffe909c06685ef1721cab0daa781))
+
+
+
 # [7.9.0](https://github.com/softwaregroup-bg/ut-portal/compare/v7.8.1...v7.9.0) (2021-04-16)
 
 
