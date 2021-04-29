@@ -1,3 +1,13 @@
+# [7.11.0](https://github.com/softwaregroup-bg/ut-portal/compare/v7.10.0...v7.11.0) (2021-04-29)
+
+
+### Features
+
+* add @material-ui/lab ([013ac1a](https://github.com/softwaregroup-bg/ut-portal/commit/013ac1a49329f26bfb017b8f7af93260bf74ff77))
+* add primereact ([e5a83c0](https://github.com/softwaregroup-bg/ut-portal/commit/e5a83c09b1451f068e8b841f989dbbd86216c7a9))
+
+
+
 # [7.10.0](https://github.com/softwaregroup-bg/ut-portal/compare/v7.9.0...v7.10.0) (2021-04-21)
 
 
