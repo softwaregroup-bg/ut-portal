@@ -66,6 +66,9 @@ const main = async(config, name, id, mock, dependencies) => {
                 state: {
                     error: {},
                     login: immutable.fromJS({
+                        profile: {
+                            initials: 'SA'
+                        },
                         result: {
                             'identity.check': {
                                 actorId: 1
@@ -73,7 +76,7 @@ const main = async(config, name, id, mock, dependencies) => {
                         }
                     }),
                     portal: {
-                        menu: [],
+                        menu: [{title: ' 📚 '}],
                         tabs: [page]
                     }
                 }

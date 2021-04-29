@@ -11,14 +11,14 @@ program
     .allowExcessArguments()
     .action((_, {args}) => {
         spawnSync(
-            'start-storybook',
+            process.argv[0],
             [
+                resolve(require.resolve('@storybook/react/package.json'), '..', require('@storybook/react/package.json').bin['start-storybook']),
                 '-c',
                 resolve(__dirname, '..', '.storybook'),
                 ...args
             ], {
-                stdio: 'inherit',
-                shell: true
+                stdio: 'inherit'
             }
         );
     });
@@ -30,8 +30,9 @@ program
     .allowExcessArguments()
     .action((_, {args}) => {
         spawnSync(
-            'build-storybook',
+            process.argv[0],
             [
+                resolve(require.resolve('@storybook/react/package.json'), '..', require('@storybook/react/package.json').bin['build-storybook']),
                 '--quiet',
                 '-c',
                 resolve(__dirname, '..', '.storybook'),
@@ -39,8 +40,7 @@ program
                 '.lint/storybook',
                 ...args
             ], {
-                stdio: 'inherit',
-                shell: true
+                stdio: 'inherit'
             }
         );
     });
@@ -52,16 +52,16 @@ program
     .allowExcessArguments()
     .action((_, {args}) => {
         spawnSync(
-            'chromatic',
+            process.argv[0],
             [
+                resolve(require.resolve('chromatic/package.json'), '..', require('chromatic/package.json').bin.chromatic),
                 '-d',
                 '.lint/storybook',
                 '--exit-zero-on-changes',
                 '--exit-once-uploaded',
                 ...args
             ], {
-                stdio: 'inherit',
-                shell: true
+                stdio: 'inherit'
             }
         );
     });
