@@ -72,6 +72,10 @@ const main = async(config, name, id, mock, dependencies) => {
                         result: {
                             'identity.check': {
                                 actorId: 1
+                            },
+                            person: {
+                                firstName: 'Super',
+                                lastName: 'Admin'
                             }
                         }
                     }),
