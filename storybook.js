@@ -50,7 +50,7 @@ const main = async(config, name, id, mock, dependencies) => {
     const page = await importMethod('component/' + name)({});
     page.path = '/' + name + (id ? '/' + id : '');
     page.params = {id};
-    page.Component = await page.component();
+    page.Component = await page.component({id});
     return {
         page() {
             return container({
