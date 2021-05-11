@@ -1,3 +1,12 @@
+## [7.11.2](https://github.com/softwaregroup-bg/ut-portal/compare/v7.11.1...v7.11.2) (2021-05-11)
+
+
+### Bug Fixes
+
+* pass id to component function ([b8625fa](https://github.com/softwaregroup-bg/ut-portal/commit/b8625faacee61e79f9f0ed820349279f078cdaf2))
+
+
+
 ## [7.11.1](https://github.com/softwaregroup-bg/ut-portal/compare/v7.11.0...v7.11.1) (2021-05-10)
 
 
