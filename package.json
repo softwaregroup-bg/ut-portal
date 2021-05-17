@@ -43,6 +43,7 @@
     "primeicons": "^4.1.0",
     "prop-types": "^15.7.2",
     "react-dom": "^16.14.0",
+    "react-hook-form": "^7.6.0",
     "react-hot-loader": "^4.13.0",
     "react-redux": "^7.2.4",
     "react-router-dom": "^5.2.0",
