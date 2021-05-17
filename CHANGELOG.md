@@ -1,3 +1,12 @@
+# [7.12.0](https://github.com/softwaregroup-bg/ut-portal/compare/v7.11.3...v7.12.0) (2021-05-17)
+
+
+### Features
+
+* include react-hook-form [UTCORE-121] ([01a2c47](https://github.com/softwaregroup-bg/ut-portal/commit/01a2c478b66885055006ea271122082bc8ebc8da))
+
+
+
 ## [7.11.3](https://github.com/softwaregroup-bg/ut-portal/compare/v7.11.2...v7.11.3) (2021-05-17)
 
 
