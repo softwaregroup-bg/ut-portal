@@ -1,3 +1,12 @@
+## [7.11.3](https://github.com/softwaregroup-bg/ut-portal/compare/v7.11.2...v7.11.3) (2021-05-17)
+
+
+### Bug Fixes
+
+* lazy load themes [UTCORE-121] ([ae72f6a](https://github.com/softwaregroup-bg/ut-portal/commit/ae72f6a27b8cf389b2d5d5b1158651e8e1aace61))
+
+
+
 ## [7.11.2](https://github.com/softwaregroup-bg/ut-portal/compare/v7.11.1...v7.11.2) (2021-05-11)
 
 
