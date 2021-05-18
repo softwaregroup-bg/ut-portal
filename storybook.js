@@ -76,7 +76,12 @@ const main = async(config, name, id, mock, dependencies) => {
                             person: {
                                 firstName: 'Super',
                                 lastName: 'Admin'
-                            }
+                            },
+                            'permission.get': [{
+                                actionId: 'granted'
+                            }, {
+                                actionId: 'page%'
+                            }]
                         }
                     }),
                     portal: {
