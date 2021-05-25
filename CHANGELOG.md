@@ -1,3 +1,12 @@
+# [7.13.0](https://github.com/softwaregroup-bg/ut-portal/compare/v7.12.1...v7.13.0) (2021-05-25)
+
+
+### Features
+
+* handle.dispatch.ready event [UTCORE-121] ([8df63fd](https://github.com/softwaregroup-bg/ut-portal/commit/8df63fd1fa1d1ed0add37be62806d1efa8c668d8))
+
+
+
 ## [7.12.1](https://github.com/softwaregroup-bg/ut-portal/compare/v7.12.0...v7.12.1) (2021-05-18)
 
 
