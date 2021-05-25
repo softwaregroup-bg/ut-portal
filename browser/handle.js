@@ -29,6 +29,7 @@ module.exports = (...params) => class handle extends require('ut-port-script')(.
         switch (method) {
             case 'handle.dispatch.set':
                 this.dispatch = params[0];
+                this.fireEvent('handle.dispatch.ready', {dispatch: params[0]}, 'asyncMap');
                 return true;
             case 'handle.tab.show':
                 if (typeof params[0] === 'function') {
