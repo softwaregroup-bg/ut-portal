@@ -39,7 +39,10 @@ module.exports = ({
             },
             reducers,
             middleware: middleware(),
-            onDispatcher: handleDispatchSet
+            onDispatcher: dispatch => {
+                handleDispatchSet(dispatch);
+                this.fireEvent('component.dispatch.ready', {dispatch}, 'asyncMap');
+            }
         });
         this.container = container;
 
