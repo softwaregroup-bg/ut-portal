@@ -1,3 +1,12 @@
+# [7.14.0](https://github.com/softwaregroup-bg/ut-portal/compare/v7.13.0...v7.14.0) (2021-05-25)
+
+
+### Features
+
+* move event [UTCORE-121] ([5b57d54](https://github.com/softwaregroup-bg/ut-portal/commit/5b57d54f980ee5282259f7c2b12bbab93f019afe))
+
+
+
 # [7.13.0](https://github.com/softwaregroup-bg/ut-portal/compare/v7.12.1...v7.13.0) (2021-05-25)
 
 
