@@ -1,3 +1,12 @@
+# [7.15.0](https://github.com/softwaregroup-bg/ut-portal/compare/v7.14.0...v7.15.0) (2021-06-05)
+
+
+### Features
+
+* chisel [UTCORE-121] ([af59610](https://github.com/softwaregroup-bg/ut-portal/commit/af5961046e11c497b0045d309046f9f420b824cd))
+
+
+
 # [7.14.0](https://github.com/softwaregroup-bg/ut-portal/compare/v7.13.0...v7.14.0) (2021-05-25)
 
 
