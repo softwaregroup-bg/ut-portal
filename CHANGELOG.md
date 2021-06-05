@@ -1,3 +1,7 @@
+## [7.15.4](https://github.com/softwaregroup-bg/ut-portal/compare/v7.15.3...v7.15.4) (2021-06-05)
+
+
+
 ## [7.15.3](https://github.com/softwaregroup-bg/ut-portal/compare/v7.15.2...v7.15.3) (2021-06-05)
 
 
