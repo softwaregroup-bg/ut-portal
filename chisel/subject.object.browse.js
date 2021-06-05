@@ -4,7 +4,7 @@ import Explorer from 'ut-front-devextreme/core/Explorer';
 import Navigator from 'ut-front-devextreme/core/Navigator';
 
 export default ({subject, object, keyField}) =>
-    /** @type { import("../../handlers").handlerFactory } */
+    /** @type { import("../handlers").handlerFactory } */
     ({
         import: {
             handleTabShow,

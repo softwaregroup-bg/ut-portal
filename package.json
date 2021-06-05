@@ -55,7 +55,7 @@
     "redux-thunk": "^2.3.0",
     "storybook-readme": "^5.0.9",
     "ut-browser": "^7.5.1",
-    "ut-front-devextreme": "^1.10.0",
+    "ut-front-devextreme": "^1.16.0",
     "ut-function.dispatch": "^1.3.0",
     "ut-port-http": "^8.8.0",
     "ut-port-jsonrpc": "^7.3.0"
