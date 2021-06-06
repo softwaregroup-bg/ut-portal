@@ -1,6 +1,6 @@
 {
   "name": "ut-portal",
-  "version": "7.15.4",
+  "version": "7.15.5",
   "main": "index.js",
   "browser": "browser.js",
   "pkg": {
