@@ -14,14 +14,14 @@ export default ({
     remove = `${subject}.${object}.delete`,
     get = `${subject}.${object}.get`,
     edit = `${subject}.${object}.edit`,
-    fields = [
-        {card: 'hidden', name: keyField, title: 'key', validation: joi && joi.any()},
-        {card: 'hidden', name: 'tenant', title: 'tenant', validation: joi && joi.any()},
-        {card: 'main', name: 'name', title: 'Name'}
-    ],
-    cards = [
-        {id: 'main', title: object, className: 'p-lg-6 p-xl-4'}
-    ]
+    fields = {
+        [keyField]: {title: 'key', validation: joi && joi.any()},
+        tenant: {title: 'tenant', validation: joi && joi.any()},
+        name: {title: 'Name'}
+    },
+    cards = {
+        main: {title: object, className: 'p-lg-6 p-xl-4', fields: ['name']}
+    }
 }) => {
     return {
         components: () => [
