@@ -1,3 +1,12 @@
+# [7.16.0](https://github.com/softwaregroup-bg/ut-portal/compare/v7.15.5...v7.16.0) (2021-06-07)
+
+
+### Features
+
+* improve config [UTCORE-121] ([b954a3d](https://github.com/softwaregroup-bg/ut-portal/commit/b954a3d8c47339466f09ce5595c788a328b9144f))
+
+
+
 ## [7.15.5](https://github.com/softwaregroup-bg/ut-portal/compare/v7.15.4...v7.15.5) (2021-06-06)
 
 
