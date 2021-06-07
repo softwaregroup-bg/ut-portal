@@ -14,19 +14,31 @@ export default ({
     remove = `${subject}.${object}.delete`,
     get = `${subject}.${object}.get`,
     edit = `${subject}.${object}.edit`,
+    fields,
+    cards,
+    browser = {
+        navigator: true
+    },
+    editor = {
+        cards: {
+            edit: cards.edit
+        }
+    }
+}) => {
     fields = {
         [keyField]: {title: 'key', validation: joi && joi.any()},
         tenant: {title: 'tenant', validation: joi && joi.any()},
-        name: {title: 'Name'}
-    },
+        name: {title: 'Name'},
+        ...fields
+    };
     cards = {
-        main: {title: object, className: 'p-lg-6 p-xl-4', fields: ['name']}
-    }
-}) => {
+        edit: {title: object, className: 'p-lg-6 p-xl-4', fields: ['name']},
+        ...cards
+    };
     return {
         components: () => [
-            objectEditor({subject, object, keyField, fields, cards}),
-            objectBrowse({subject, object, keyField}),
+            objectEditor({...editor, subject, object, keyField, fields}),
+            objectBrowse({...browser, subject, object, keyField, fields, cards}),
             objectOpen({subject, object}),
             objectNew({subject, object})
         ],

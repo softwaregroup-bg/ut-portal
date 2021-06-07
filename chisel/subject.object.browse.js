@@ -3,7 +3,7 @@ import React from 'react';
 import Explorer from 'ut-front-devextreme/core/Explorer';
 import Navigator from 'ut-front-devextreme/core/Navigator';
 
-export default ({subject, object, keyField}) =>
+export default ({navigator, subject, object, keyField, fields, cards}) =>
     /** @type { import("../handlers").handlerFactory } */
     ({
         import: {
@@ -16,22 +16,25 @@ export default ({subject, object, keyField}) =>
         }
     }) => {
         const BrowserComponent = async() => {
-            const fields = [{
-                field: 'name',
-                title: 'Name',
-                filter: true,
-                action: ({id}) => handleTabShow([objectOpen, {id}])
-            }];
+            const defaults = {
+                name: {
+                    action: ({id}) => handleTabShow([objectOpen, {id}])
+                }
+            };
+            fields = (cards?.browse?.fields || ['name']).reduce((prev, name) => [
+                ...prev,
+                {field: name, ...defaults[name], ...fields[name]}
+            ], []);
             const details = {name: 'Name'};
             function Browse() {
                 const [tenant, setTenant] = React.useState(null);
                 return (
                     <Explorer
-                        fetch={tenant != null && objectFetch}
+                        fetch={(!navigator || tenant != null) && objectFetch}
                         keyField={keyField}
                         fields={fields}
                         details={details}
-                        filter={{tenant}}
+                        filter={navigator ? {tenant} : {}}
                         actions={[{
                             title: 'Create',
                             permission: `${subject}.${object}.add`,
@@ -47,14 +50,14 @@ export default ({subject, object, keyField}) =>
                             action: ({selected}) => objectDelete(selected)
                         }]}
                     >
-                        <Navigator
+                        {navigator && <Navigator
                             fetch={customerOrganizationGraphFetch}
                             onSelect={setTenant}
                             keyField='id'
                             field='title'
                             title='Tenant'
                             resultSet='organization'
-                        />
+                        />}
                     </Explorer>
                 );
             };
