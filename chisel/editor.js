@@ -4,26 +4,36 @@ import React from 'react';
 import Editor from 'ut-front-devextreme/core/Editor';
 import {Toolbar, Button} from 'ut-front-devextreme/core/prime';
 
-export default ({subject, object, keyField, fields, cards}) => {
+export default ({
+    subject,
+    object,
+    keyField,
+    fields,
+    cards,
+    addMethod,
+    editMethod,
+    getMethod
+}) => {
     /** @type { import("../handlers").libFactory } */
     const editor = ({
         import: {
-            [`${subject}.${object}.add`]: add,
-            [`${subject}.${object}.edit`]: edit,
-            [`${subject}.${object}.get`]: get
+            [addMethod]: objectAdd,
+            [editMethod]: objectEdit,
+            [getMethod]: objectGet
         }
     }) => ({
         editor({id}) {
             async function handleSubmit(instance) {
                 if (id != null) {
-                    await edit(instance);
+                    await objectEdit({[object]: instance});
                 } else {
-                    instance = await add(instance);
+                    instance = await objectAdd({[object]: instance});
                     id = instance[keyField];
                 }
             }
-            function handleGet() {
-                return get({[keyField]: id});
+            async function handleGet() {
+                const result = (await objectGet({[keyField]: id}))[object];
+                return Array.isArray(result) ? result[0] : result;
             }
             return function Edit() {
                 const trigger = React.useRef(null);
@@ -31,7 +41,7 @@ export default ({subject, object, keyField, fields, cards}) => {
                     <>
                         <Toolbar
                             left={
-                                <Button icon='pi pi-save' onClick={() => trigger?.current?.()}/>
+                                <Button icon='pi pi-save' onClick={() => trigger && trigger.current && trigger.current()}/>
                             }
                         />
                         <Editor

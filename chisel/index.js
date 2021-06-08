@@ -3,42 +3,46 @@ import objectEditor from './editor';
 import objectBrowse from './subject.object.browse';
 import objectOpen from './subject.object.open';
 import objectNew from './subject.object.new';
+import merge from 'ut-function.merge';
 
 export default ({
     joi,
     subject,
     object,
     keyField = `${object}Id`,
-    fetch = `${subject}.${object}.fetch`,
-    add = `${subject}.${object}.add`,
-    remove = `${subject}.${object}.delete`,
-    get = `${subject}.${object}.get`,
-    edit = `${subject}.${object}.edit`,
     fields,
     cards,
+    methods: {
+        fetch: fetchMethod = `${subject}.${object}.fetch`,
+        add: addMethod = `${subject}.${object}.add`,
+        delete: deleteMethod = `${subject}.${object}.delete`,
+        get: getMethod = `${subject}.${object}.get`,
+        edit: editMethod = `${subject}.${object}.edit`
+    } = {},
     browser = {
-        navigator: true
+        navigator: true,
+        fetch: null,
+        delete: null
     },
-    editor = {
+    editor
+}) => {
+    fields = merge({
+        [keyField]: {title: 'key', validation: joi && joi.any()},
+        tenant: {title: 'tenant', validation: joi && joi.any()},
+        name: {title: 'Name', filter: true}
+    }, fields);
+    cards = merge({
+        edit: {title: object, className: 'p-lg-6 p-xl-4', fields: ['name']}
+    }, cards);
+    editor = merge({
         cards: {
             edit: cards.edit
         }
-    }
-}) => {
-    fields = {
-        [keyField]: {title: 'key', validation: joi && joi.any()},
-        tenant: {title: 'tenant', validation: joi && joi.any()},
-        name: {title: 'Name'},
-        ...fields
-    };
-    cards = {
-        edit: {title: object, className: 'p-lg-6 p-xl-4', fields: ['name']},
-        ...cards
-    };
+    }, editor);
     return {
         components: () => [
-            objectEditor({...editor, subject, object, keyField, fields}),
-            objectBrowse({...browser, subject, object, keyField, fields, cards}),
+            objectEditor({...editor, subject, object, keyField, fields, addMethod, getMethod, editMethod}),
+            objectBrowse({...browser, fetchMethod, deleteMethod, subject, object, keyField, fields, cards}),
             objectOpen({subject, object}),
             objectNew({subject, object})
         ],
@@ -76,33 +80,37 @@ export default ({
             const find = criteria => instances.find(byKey(criteria));
             const filter = criteria => {
                 const condition = Object.entries(criteria);
-                return instances.filter(
-                    instance => condition.every(
-                        ([name, value]) => instance[name] === value || String(instance[name]).toLowerCase().includes(String(value).toLowerCase())
+                return {
+                    [object]: instances.filter(
+                        instance => condition.every(
+                            ([name, value]) => instance[name] === value || String(instance[name]).toLowerCase().includes(String(value).toLowerCase())
+                        )
                     )
-                );
+                };
             };
             let maxId = instances.reduce((max, instance) => Math.max(max, Number(instance[keyField])), 0);
             return {
-                [fetch]: filter,
-                [get]: find,
-                [add](instance) {
+                [fetchMethod]: filter,
+                [getMethod]: criteria => ({[object]: find(criteria)}),
+                [addMethod](instance) {
                     const result = {
-                        ...instance,
-                        tenant: 1,
+                        ...instance[object],
+                        tenant: 100,
                         [keyField]: ++maxId
                     };
                     instances.push(result);
                     return result;
                 },
-                [edit](edited) {
-                    const result = find({[keyField]: edited[keyField]});
-                    return result && Object.assign(result, edited);
+                [editMethod](edited) {
+                    const result = find({[keyField]: edited[object][keyField]});
+                    return result && {
+                        [object]: Object.assign(result, edited[object])
+                    };
                 },
-                [remove](deleted) {
+                [deleteMethod](deleted) {
                     const result = [];
-                    for (const item of deleted) {
-                        const found = instances.findIndex(byKey({[keyField]: item[keyField]}));
+                    for (const item of deleted[keyField]) {
+                        const found = instances.findIndex(byKey({[keyField]: item.value}));
                         result.push(found >= 0 ? result[found] : null);
                         if (found >= 0) instances.splice(found, 1);
                     }
