@@ -1,3 +1,12 @@
+## [7.16.1](https://github.com/softwaregroup-bg/ut-portal/compare/v7.16.0...v7.16.1) (2021-06-08)
+
+
+### Bug Fixes
+
+* **chisel:** align with backend [UTCORE-121] ([e612045](https://github.com/softwaregroup-bg/ut-portal/commit/e612045d55486efe70a8f113f21b78d283f82f84))
+
+
+
 # [7.16.0](https://github.com/softwaregroup-bg/ut-portal/compare/v7.15.5...v7.16.0) (2021-06-07)
 
 
