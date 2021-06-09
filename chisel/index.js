@@ -29,7 +29,7 @@ export default ({
     fields = merge({
         [keyField]: {title: 'key', validation: joi && joi.any()},
         tenant: {title: 'tenant', validation: joi && joi.any()},
-        name: {title: 'Name', filter: true}
+        name: {title: 'Name', filter: true, sort: true}
     }, fields);
     cards = merge({
         edit: {title: object, className: 'p-lg-6 p-xl-4', fields: ['name']}
@@ -78,15 +78,26 @@ export default ({
         } = {}) {
             const byKey = criteria => instance => String(instance[keyField]) === String(criteria[keyField]);
             const find = criteria => instances.find(byKey(criteria));
-            const filter = criteria => {
-                const condition = Object.entries(criteria);
-                return {
-                    [object]: instances.filter(
-                        instance => condition.every(
-                            ([name, value]) => instance[name] === value || String(instance[name]).toLowerCase().includes(String(value).toLowerCase())
-                        )
+            const compare = ({field, dir, smaller = {ASC: -1, DESC: 1}[dir]}) => function compare(a, b) {
+                if (a[field] < b[field]) return smaller;
+                if (a[field] > b[field]) return -smaller;
+                return 0;
+            };
+            const filter = async criteria => {
+                const condition = Object.entries(criteria[object]);
+                let result = instances.filter(
+                    instance => condition.every(
+                        ([name, value]) => instance[name] === value || String(instance[name]).toLowerCase().includes(String(value).toLowerCase())
                     )
-                };
+                );
+                if (Array.isArray(criteria.orderBy) && criteria.orderBy.length) result = result.sort(compare(criteria.orderBy[0]));
+                await new Promise((resolve, reject) => setTimeout(resolve, 100));
+                return Promise.resolve({
+                    [object]: result.slice((criteria.paging.pageNumber - 1) * criteria.paging.pageSize, criteria.paging.pageNumber * criteria.paging.pageSize),
+                    pagination: {
+                        recordsTotal: result.length
+                    }
+                });
             };
             let maxId = instances.reduce((max, instance) => Math.max(max, Number(instance[keyField])), 0);
             return {
