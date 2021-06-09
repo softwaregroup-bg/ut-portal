@@ -1,3 +1,12 @@
+## [7.16.2](https://github.com/softwaregroup-bg/ut-portal/compare/v7.16.1...v7.16.2) (2021-06-09)
+
+
+### Bug Fixes
+
+* mock filter, page, sort [UTCORE-121] ([7ceb76f](https://github.com/softwaregroup-bg/ut-portal/commit/7ceb76f0449b06c15d9a7f43074d74c6972f514f))
+
+
+
 ## [7.16.1](https://github.com/softwaregroup-bg/ut-portal/compare/v7.16.0...v7.16.1) (2021-06-08)
 
 
