@@ -74,7 +74,8 @@ export default ({
                 {[keyField]: 124, tenant: 100, name: 'Xanthorrhoea'},
                 {[keyField]: 125, tenant: 100, name: 'Yew'},
                 {[keyField]: 126, tenant: 100, name: 'Zelkova'}
-            ]
+            ],
+            fetch = null
         } = {}) {
             const byKey = criteria => instance => String(instance[keyField]) === String(criteria[keyField]);
             const find = criteria => instances.find(byKey(criteria));
@@ -84,8 +85,8 @@ export default ({
                 return 0;
             };
             const filter = async criteria => {
-                const condition = Object.entries(criteria[object]);
-                let result = instances.filter(
+                const condition = criteria && criteria[object] && Object.entries(criteria[object]);
+                let result = !condition ? instances : instances.filter(
                     instance => condition.every(
                         ([name, value]) => instance[name] === value || String(instance[name]).toLowerCase().includes(String(value).toLowerCase())
                     )
@@ -101,7 +102,7 @@ export default ({
             };
             let maxId = instances.reduce((max, instance) => Math.max(max, Number(instance[keyField])), 0);
             return {
-                [fetchMethod]: filter,
+                [fetchMethod]: fetch ? fetch(filter) : filter,
                 [getMethod]: criteria => ({[object]: find(criteria)}),
                 [addMethod](instance) {
                     const result = {
