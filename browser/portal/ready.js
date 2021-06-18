@@ -18,7 +18,8 @@ const tabMenu = (state = {tabs: []}) => {
 
 /** @type { import("../../handlers").handlerFactory } */
 module.exports = ({
-    config = {},
+    utMeta,
+    config: {render: shouldRender, ...config} = {},
     import: {
         portalParamsGet,
         handleDispatchSet
@@ -32,6 +33,7 @@ module.exports = ({
 
         // @ts-ignore
         const container = ({menu, rightMenu, rightMenuItems, state, ...params} = {}) => createElement(App, {
+            ...config,
             ...params,
             state: {
                 portal: {menu, rightMenu, rightMenuItems},
@@ -46,12 +48,12 @@ module.exports = ({
         });
         this.container = container;
 
-        if (config.render !== undefined && !config.render) return;
+        if (shouldRender !== undefined && !shouldRender) return;
         // @ts-ignore
         if (typeof document !== 'undefined') {
-            render(this.container(await portalParamsGet({})), document.getElementById('root'));
+            render(this.container(await portalParamsGet({}, utMeta())), document.getElementById('root'));
         } else {
-            console.log(renderToString(this.container(await portalParamsGet({})))); // eslint-disable-line
+            console.log(renderToString(this.container(await portalParamsGet({}, utMeta())))); // eslint-disable-line
         }
     }
 });
