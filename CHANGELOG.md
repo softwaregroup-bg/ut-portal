@@ -1,3 +1,12 @@
+# [7.17.0](https://github.com/softwaregroup-bg/ut-portal/compare/v7.16.4...v7.17.0) (2021-06-18)
+
+
+### Features
+
+* configureable login page [UTCORE-121] ([dbde14b](https://github.com/softwaregroup-bg/ut-portal/commit/dbde14b740759e925cc781cd17d8c952e983bd3e))
+
+
+
 ## [7.16.4](https://github.com/softwaregroup-bg/ut-portal/compare/v7.16.3...v7.16.4) (2021-06-10)
 
 
