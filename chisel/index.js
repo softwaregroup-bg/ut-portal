@@ -28,7 +28,7 @@ export default ({
     fields = merge({
         [keyField]: {title: 'key', validation: joi && joi.any()},
         tenant: {title: 'tenant', validation: joi && joi.any()},
-        [nameField]: {title: `${capital(keyField)} Name`, filter: true, sort: true}
+        [nameField]: {title: `${capital(object)} Name`, filter: true, sort: true}
     }, fields);
     cards = merge({
         edit: {title: object, className: 'p-lg-6 p-xl-4', fields: [nameField]}
