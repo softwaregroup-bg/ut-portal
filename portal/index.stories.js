@@ -43,7 +43,7 @@ const page = app({
                 function component({joi}) {
                     return [
                         () => ({ namespace: 'component/microservice' }),
-                        ...chisel({joi, subject: 'microservice', object: 'tree'}).components()
+                        ...chisel({joi, subject: 'microservice', object: 'tree', browser: {navigator: true}}).components()
                     ];
                 }
             ]
