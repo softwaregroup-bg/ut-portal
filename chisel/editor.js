@@ -16,6 +16,7 @@ export default ({
 }) => {
     /** @type { import("../handlers").libFactory } */
     const editor = ({
+        utMeta,
         import: {
             [addMethod]: objectAdd,
             [editMethod]: objectEdit,
@@ -25,14 +26,14 @@ export default ({
         editor({id}) {
             async function handleSubmit(instance) {
                 if (id != null) {
-                    await objectEdit({[object]: instance});
+                    await objectEdit({[object]: instance}, utMeta());
                 } else {
-                    instance = await objectAdd({[object]: instance});
+                    instance = await objectAdd({[object]: instance}, utMeta());
                     id = instance[keyField];
                 }
             }
             async function handleGet() {
-                const result = (await objectGet({[keyField]: id}))[object];
+                const result = (await objectGet({[keyField]: id}, utMeta()))[object];
                 return Array.isArray(result) ? result[0] : result;
             }
             return function Edit() {

@@ -5,11 +5,14 @@ import objectOpen from './subject.object.open';
 import objectNew from './subject.object.new';
 import merge from 'ut-function.merge';
 
+const capital = string => string.charAt(0).toUpperCase() + string.slice(1);
+
 export default ({
     joi,
     subject,
     object,
     keyField = `${object}Id`,
+    nameField = `${object}Name`,
     fields,
     cards,
     methods: {
@@ -19,20 +22,16 @@ export default ({
         get: getMethod = `${subject}.${object}.get`,
         edit: editMethod = `${subject}.${object}.edit`
     } = {},
-    browser = {
-        navigator: true,
-        fetch: null,
-        delete: null
-    },
-    editor
+    browser,
+    editor = null
 }) => {
     fields = merge({
         [keyField]: {title: 'key', validation: joi && joi.any()},
         tenant: {title: 'tenant', validation: joi && joi.any()},
-        name: {title: 'Name', filter: true, sort: true}
+        [nameField]: {title: `${capital(keyField)} Name`, filter: true, sort: true}
     }, fields);
     cards = merge({
-        edit: {title: object, className: 'p-lg-6 p-xl-4', fields: ['name']}
+        edit: {title: object, className: 'p-lg-6 p-xl-4', fields: [nameField]}
     }, cards);
     editor = merge({
         cards: {
@@ -42,38 +41,38 @@ export default ({
     return {
         components: () => [
             objectEditor({...editor, subject, object, keyField, fields, addMethod, getMethod, editMethod}),
-            objectBrowse({...browser, fetchMethod, deleteMethod, subject, object, keyField, fields, cards}),
+            objectBrowse({...browser, fetchMethod, deleteMethod, subject, object, keyField, nameField, fields, cards}),
             objectOpen({subject, object}),
             objectNew({subject, object})
         ],
         mock({
             objects: instances = [
-                {[keyField]: 101, tenant: 100, name: 'Acacia'},
-                {[keyField]: 102, tenant: 100, name: 'Banksia'},
-                {[keyField]: 103, tenant: 100, name: 'Cedar'},
-                {[keyField]: 104, tenant: 100, name: 'Dogwood'},
-                {[keyField]: 105, tenant: 100, name: 'Elm'},
-                {[keyField]: 106, tenant: 100, name: 'Fig'},
-                {[keyField]: 107, tenant: 100, name: 'Gum'},
-                {[keyField]: 108, tenant: 100, name: 'Hazel'},
-                {[keyField]: 109, tenant: 100, name: 'Ivy'},
-                {[keyField]: 110, tenant: 100, name: 'Juniper'},
-                {[keyField]: 111, tenant: 100, name: 'Kauri'},
-                {[keyField]: 112, tenant: 100, name: 'Larch'},
-                {[keyField]: 113, tenant: 100, name: 'Maple'},
-                {[keyField]: 114, tenant: 100, name: 'Narra'},
-                {[keyField]: 115, tenant: 100, name: 'Oak'},
-                {[keyField]: 116, tenant: 100, name: 'Pine'},
-                {[keyField]: 117, tenant: 100, name: 'Quercus'},
-                {[keyField]: 118, tenant: 100, name: 'Rowan'},
-                {[keyField]: 119, tenant: 100, name: 'Sycamore'},
-                {[keyField]: 120, tenant: 100, name: 'Tamarind'},
-                {[keyField]: 121, tenant: 100, name: 'Unedo'},
-                {[keyField]: 122, tenant: 100, name: 'Viburnum'},
-                {[keyField]: 123, tenant: 100, name: 'Willow'},
-                {[keyField]: 124, tenant: 100, name: 'Xanthorrhoea'},
-                {[keyField]: 125, tenant: 100, name: 'Yew'},
-                {[keyField]: 126, tenant: 100, name: 'Zelkova'}
+                {[keyField]: 101, tenant: 100, [nameField]: 'Acacia'},
+                {[keyField]: 102, tenant: 100, [nameField]: 'Banksia'},
+                {[keyField]: 103, tenant: 100, [nameField]: 'Cedar'},
+                {[keyField]: 104, tenant: 100, [nameField]: 'Dogwood'},
+                {[keyField]: 105, tenant: 100, [nameField]: 'Elm'},
+                {[keyField]: 106, tenant: 100, [nameField]: 'Fig'},
+                {[keyField]: 107, tenant: 100, [nameField]: 'Gum'},
+                {[keyField]: 108, tenant: 100, [nameField]: 'Hazel'},
+                {[keyField]: 109, tenant: 100, [nameField]: 'Ivy'},
+                {[keyField]: 110, tenant: 100, [nameField]: 'Juniper'},
+                {[keyField]: 111, tenant: 100, [nameField]: 'Kauri'},
+                {[keyField]: 112, tenant: 100, [nameField]: 'Larch'},
+                {[keyField]: 113, tenant: 100, [nameField]: 'Maple'},
+                {[keyField]: 114, tenant: 100, [nameField]: 'Narra'},
+                {[keyField]: 115, tenant: 100, [nameField]: 'Oak'},
+                {[keyField]: 116, tenant: 100, [nameField]: 'Pine'},
+                {[keyField]: 117, tenant: 100, [nameField]: 'Quercus'},
+                {[keyField]: 118, tenant: 100, [nameField]: 'Rowan'},
+                {[keyField]: 119, tenant: 100, [nameField]: 'Sycamore'},
+                {[keyField]: 120, tenant: 100, [nameField]: 'Tamarind'},
+                {[keyField]: 121, tenant: 100, [nameField]: 'Unedo'},
+                {[keyField]: 122, tenant: 100, [nameField]: 'Viburnum'},
+                {[keyField]: 123, tenant: 100, [nameField]: 'Willow'},
+                {[keyField]: 124, tenant: 100, [nameField]: 'Xanthorrhoea'},
+                {[keyField]: 125, tenant: 100, [nameField]: 'Yew'},
+                {[keyField]: 126, tenant: 100, [nameField]: 'Zelkova'}
             ],
             fetch = null
         } = {}) {
