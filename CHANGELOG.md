@@ -1,3 +1,12 @@
+## [7.18.2](https://github.com/softwaregroup-bg/ut-portal/compare/v7.18.1...v7.18.2) (2021-06-19)
+
+
+### Bug Fixes
+
+* title [UTCORE-121] ([7644edf](https://github.com/softwaregroup-bg/ut-portal/commit/7644edfa96d804810689488fdc466ade1fe496f8))
+
+
+
 ## [7.18.1](https://github.com/softwaregroup-bg/ut-portal/compare/v7.18.0...v7.18.1) (2021-06-19)
 
 
