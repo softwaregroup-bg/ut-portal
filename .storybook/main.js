@@ -3,7 +3,6 @@ module.exports = {
     webpackFinal: (config) => {
         const cssRule = config.module.rules.findIndex(rule => rule && rule.test && rule.test.toString() === '/\\.css$/');
         if (cssRule > -1) {
-            debugger;
             config.module.rules.splice(cssRule, 0, {
                 test: lazy,
                 use: [{

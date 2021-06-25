@@ -7,22 +7,29 @@ import merge from 'ut-function.merge';
 export default ({
     subject,
     object,
+    objectTitle,
     keyField,
     nameField,
+    tenantField,
     fields,
     cards,
+    title = cards?.browse?.title || `${objectTitle} list`,
     fetch,
+    create = [{
+        title: 'Create'
+    }],
     delete: remove,
     navigator,
     fetchMethod,
-    deleteMethod
+    deleteMethod,
+    navigatorFetchMethod = 'customerOrganizationGraphFetch'
 }) =>
     /** @type { import("../handlers").handlerFactory } */
     ({
         utMeta,
         import: {
             handleTabShow,
-            customerOrganizationGraphFetch,
+            [navigatorFetchMethod]: navigatorFetch,
             [`component/${subject}.${object}.new`]: objectNew,
             [`component/${subject}.${object}.open`]: objectOpen,
             [fetchMethod]: objectFetch,
@@ -35,18 +42,23 @@ export default ({
             }
         };
         const details = {[nameField]: 'Name'};
-        fields = ((cards && cards.browse && cards.browse.fields) || [nameField]).reduce((prev, name) => [
+        fields = ((cards?.browse?.fields) || [nameField]).reduce((prev, name) => [
             ...prev,
             merge({field: name}, defaults[name], fields[name])
         ], []);
-        const handleFetch = (typeof fetch === 'function') ? params => objectFetch(fetch(params)) : objectFetch;
+        const handleFetch = (typeof fetch === 'function') ? params => objectFetch(fetch(params), utMeta()) : params => objectFetch(params, utMeta());
+        const handleNavigatorFetch = params => navigatorFetch(params, utMeta());
         remove = remove || (instances => ({[keyField]: instances.map(instance => ({value: instance[keyField]}))}));
         const handleDelete = ({selected}) => objectDelete(remove(selected));
-        const actions = [{
-            title: 'Create',
-            permission: `${subject}.${object}.add`,
-            action: () => handleTabShow(objectNew, utMeta())
-        }, {
+        const actions = [...create.map(({
+            type,
+            permission = `${subject}.${object}.add`,
+            ...rest
+        }) => ({
+            action: () => type ? handleTabShow([objectNew, {type}], utMeta()) : handleTabShow(objectNew, utMeta()),
+            permission,
+            ...rest
+        })), {
             title: 'Edit',
             permission: `${subject}.${object}.edit`,
             enabled: 'current',
@@ -66,15 +78,15 @@ export default ({
                         keyField={keyField}
                         fields={fields}
                         details={details}
-                        filter={navigator ? {tenant} : {}}
+                        filter={navigator ? {[tenantField]: tenant} : {}}
                         actions={actions}
                     >
                         {navigator && <Navigator
-                            fetch={customerOrganizationGraphFetch}
+                            fetch={handleNavigatorFetch}
                             onSelect={setTenant}
                             keyField='id'
                             field='title'
-                            title='Tenant'
+                            title={fields?.[tenantField]?.title || 'Tenant'}
                             resultSet='organization'
                         />}
                     </Explorer>
@@ -84,7 +96,7 @@ export default ({
         };
         return {
             [`${subject}.${object}.browse`]: () => ({
-                title: `${object} list`,
+                title,
                 permission: `${subject}.${object}.browse`,
                 component: BrowserComponent
             })

@@ -1,9 +1,9 @@
 const dispatch = require('ut-function.dispatch');
 const immutable = require('immutable');
 
-const main = async(config, name, id, mock, dependencies) => {
+const main = async(config, name, path, params, mock, dependencies) => {
     // fix: Storybook tries to keep the old hash, which we do not want
-    history.replaceState({}, '', `#/${name}${id ? '/' + id : ''}`);
+    history.replaceState({}, '', `#${path}`);
 
     const {portsMap: {'utPortal.ui': {container}}, serviceBus: {publicApi: {importMethod}}} = await require('ut-run').run({
         main: (...params) => [
@@ -48,9 +48,9 @@ const main = async(config, name, id, mock, dependencies) => {
         method: 'debug'
     });
     const page = await importMethod('component/' + name)({});
-    page.path = '/' + name + (id ? '/' + id : '');
-    page.params = {id};
-    page.Component = await page.component({id});
+    page.path = path;
+    page.params = params;
+    page.Component = await page.component(params);
     return {
         page() {
             return container({
@@ -59,7 +59,10 @@ const main = async(config, name, id, mock, dependencies) => {
                         classes: {}
                     },
                     palette: {
-                        type: 'dark'
+                        type: 'dark',
+                        background: {
+                            even: 'red'
+                        }
                     }
                 },
                 portalName: 'Test Portal',
@@ -94,7 +97,7 @@ const main = async(config, name, id, mock, dependencies) => {
     };
 };
 
-module.exports.app = (config = {}, mock = {}, dependencies = []) => (name, id) => {
+module.exports.app = (config = {}, mock = {}, dependencies = []) => (name, id, params) => {
     mock = {
         'core.translation.fetch': () => ({}),
         'customer.organization.graphFetch': () => ({
@@ -119,7 +122,19 @@ module.exports.app = (config = {}, mock = {}, dependencies = []) => (name, id) =
         ...mock
     };
     const result = (args, {loaded: {page}}) => page();
-    result.loaders = [() => main(config, name, id, mock, dependencies)];
-    result.storyName = name + (id ? '/' + id : '');
+    if (id && typeof id === 'object') {
+        params = id;
+        id = undefined;
+    }
+    const mainParams = {id};
+    if (params) {
+        Object.assign(mainParams, params);
+        params = new URLSearchParams(params);
+        params.sort();
+        params = '?' + params;
+    } else params = '';
+    const path = name + ((id != null) ? '/' + id : '') + params;
+    result.storyName = path;
+    result.loaders = [() => main(config, name, '/' + path, mainParams, mock, dependencies)];
     return result;
 };

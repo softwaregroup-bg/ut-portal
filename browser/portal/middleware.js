@@ -16,12 +16,13 @@ const cloneParams = (params) => {
 
 /** @type { import("../../handlers").libFactory } */
 module.exports = ({
-    utMethod
+    utMethod,
+    utMeta
 }) => ({
     middleware() {
         const route = store => next => async action => {
             if (action.type !== 'portal.route.find') return next(action);
-            const {path} = action;
+            const {pathname: path, searchParams} = new URL('ut-portal:' + action.path);
             if (typeof path !== 'string' || !path.includes('/')) return next(action);
             const [, method, ...rest] = path.split('/');
             if (!method) return next(action);
@@ -30,6 +31,7 @@ module.exports = ({
                 tab: utMethod('component/' + method),
                 ...rest.length > 0 && {
                     params: {
+                        ...Object.fromEntries(searchParams.entries()),
                         id: rest.join('/')
                     }
                 },
@@ -60,7 +62,7 @@ module.exports = ({
                     return next(action);
                 }
 
-                return utMethod(action.method, importMethodParams)(methodParams.toJS())
+                return utMethod(action.method, importMethodParams)(methodParams.toJS(), utMeta())
                     .then(result => {
                         action.result = result;
                         return result;

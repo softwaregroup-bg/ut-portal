@@ -43,7 +43,51 @@ const page = app({
                 function component({joi}) {
                     return [
                         () => ({ namespace: 'component/microservice' }),
-                        ...chisel({joi, subject: 'microservice', object: 'tree', browser: {navigator: true}}).components()
+                        ...chisel({
+                            joi,
+                            subject: 'microservice',
+                            object: 'tree',
+                            browser: {
+                                navigator: true,
+                                create: [{
+                                    title: 'Add'
+                                }, {
+                                    title: 'Add confier',
+                                    type: 'conifer'
+                                }, {
+                                    title: 'Add broadleaf',
+                                    type: 'broadleaf'
+                                }]
+                            },
+                            layouts: {
+                                editConifer: ['edit', 'conifer'],
+                                editBroadleaf: ['edit', 'broadleaf'],
+                                edit: [{
+                                    icon: 'pi pi-file',
+                                    items: [{
+                                        label: 'Main',
+                                        cards: ['edit', 'morphology'],
+                                        items: [
+                                            {label: 'Identification'},
+                                            {label: 'Morphology'}
+                                        ]
+                                    }, {
+                                        label: 'Taxonomy',
+                                        cards: ['classification', 'clsLinks'],
+                                        items: [
+                                            {label: 'Classification'},
+                                            {label: 'Links'}
+                                        ]
+                                    }]
+                                }, {
+                                    icon: 'pi pi-images'
+                                }, {
+                                    icon: 'pi pi-map'
+                                }, {
+                                    icon: 'pi pi-paperclip'
+                                }]
+                            }
+                        }).components()
                     ];
                 }
             ]
@@ -54,3 +98,5 @@ const page = app({
 export const TreeBrowse = page('microservice.tree.browse');
 export const TreeOpen = page('microservice.tree.open', 101);
 export const TreeNew = page('microservice.tree.new');
+export const TreeNewConifer = page('microservice.tree.new', {type: 'conifer'});
+export const TreeNewBroadleaf = page('microservice.tree.new', {type: 'broadleaf'});
