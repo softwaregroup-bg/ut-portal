@@ -1,3 +1,12 @@
+# [7.19.0](https://github.com/softwaregroup-bg/ut-portal/compare/v7.18.3...v7.19.0) (2021-06-25)
+
+
+### Features
+
+* improve parametrization [UTCORE-121] ([4b484aa](https://github.com/softwaregroup-bg/ut-portal/commit/4b484aa934ad6c1cc3aa73b812a5200fe3b13ec0))
+
+
+
 ## [7.18.3](https://github.com/softwaregroup-bg/ut-portal/compare/v7.18.2...v7.18.3) (2021-06-24)
 
 
