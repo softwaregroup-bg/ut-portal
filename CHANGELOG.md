@@ -1,3 +1,12 @@
+# [7.20.0](https://github.com/softwaregroup-bg/ut-portal/compare/v7.19.0...v7.20.0) (2021-06-25)
+
+
+### Features
+
+* configurable resultset name [UTCORE-121] ([8d6bb3d](https://github.com/softwaregroup-bg/ut-portal/commit/8d6bb3df48cadc3ddaf8240b671f45c82f37ec75))
+
+
+
 # [7.19.0](https://github.com/softwaregroup-bg/ut-portal/compare/v7.18.3...v7.19.0) (2021-06-25)
 
 
