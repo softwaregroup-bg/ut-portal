@@ -85,7 +85,7 @@ export default ({
                 const condition = criteria && criteria[object] && Object.entries(criteria[object]);
                 let result = !condition ? instances : instances.filter(
                     instance => condition.every(
-                        ([name, value]) => instance[name] === value || String(instance[name]).toLowerCase().includes(String(value).toLowerCase())
+                        ([name, value]) => value === undefined || instance[name] === value || String(instance[name]).toLowerCase().includes(String(value).toLowerCase())
                     )
                 );
                 if (Array.isArray(criteria.orderBy) && criteria.orderBy.length) result = result.sort(compare(criteria.orderBy[0]));

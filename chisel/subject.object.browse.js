@@ -7,6 +7,7 @@ import merge from 'ut-function.merge';
 export default ({
     subject,
     object,
+    resultSet,
     objectTitle,
     keyField,
     nameField,
@@ -74,7 +75,7 @@ export default ({
                 return (
                     <Explorer
                         fetch={(!navigator || tenant != null) && handleFetch}
-                        resultSet={object}
+                        resultSet={resultSet || object}
                         keyField={keyField}
                         fields={fields}
                         details={details}
