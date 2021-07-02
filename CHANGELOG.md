@@ -1,3 +1,12 @@
+# [7.21.0](https://github.com/softwaregroup-bg/ut-portal/compare/v7.20.0...v7.21.0) (2021-07-02)
+
+
+### Features
+
+* storybook toolbar [UTCORE-121] ([74c3cd5](https://github.com/softwaregroup-bg/ut-portal/commit/74c3cd5b2b07c5fb14cc7238a6f19995f1987d8c))
+
+
+
 # [7.20.0](https://github.com/softwaregroup-bg/ut-portal/compare/v7.19.0...v7.20.0) (2021-06-25)
 
 
