@@ -40,6 +40,15 @@ module.exports = ({
             });
         };
 
+        const closeLegacyTab = store => next => action => {
+            if (String(action.type) !== 'Symbol(REMOVE_TAB)') return next(action);
+            const data = store.getState()?.portal?.tabs?.find?.(({path}) => path === action.pathname);
+            return next(data ? {
+                type: 'front.tab.close',
+                data
+            } : action);
+        };
+
         const rpc = store => next => action => {
             if (action.method) {
                 let importMethodParams = {};
@@ -84,6 +93,6 @@ module.exports = ({
             return next(action);
         };
 
-        return [route, rpc];
+        return [route, closeLegacyTab, rpc];
     }
 });

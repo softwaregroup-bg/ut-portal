@@ -12,8 +12,14 @@ const pages = (state = {}, {type, payload, reducer}) => {
     return reducer({state, payload});
 };
 
-const tabMenu = (state = {tabs: []}) => {
-    return state;
+const tabMenu = (state = {tabs: [], active: {}}, {type, payload}) => {
+    if (type !== '@@router/LOCATION_CHANGE') return state;
+    return {
+        ...state,
+        active: {
+            pathname: payload.location.pathname + payload.location.search
+        }
+    };
 };
 
 /** @type { import("../../handlers").handlerFactory } */
