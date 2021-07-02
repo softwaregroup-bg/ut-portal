@@ -8,14 +8,31 @@ const main = async(config, name, path, params, mock, dependencies) => {
     const {portsMap: {'utPortal.ui': {container}}, serviceBus: {publicApi: {importMethod}}} = await require('ut-run').run({
         main: (...params) => [
             require('ut-browser')(...params),
-            () => ({
+            mock && (() => ({
                 browser: () => [
                     dispatch(mock)
                 ]
-            }),
+            })),
+            function preauth() {
+                return {
+                    browser: [
+                        function backend({config: {authorization}}) {
+                            return {
+                                async send(params, $meta) {
+                                    const {$http = {}} = params;
+                                    if (!$http.headers) $http.headers = {};
+                                    $http.headers.authorization = authorization;
+                                    if ($http) params.$http = $http;
+                                    return super.send(params, $meta);
+                                }
+                            };
+                        }
+                    ]
+                };
+            },
             ...dependencies,
             require('./browser')(...params)
-        ],
+        ].filter(Boolean),
         config: [{
             service: 'browser',
             repl: false,
@@ -52,14 +69,14 @@ const main = async(config, name, path, params, mock, dependencies) => {
     page.params = params;
     page.Component = await page.component(params);
     return {
-        page() {
+        page({theme = 'dark', backend}) {
             return container({
                 theme: {
                     ut: {
                         classes: {}
                     },
                     palette: {
-                        type: 'dark',
+                        type: theme,
                         background: {
                             even: 'red'
                         }
@@ -97,8 +114,8 @@ const main = async(config, name, path, params, mock, dependencies) => {
     };
 };
 
-module.exports.app = (config = {}, mock = {}, dependencies = []) => (name, id, params) => {
-    mock = {
+module.exports.app = (config = {}, mock, dependencies = []) => (name, id, params) => {
+    mock = mock && {
         'core.translation.fetch': () => ({}),
         'customer.organization.graphFetch': () => ({
             organization: [
@@ -121,7 +138,7 @@ module.exports.app = (config = {}, mock = {}, dependencies = []) => (name, id, p
         }),
         ...mock
     };
-    const result = (args, {loaded: {page}}) => page();
+    const result = (args, {loaded: {page}, globals}) => page(globals);
     if (id && typeof id === 'object') {
         params = id;
         id = undefined;

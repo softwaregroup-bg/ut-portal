@@ -55,6 +55,7 @@ module.exports = {
     stories: [process.cwd().replace(/\\/g, '/') + '/portal/**/*.stories.js'],
     addons: [
         'storybook-readme',
+        '@storybook/addon-toolbars',
         '@storybook/addon-actions',
         '@storybook/addon-links',
         '@storybook/addon-viewport',
@@ -77,4 +78,14 @@ module.exports = {
         '@storybook/addon-a11y',
         '@storybook/addon-storysource',
     ],
+    // core: {
+    //     builder: 'storybook-builder-vite',
+    // },
+    async viteFinal(config, { configType }) {
+        // customize the Vite config here
+        debugger;
+        config.plugins.splice(2, 1);
+        config.server.fsServe.root = 'K:/ut';
+        return config;
+    },
 };
