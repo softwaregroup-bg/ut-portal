@@ -1,3 +1,12 @@
+## [7.21.1](https://github.com/softwaregroup-bg/ut-portal/compare/v7.21.0...v7.21.1) (2021-07-02)
+
+
+### Bug Fixes
+
+* close legacy tab [UTCORE-121] ([7d25164](https://github.com/softwaregroup-bg/ut-portal/commit/7d251644397a21dbde83ca68a6adf2247cde5c4c))
+
+
+
 # [7.21.0](https://github.com/softwaregroup-bg/ut-portal/compare/v7.20.0...v7.21.0) (2021-07-02)
 
 
