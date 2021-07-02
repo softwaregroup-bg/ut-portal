@@ -1,3 +1,12 @@
+# [7.22.0](https://github.com/softwaregroup-bg/ut-portal/compare/v7.21.1...v7.22.0) (2021-07-02)
+
+
+### Features
+
+* per method mocks [UTCORE-121] ([bcae31c](https://github.com/softwaregroup-bg/ut-portal/commit/bcae31cbfe6adc1aa86bf2b896f4c5505eb28e34))
+
+
+
 ## [7.21.1](https://github.com/softwaregroup-bg/ut-portal/compare/v7.21.0...v7.21.1) (2021-07-02)
 
 
