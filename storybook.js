@@ -1,18 +1,12 @@
-const dispatch = require('ut-function.dispatch');
 const immutable = require('immutable');
 
-const main = async(config, name, path, params, mock, dependencies) => {
+const main = async(config, name, path, params, handlers, dependencies) => {
     // fix: Storybook tries to keep the old hash, which we do not want
     history.replaceState({}, '', `#${path}`);
 
     const {portsMap: {'utPortal.ui': {container}}, serviceBus: {publicApi: {importMethod}}} = await require('ut-run').run({
         main: (...params) => [
             require('ut-browser')(...params),
-            mock && (() => ({
-                browser: () => [
-                    dispatch(mock)
-                ]
-            })),
             function preauth() {
                 return {
                     browser: [
@@ -31,6 +25,24 @@ const main = async(config, name, path, params, mock, dependencies) => {
                 };
             },
             ...dependencies,
+            function mock() {
+                return {
+                    browser: [
+                        function backend() {
+                            return {
+                                namespace: Array.from(new Set(Object.keys(handlers).map(method => method.split('.')[0]))),
+                                send(params, {method}) {
+                                    return method in handlers ? params : super.send(...arguments);
+                                },
+                                receive(result, {method}) {
+                                    return method in handlers ? result : super.receive(...arguments);
+                                },
+                                ...handlers
+                            };
+                        }
+                    ]
+                };
+            },
             require('./browser')(...params)
         ].filter(Boolean),
         config: [{
@@ -60,7 +72,8 @@ const main = async(config, name, path, params, mock, dependencies) => {
                 'storybook'
             ],
             utBrowser: true,
-            utPortal: true
+            utPortal: true,
+            mock: true
         }, config],
         method: 'debug'
     });
@@ -78,7 +91,7 @@ const main = async(config, name, path, params, mock, dependencies) => {
                     palette: {
                         type: theme,
                         background: {
-                            even: 'red'
+                            // even: 'red'
                         }
                     }
                 },
