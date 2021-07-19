@@ -14,6 +14,7 @@ export default ({
     tenantField,
     fields,
     cards,
+    layouts,
     title = cards?.browse?.title || `${objectTitle} list`,
     fetch,
     create = [{

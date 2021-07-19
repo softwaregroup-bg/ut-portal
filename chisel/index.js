@@ -14,9 +14,9 @@ export default ({
     objectTitle = capital(object),
     keyField = `${object}Id`,
     nameField = `${object}Name`,
-    tenantField = 'tenant',
-    fields,
-    cards,
+    tenantField = 'businessUnitId',
+    fields = {},
+    cards = {},
     methods: {
         fetch: fetchMethod = `${subject}.${object}.fetch`,
         add: addMethod = `${subject}.${object}.add`,
@@ -24,9 +24,14 @@ export default ({
         get: getMethod = `${subject}.${object}.get`,
         edit: editMethod = `${subject}.${object}.edit`
     } = {},
-    browser,
-    layouts,
-    editor = null
+    browser = {
+        navigator: undefined,
+        resultSet: undefined,
+        fetch: undefined,
+        delete: undefined
+    },
+    layouts = {},
+    editor = undefined
 }) => {
     fields = merge({
         [keyField]: {title: 'key', validation: joi && joi.any()},
