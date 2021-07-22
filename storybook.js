@@ -6,36 +6,22 @@ const main = async(config, name, path, params, handlers, dependencies) => {
 
     const {portsMap: {'utPortal.ui': {container}}, serviceBus: {publicApi: {importMethod}}} = await require('ut-run').run({
         main: (...params) => [
+            require('ut-login')(...params),
             require('ut-browser')(...params),
-            function preauth() {
-                return {
-                    browser: [
-                        function backend({config: {authorization}}) {
-                            return {
-                                async send(params, $meta) {
-                                    const {$http = {}} = params;
-                                    if (!$http.headers) $http.headers = {};
-                                    $http.headers.authorization = authorization;
-                                    if ($http) params.$http = $http;
-                                    return super.send(params, $meta);
-                                }
-                            };
-                        }
-                    ]
-                };
-            },
             ...dependencies,
             function mock() {
                 return {
                     browser: [
                         function backend() {
                             return {
-                                namespace: Array.from(new Set(Object.keys(handlers).map(method => method.split('.')[0]))),
+                                namespace: Array.from(new Set(Object.entries(handlers).map(
+                                    ([method, handler]) => handler && method.split('.')[0]
+                                ).filter(Boolean))),
                                 send(params, {method}) {
-                                    return method in handlers ? params : super.send(...arguments);
+                                    return handlers[method] ? params : super.send(...arguments);
                                 },
                                 receive(result, {method}) {
-                                    return method in handlers ? result : super.receive(...arguments);
+                                    return handlers[method] ? result : super.receive(...arguments);
                                 },
                                 ...handlers
                             };
@@ -73,6 +59,7 @@ const main = async(config, name, path, params, handlers, dependencies) => {
             ],
             utBrowser: true,
             utPortal: true,
+            utLogin: true,
             mock: true
         }, config],
         method: 'debug'

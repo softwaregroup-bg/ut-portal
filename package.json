@@ -80,7 +80,8 @@
     "tap": "^15.0.9",
     "tslib": "^2.3.0",
     "typescript": "4.1.2",
-    "ut-front-devextreme": "^1.21.3",
+    "ut-front-devextreme": "^1.22.0",
+    "ut-login": "^7.13.0",
     "ut-port-script": "^7.2.0",
     "ut-run": "^10.57.3",
     "ut-tools": "^6.38.2"

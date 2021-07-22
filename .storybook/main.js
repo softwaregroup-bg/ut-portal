@@ -1,5 +1,6 @@
 const lazy = /(devextreme[/\\]dist[/\\]css[/\\]dx\.(?!common).+\.css$)|(primereact[/\\]resources[/\\]themes[/\\].+\.css$)/i;
 module.exports = {
+    // TODO consider https://www.npmjs.com/package/neutrino-middleware-storybook
     webpackFinal: (config) => {
         const cssRule = config.module.rules.findIndex(rule => rule && rule.test && rule.test.toString() === '/\\.css$/');
         if (cssRule > -1) {
