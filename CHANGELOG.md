@@ -1,3 +1,7 @@
+## [7.22.3](https://github.com/softwaregroup-bg/ut-portal/compare/v7.22.2...v7.22.3) (2021-07-22)
+
+
+
 ## [7.22.2](https://github.com/softwaregroup-bg/ut-portal/compare/v7.22.1...v7.22.2) (2021-07-22)
 
 
