@@ -113,6 +113,9 @@
     "jenkins": "ut-jenkins",
     "gitlab": "ut-gitlab"
   },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
   "bin": {
     "ut-portal": "./bin/ut-portal.js"
   },
