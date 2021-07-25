@@ -1,3 +1,12 @@
+# [7.23.0](https://github.com/softwaregroup-bg/ut-portal/compare/v7.22.3...v7.23.0) (2021-07-25)
+
+
+### Features
+
+* dropdowns [UTCORE-121] ([b500b7f](https://github.com/softwaregroup-bg/ut-portal/commit/b500b7ff1cc5ad216842aad4abb812bd8372e3b9))
+
+
+
 ## [7.22.3](https://github.com/softwaregroup-bg/ut-portal/compare/v7.22.2...v7.22.3) (2021-07-22)
 
 
