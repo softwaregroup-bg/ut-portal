@@ -15,7 +15,7 @@ export default ({
     keyField = `${object}Id`,
     nameField = `${object}Name`,
     tenantField = 'businessUnitId',
-    fields = {},
+    properties = {},
     cards = {},
     methods: {
         fetch: fetchMethod = `${subject}.${object}.fetch`,
@@ -33,18 +33,18 @@ export default ({
     layouts = {},
     editor = undefined
 }) => {
-    fields = merge({
+    properties = merge({
         [keyField]: {title: 'key', validation: joi && joi.any()},
         [tenantField]: {title: 'Tenant', validation: joi && joi.any()},
         [nameField]: {title: `${capital(object)} Name`, filter: true, sort: true, validation: joi && joi.string().required().min(1)}
-    }, fields);
+    }, properties);
     cards = merge({
-        edit: {title: object, className: 'p-lg-6 p-xl-4', fields: [nameField]}
+        edit: {title: object, className: 'p-lg-6 p-xl-4', properties: [nameField]}
     }, cards);
     return {
         components: () => [
-            objectEditor({...editor, subject, object, objectTitle, keyField, fields, cards, layouts, addMethod, getMethod, editMethod}),
-            objectBrowse({...browser, fetchMethod, deleteMethod, subject, object, objectTitle, keyField, nameField, tenantField, fields, cards, layouts}),
+            objectEditor({...editor, subject, object, objectTitle, keyField, properties, cards, layouts, addMethod, getMethod, editMethod}),
+            objectBrowse({...browser, fetchMethod, deleteMethod, subject, object, objectTitle, keyField, nameField, tenantField, properties, cards, layouts}),
             objectOpen({subject, object}),
             objectNew({subject, object})
         ],

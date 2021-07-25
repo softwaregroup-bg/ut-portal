@@ -12,7 +12,7 @@ export default ({
     keyField,
     nameField,
     tenantField,
-    fields,
+    properties,
     cards,
     layouts,
     title = cards?.browse?.title || `${objectTitle} list`,
@@ -38,16 +38,13 @@ export default ({
             [deleteMethod]: objectDelete
         }
     }) => {
-        const defaults = {
+        properties = merge({
             [nameField]: {
                 action: ({id}) => handleTabShow([objectOpen, {id}], utMeta())
             }
-        };
+        }, properties);
         const details = {[nameField]: 'Name'};
-        fields = ((cards?.browse?.fields) || [nameField]).reduce((prev, name) => [
-            ...prev,
-            merge({field: name}, defaults[name], fields[name])
-        ], []);
+        const columns = ((cards?.browse?.properties) || [nameField]);
         const handleFetch = (typeof fetch === 'function') ? params => objectFetch(fetch(params), utMeta()) : params => objectFetch(params, utMeta());
         const handleNavigatorFetch = params => navigatorFetch(params, utMeta());
         remove = remove || (instances => ({[keyField]: instances.map(instance => ({value: instance[keyField]}))}));
@@ -78,7 +75,8 @@ export default ({
                         fetch={(!navigator || tenant != null) && handleFetch}
                         resultSet={resultSet || object}
                         keyField={keyField}
-                        fields={fields}
+                        properties={properties}
+                        columns={columns}
                         details={details}
                         filter={navigator ? {[tenantField]: tenant} : {}}
                         actions={actions}
@@ -88,7 +86,7 @@ export default ({
                             onSelect={setTenant}
                             keyField='id'
                             field='title'
-                            title={fields?.[tenantField]?.title || 'Tenant'}
+                            title={properties?.[tenantField]?.title || 'Tenant'}
                             resultSet='organization'
                         />}
                     </Explorer>

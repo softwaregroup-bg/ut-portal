@@ -1,5 +1,6 @@
 // @ts-check
 import React from 'react';
+import lodashGet from 'lodash.get';
 
 import Editor from 'ut-front-devextreme/core/Editor';
 import ThumbIndex from 'ut-front-devextreme/core/ThumbIndex';
@@ -10,14 +11,16 @@ import {capital} from './lib';
 export default ({
     subject,
     object,
+    resultSet = object,
     keyField,
     typeField,
-    fields,
+    properties,
     cards,
     layouts,
     addMethod,
     editMethod,
-    getMethod
+    getMethod,
+    nested
 }) => {
     /** @type { import("../handlers").libFactory } */
     const editor = ({
@@ -25,7 +28,8 @@ export default ({
         import: {
             [addMethod]: objectAdd,
             [editMethod]: objectEdit,
-            [getMethod]: objectGet
+            [getMethod]: objectGet,
+            portalDropdownList
         }
     }) => ({
         editor({id, type}) {
@@ -41,12 +45,33 @@ export default ({
             return function Edit() {
                 const trigger = React.useRef(null);
                 const [value, setValue] = React.useState({});
+                const [dropdown, setDropdown] = React.useState({});
                 const [[index, layout], setIndex] = React.useState(getLayout(type));
+                const [filter, setFilter] = React.useState(index?.[0]?.items?.[0]);
+                const dropdowns = (layout || filter?.cards || [])
+                    .flat()
+                    .map(card => cards?.[card]?.properties)
+                    .flat()
+                    .filter(Boolean)
+                    .map(name => lodashGet(properties, name?.replace(/\./g, '.properties.'))?.editor?.dropdown)
+                    .filter(Boolean);
                 async function get() {
-                    let result = (await objectGet({[keyField]: id}, utMeta()))[object];
-                    if (Array.isArray(result)) result = result[0];
+                    let result = (await objectGet({[keyField]: id}, utMeta()));
+                    if (nested) {
+                        result = nested.reduce((prev, field) => ({
+                            ...prev,
+                            [field]: properties[field]?.properties ? [].concat(result[field])[0] : result[field]
+                        }), {});
+                    } else {
+                        result = result[resultSet];
+                        if (Array.isArray(result)) result = result[0];
+                    }
                     if (typeField) setIndex(getLayout(result[typeField]));
+                    setDropdown(await portalDropdownList(dropdowns, utMeta()));
                     setValue(result);
+                }
+                async function init() {
+                    setDropdown(await portalDropdownList(dropdowns, utMeta()));
                 }
                 async function handleSubmit(instance) {
                     if (id != null) {
@@ -57,8 +82,10 @@ export default ({
                         setValue(instance);
                     }
                 }
-                const [filter, setFilter] = React.useState(index?.[0]?.items?.[0]);
-                React.useEffect(() => { if (id) get(); }, []);
+                React.useEffect(() => {
+                    if (id) get();
+                    else init();
+                }, []);
                 return (
                     <>
                         <Toolbar
@@ -69,11 +96,12 @@ export default ({
                         <div className='p-grid' style={{overflowX: 'hidden', width: '100%'}}>
                             {index && <ThumbIndex index={index} onFilter={setFilter}/>}
                             <Editor
-                                fields={fields}
+                                properties={properties}
                                 cards={cards}
                                 layout={layout || filter?.cards || []}
                                 onSubmit={handleSubmit}
                                 value={value}
+                                dropdown={dropdown}
                                 trigger={trigger}
                             />
                         </div>
