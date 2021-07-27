@@ -188,8 +188,8 @@ Chisel exposes a function, which expects a parameter with the following properti
     the default is `${subject}.${object}.get`,
   - `edit` - the name of the method used for modifying a single object,
     the default is `${subject}.${object}.edit`
-- `fields` - an object, which describes the fields in the `subject.object` table
-  and also fields coming from joined tables. Each property in the `fields` object
+- `properties` - an object, which describes the fields in the `subject.object` table
+  and also fields coming from joined tables. Each property in the `properties` object
   describes one field. The description consists of the following properties:
   - `title` - the text to show for the field in a table header, form label, etc.
   - `filter` - a boolean, that activates the filtering by this field in the
@@ -198,15 +198,21 @@ Chisel exposes a function, which expects a parameter with the following properti
     `browse` page. The default is false.
   - `validation` - joi validation object, used to validate the field in the
     `subject.object.open`, `subject.object.new` pages.
-- `cards` - an object, which describes named groups of fields. Cards are an
-  abstraction for some visual components which involve a list of fields, such as:
+  - `properties` - when the result set contains nested objects, they are described
+    through this property. It has the same structure as the root `properties` object.
+- `cards` - an object, which describes named groups of properties. Cards are an
+  abstraction for some visual components which involve a list of properties,
+  such as:
   - columns in a table
   - fields in a form
   - parameters in a report
   The `cards` object maps card names to objects, having the following properties:
   - `title` - Optional property, which defines the text to be shown, for specific
     visual component cases
-  - `fields`- Array of strings, representing the field names
+  - `properties`- Array of strings, representing the property names. The array may
+    include other arrays, to describe specific layout designs, such as: groups
+    of columns, vertical layouts nested in horizontal ones and so on. Refer to
+    the storybook for examples.
   - `className` - Controls the layout properties of the visual component. For
     example in a form, the default layout is to display cards in two columns.
     To change it to three columns for big screens

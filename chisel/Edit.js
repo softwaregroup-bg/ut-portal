@@ -32,7 +32,7 @@ export default ({
             portalDropdownList
         }
     }) => ({
-        editor({id, type}) {
+        editor({id, type, layout: layoutName = type}) {
             function getLayout(name = '') {
                 let index = layouts?.['edit' + capital(name)];
                 let layout;
@@ -46,7 +46,7 @@ export default ({
                 const trigger = React.useRef(null);
                 const [value, setValue] = React.useState({});
                 const [dropdown, setDropdown] = React.useState({});
-                const [[index, layout], setIndex] = React.useState(getLayout(type));
+                const [[index, layout], setIndex] = React.useState(getLayout(layoutName));
                 const [filter, setFilter] = React.useState(index?.[0]?.items?.[0]);
                 const dropdowns = (layout || filter?.cards || [])
                     .flat()

@@ -1,8 +1,8 @@
 // @ts-check
-import objectEditor from './editor';
-import objectBrowse from './subject.object.browse';
-import objectOpen from './subject.object.open';
-import objectNew from './subject.object.new';
+import Edit from './Edit';
+import subjectObjectBrowse from './subject.object.browse';
+import subjectObjectOpen from './subject.object.open';
+import subjectObjectNew from './subject.object.new';
 import merge from 'ut-function.merge';
 
 import {capital} from './lib';
@@ -14,6 +14,7 @@ export default ({
     objectTitle = capital(object),
     keyField = `${object}Id`,
     nameField = `${object}Name`,
+    descriptionField = `${object}Description`,
     tenantField = 'businessUnitId',
     properties = {},
     cards = {},
@@ -36,17 +37,18 @@ export default ({
     properties = merge({
         [keyField]: {title: 'key', validation: joi && joi.any()},
         [tenantField]: {title: 'Tenant', validation: joi && joi.any()},
-        [nameField]: {title: `${capital(object)} Name`, filter: true, sort: true, validation: joi && joi.string().required().min(1)}
+        [nameField]: {title: `${capital(object)} Name`, filter: true, sort: true, validation: joi && joi.string().required().min(1)},
+        [descriptionField]: {title: `${capital(object)} Description`, filter: true, editor: {type: 'text'}}
     }, properties);
     cards = merge({
-        edit: {title: object, className: 'p-lg-6 p-xl-4', properties: [nameField]}
+        edit: {title: object, properties: [nameField, descriptionField]}
     }, cards);
     return {
         components: () => [
-            objectEditor({...editor, subject, object, objectTitle, keyField, properties, cards, layouts, addMethod, getMethod, editMethod}),
-            objectBrowse({...browser, fetchMethod, deleteMethod, subject, object, objectTitle, keyField, nameField, tenantField, properties, cards, layouts}),
-            objectOpen({subject, object}),
-            objectNew({subject, object})
+            Edit({...editor, subject, object, objectTitle, keyField, properties, cards, layouts, addMethod, getMethod, editMethod}),
+            subjectObjectBrowse({...browser, fetchMethod, deleteMethod, subject, object, objectTitle, keyField, nameField, tenantField, properties, cards, layouts}),
+            subjectObjectOpen({subject, object}),
+            subjectObjectNew({subject, object})
         ],
         mock({
             objects: instances = [
