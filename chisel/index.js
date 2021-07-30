@@ -3,7 +3,9 @@ import Edit from './Edit';
 import subjectObjectBrowse from './subject.object.browse';
 import subjectObjectOpen from './subject.object.open';
 import subjectObjectNew from './subject.object.new';
+import subjectObjectReport from './subject.object.report';
 import merge from 'ut-function.merge';
+import trees from './trees';
 
 import {capital} from './lib';
 
@@ -23,7 +25,8 @@ export default ({
         add: addMethod = `${subject}.${object}.add`,
         delete: deleteMethod = `${subject}.${object}.delete`,
         get: getMethod = `${subject}.${object}.get`,
-        edit: editMethod = `${subject}.${object}.edit`
+        edit: editMethod = `${subject}.${object}.edit`,
+        report: reportMethod = `${subject}.${object}.report`
     } = {},
     browser = {
         navigator: undefined,
@@ -31,7 +34,11 @@ export default ({
         fetch: undefined,
         delete: undefined
     },
+    report = {
+        title: `${objectTitle} Report`
+    },
     layouts = {},
+    reports = {},
     editor = undefined
 }) => {
     properties = merge({
@@ -48,38 +55,13 @@ export default ({
             Edit({...editor, subject, object, objectTitle, keyField, properties, cards, layouts, addMethod, getMethod, editMethod}),
             subjectObjectBrowse({...browser, fetchMethod, deleteMethod, subject, object, objectTitle, keyField, nameField, tenantField, properties, cards, layouts}),
             subjectObjectOpen({subject, object}),
-            subjectObjectNew({subject, object})
+            subjectObjectNew({subject, object}),
+            subjectObjectReport({...report, subject, object, reports, properties, cards})
         ],
         mock({
-            objects: instances = [
-                {[keyField]: 101, ...tenantField && {[tenantField]: 100}, [nameField]: 'Acacia'},
-                {[keyField]: 102, ...tenantField && {[tenantField]: 100}, [nameField]: 'Banksia'},
-                {[keyField]: 103, ...tenantField && {[tenantField]: 100}, [nameField]: 'Cedar'},
-                {[keyField]: 104, ...tenantField && {[tenantField]: 100}, [nameField]: 'Dogwood'},
-                {[keyField]: 105, ...tenantField && {[tenantField]: 100}, [nameField]: 'Elm'},
-                {[keyField]: 106, ...tenantField && {[tenantField]: 100}, [nameField]: 'Fig'},
-                {[keyField]: 107, ...tenantField && {[tenantField]: 100}, [nameField]: 'Gum'},
-                {[keyField]: 108, ...tenantField && {[tenantField]: 100}, [nameField]: 'Hazel'},
-                {[keyField]: 109, ...tenantField && {[tenantField]: 100}, [nameField]: 'Ivy'},
-                {[keyField]: 110, ...tenantField && {[tenantField]: 100}, [nameField]: 'Juniper'},
-                {[keyField]: 111, ...tenantField && {[tenantField]: 100}, [nameField]: 'Kauri'},
-                {[keyField]: 112, ...tenantField && {[tenantField]: 100}, [nameField]: 'Larch'},
-                {[keyField]: 113, ...tenantField && {[tenantField]: 100}, [nameField]: 'Maple'},
-                {[keyField]: 114, ...tenantField && {[tenantField]: 100}, [nameField]: 'Narra'},
-                {[keyField]: 115, ...tenantField && {[tenantField]: 100}, [nameField]: 'Oak'},
-                {[keyField]: 116, ...tenantField && {[tenantField]: 100}, [nameField]: 'Pine'},
-                {[keyField]: 117, ...tenantField && {[tenantField]: 100}, [nameField]: 'Quercus'},
-                {[keyField]: 118, ...tenantField && {[tenantField]: 100}, [nameField]: 'Rowan'},
-                {[keyField]: 119, ...tenantField && {[tenantField]: 100}, [nameField]: 'Sycamore'},
-                {[keyField]: 120, ...tenantField && {[tenantField]: 100}, [nameField]: 'Tamarind'},
-                {[keyField]: 121, ...tenantField && {[tenantField]: 100}, [nameField]: 'Unedo'},
-                {[keyField]: 122, ...tenantField && {[tenantField]: 100}, [nameField]: 'Viburnum'},
-                {[keyField]: 123, ...tenantField && {[tenantField]: 100}, [nameField]: 'Willow'},
-                {[keyField]: 124, ...tenantField && {[tenantField]: 100}, [nameField]: 'Xanthorrhoea'},
-                {[keyField]: 125, ...tenantField && {[tenantField]: 100}, [nameField]: 'Yew'},
-                {[keyField]: 126, ...tenantField && {[tenantField]: 100}, [nameField]: 'Zelkova'}
-            ],
-            fetch = null
+            objects: instances = trees({keyField, nameField, tenantField}),
+            fetch = null,
+            report = null
         } = {}) {
             const byKey = criteria => instance => String(instance[keyField]) === String(criteria[keyField]);
             const find = criteria => instances.find(byKey(criteria));
@@ -131,7 +113,8 @@ export default ({
                         if (found >= 0) instances.splice(found, 1);
                     }
                     return result;
-                }
+                },
+                [reportMethod]: report ? report(filter) : filter
             };
         }
     };

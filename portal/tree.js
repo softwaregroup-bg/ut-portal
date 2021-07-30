@@ -1,3 +1,25 @@
+const treeFaimly = [
+    {value: 10, label: 'Adoxaceae'},
+    {value: 11, label: 'Araliaceae'},
+    {value: 12, label: 'Araucariaceae'},
+    {value: 13, label: 'Asphodelaceae'},
+    {value: 14, label: 'Betulaceae'},
+    {value: 15, label: 'Cornaceae'},
+    {value: 16, label: 'Cupressaceae'},
+    {value: 17, label: 'Ericaceae'},
+    {value: 18, label: 'Fabaceae'},
+    {value: 19, label: 'Fagaceae'},
+    {value: 20, label: 'Myrtaceae'},
+    {value: 21, label: 'Moraceae'},
+    {value: 22, label: 'Pinaceae'},
+    {value: 23, label: 'Proteaceae'},
+    {value: 24, label: 'Rosaceae'},
+    {value: 25, label: 'Salicaceae'},
+    {value: 26, label: 'Sapindaceae'},
+    {value: 27, label: 'Taxaceae'},
+    {value: 28, label: 'Ulmaceae'}
+];
+
 export const tree = joi => ({
     joi,
     subject: 'microservice',
@@ -21,7 +43,7 @@ export const tree = joi => ({
         familyId: {
             title: 'Family',
             editor: {
-                type: 'dropdown'
+                type: 'dropdown', options: treeFaimly
             }
         },
         maleCone: {
@@ -35,12 +57,40 @@ export const tree = joi => ({
         },
         fruitName: {
             title: 'Fruit'
+        },
+        treeImages: {
+            items: {
+                imageTitle: {
+                    title: 'Title'
+                },
+                imageUrl: {
+                    title: 'Image'
+                }
+            },
+            editor: {type: 'table', columns: ['imageTitle', 'imageUrl']}
+        },
+        habitatMap: {
+            title: 'Habitat'
+        },
+        links: {
+            items: {
+                linkUrl: {
+                    title: 'URL'
+                },
+                linkTitle: {
+                    title: 'Title'
+                }
+            },
+            editor: {type: 'table', columns: ['linkUrl', 'linkTitle']}
         }
     },
     cards: {
         edit: {
-            title: 'Tree',
+            title: 'Identification',
             properties: ['treeName', 'treeDescription', 'familyId']
+        },
+        morphology: {
+            title: 'Morphology'
         },
         cone: {
             title: 'Cone',
@@ -64,6 +114,20 @@ export const tree = joi => ({
             title: 'Column 3',
             properties: ['familyId'],
             className: 'p-lg-6 p-xl-4'
+        },
+        images: {
+            properties: ['treeImages']
+        },
+        map: {
+            properties: ['habitatMap']
+        },
+        links: {
+            title: 'Links',
+            properties: ['links']
+        },
+        attachments: {
+            title: 'Attachments',
+            properties: ['attachments']
         }
     },
     layouts: {
@@ -90,12 +154,32 @@ export const tree = joi => ({
                 ]
             }]
         }, {
-            icon: 'pi pi-images'
+            icon: 'pi pi-images',
+            items: [{
+                label: 'Images',
+                cards: ['images']
+            }]
         }, {
-            icon: 'pi pi-map'
+            icon: 'pi pi-map',
+            items: [{
+                label: 'Habitat',
+                cards: ['map']
+            }]
         }, {
-            icon: 'pi pi-paperclip'
+            icon: 'pi pi-paperclip',
+            items: [{
+                label: 'Links',
+                cards: ['links', 'attachments']
+            }]
         }]
+    },
+    reports: {
+        list: {
+            validation: joi?.object(),
+            params: ['treeName', 'familyId'],
+            columns: ['treeName', 'treeDescription'],
+            fetchMethod: 'microservice.tree.report'
+        }
     }
 });
 
