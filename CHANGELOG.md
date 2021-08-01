@@ -1,3 +1,12 @@
+## [7.24.1](https://github.com/softwaregroup-bg/ut-portal/compare/v7.24.0...v7.24.1) (2021-08-01)
+
+
+### Bug Fixes
+
+* return payload [UTCORE-121] ([ea961c4](https://github.com/softwaregroup-bg/ut-portal/commit/ea961c4729625baa58d72e51804082f1eb92578e))
+
+
+
 # [7.24.0](https://github.com/softwaregroup-bg/ut-portal/compare/v7.23.1...v7.24.0) (2021-07-30)
 
 
