@@ -47,6 +47,7 @@ module.exports = (...params) => class handle extends require('ut-port-script')(.
         return this.dispatch(async(dispatch, getState) => {
             const payload = await super.exec(...arguments);
             if (reducer) dispatch({type: REDUCE, reducer, payload});
+            return payload;
         });
     }
 };
