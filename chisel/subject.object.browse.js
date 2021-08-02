@@ -16,6 +16,7 @@ export default ({
     cards,
     layouts,
     title = cards?.browse?.title || `${objectTitle} list`,
+    filter: defaultFilter = {},
     fetch,
     create = [{
         title: 'Create'
@@ -31,6 +32,7 @@ export default ({
         utMeta,
         import: {
             handleTabShow,
+            portalDropdownList,
             [navigatorFetchMethod]: navigatorFetch,
             [`component/${subject}.${object}.new`]: objectNew,
             [`component/${subject}.${object}.open`]: objectOpen,
@@ -78,7 +80,7 @@ export default ({
         const BrowserComponent = async() => {
             function Browse() {
                 const [tenant, setTenant] = React.useState(null);
-                const [filter, setFilter] = React.useState(navigator ? {[tenantField]: tenant} : {});
+                const [filter, setFilter] = React.useState(defaultFilter);
                 const actions = React.useMemo(() => getActions(setFilter), [setFilter]);
                 return (
                     <Explorer
@@ -88,8 +90,9 @@ export default ({
                         properties={properties}
                         columns={columns}
                         details={details}
-                        filter={filter}
+                        filter={navigator ? {...filter, [tenantField]: tenant} : filter}
                         actions={actions}
+                        onDropdown={names => portalDropdownList(names, utMeta())}
                     >
                         {navigator && <Navigator
                             fetch={handleNavigatorFetch}
