@@ -108,7 +108,7 @@ export default ({
                 [deleteMethod](deleted) {
                     const result = [];
                     for (const item of deleted[keyField]) {
-                        const found = instances.findIndex(byKey({[keyField]: item.value}));
+                        const found = instances.findIndex(byKey({[keyField]: item}));
                         result.push(found >= 0 ? result[found] : null);
                         if (found >= 0) instances.splice(found, 1);
                     }

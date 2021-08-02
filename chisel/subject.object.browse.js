@@ -47,29 +47,39 @@ export default ({
         const columns = ((cards?.browse?.properties) || [nameField]);
         const handleFetch = (typeof fetch === 'function') ? params => objectFetch(fetch(params), utMeta()) : params => objectFetch(params, utMeta());
         const handleNavigatorFetch = params => navigatorFetch(params, utMeta());
-        remove = remove || (instances => ({[keyField]: instances.map(instance => ({value: instance[keyField]}))}));
-        const handleDelete = ({selected}) => objectDelete(remove(selected));
-        const actions = [...create.map(({
-            type,
-            permission = `${subject}.${object}.add`,
-            ...rest
-        }) => ({
-            action: () => type ? handleTabShow([objectNew, {type}], utMeta()) : handleTabShow(objectNew, utMeta()),
-            permission,
-            ...rest
-        })), {
-            title: 'Edit',
-            permission: `${subject}.${object}.edit`,
-            enabled: 'current',
-            action: ({id}) => handleTabShow([objectOpen, {id}], utMeta())
-        }, {
-            title: 'Delete',
-            enabled: 'selected',
-            action: handleDelete
-        }];
+        function getActions(setFilter) {
+            remove = remove || (instances => ({[keyField]: instances.map(instance => (instance[keyField]))}));
+            const handleDelete = async({selected}) => {
+                try {
+                    return await objectDelete(remove(selected), utMeta());
+                } finally {
+                    setFilter(prev => ({...prev}));
+                }
+            };
+            return [...create.map(({
+                type,
+                permission = `${subject}.${object}.add`,
+                ...rest
+            }) => ({
+                action: () => type ? handleTabShow([objectNew, {type}], utMeta()) : handleTabShow(objectNew, utMeta()),
+                permission,
+                ...rest
+            })), {
+                title: 'Edit',
+                permission: `${subject}.${object}.edit`,
+                enabled: 'current',
+                action: ({id}) => handleTabShow([objectOpen, {id}], utMeta())
+            }, {
+                title: 'Delete',
+                enabled: 'selected',
+                action: handleDelete
+            }];
+        }
         const BrowserComponent = async() => {
             function Browse() {
                 const [tenant, setTenant] = React.useState(null);
+                const [filter, setFilter] = React.useState(navigator ? {[tenantField]: tenant} : {});
+                const actions = React.useMemo(() => getActions(setFilter), [setFilter]);
                 return (
                     <Explorer
                         fetch={(!navigator || tenant != null) && handleFetch}
@@ -78,7 +88,7 @@ export default ({
                         properties={properties}
                         columns={columns}
                         details={details}
-                        filter={navigator ? {[tenantField]: tenant} : {}}
+                        filter={filter}
                         actions={actions}
                     >
                         {navigator && <Navigator
