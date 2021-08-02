@@ -1,3 +1,12 @@
+## [7.24.2](https://github.com/softwaregroup-bg/ut-portal/compare/v7.24.1...v7.24.2) (2021-08-02)
+
+
+### Bug Fixes
+
+* fetch after delete [UTCORE-121] ([f4ba9c3](https://github.com/softwaregroup-bg/ut-portal/commit/f4ba9c3545cb725043cf0c09bd5db9b64ba95c12))
+
+
+
 ## [7.24.1](https://github.com/softwaregroup-bg/ut-portal/compare/v7.24.0...v7.24.1) (2021-08-01)
 
 
