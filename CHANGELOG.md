@@ -1,3 +1,12 @@
+# [7.25.0](https://github.com/softwaregroup-bg/ut-portal/compare/v7.24.2...v7.25.0) (2021-08-02)
+
+
+### Features
+
+* browse filter [UTCORE-121] ([76e95a0](https://github.com/softwaregroup-bg/ut-portal/commit/76e95a0e0b9d72940c35d349f3d803c8a000981d))
+
+
+
 ## [7.24.2](https://github.com/softwaregroup-bg/ut-portal/compare/v7.24.1...v7.24.2) (2021-08-02)
 
 
