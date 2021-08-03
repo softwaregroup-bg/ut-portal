@@ -114,27 +114,32 @@ const main = async(config, name, path, params, handlers, dependencies) => {
     };
 };
 
+const organization = [
+    {value: 100, label: 'Africa'},
+    {value: 300, label: 'Asia'},
+    {value: 400, label: 'Australia'},
+    {value: 500, label: 'Europe'},
+    {value: 600, label: 'North America'},
+    {value: 700, label: 'South America'},
+    {value: 101, parents: 100, label: 'Egypt'},
+    {value: 102, parents: 100, label: 'Kenya'},
+    {value: 103, parents: 100, label: 'Ghana'},
+    {value: 104, parents: 100, label: 'Nigeria'},
+    {value: 301, parents: 300, label: 'Philippines'},
+    {value: 302, parents: 300, label: 'India'},
+    {value: 501, parents: 500, label: 'Bulgaria'},
+    {value: 601, parents: 600, label: 'USA'},
+    {value: 701, parents: 700, label: 'Mexico'}
+];
+
 module.exports.app = (config = {}, mock, dependencies = []) => (name, id, params) => {
     mock = mock && {
         'core.translation.fetch': () => ({}),
+        'customer.dropdown.list': () => ({
+            'customer.organization': organization
+        }),
         'customer.organization.graphFetch': () => ({
-            organization: [
-                {id: 100, title: 'Africa'},
-                {id: 300, title: 'Asia'},
-                {id: 400, title: 'Australia'},
-                {id: 500, title: 'Europe'},
-                {id: 600, title: 'North America'},
-                {id: 700, title: 'South America'},
-                {id: 101, parents: 100, title: 'Egypt'},
-                {id: 102, parents: 100, title: 'Kenya'},
-                {id: 103, parents: 100, title: 'Ghana'},
-                {id: 104, parents: 100, title: 'Nigeria'},
-                {id: 301, parents: 300, title: 'Philippines'},
-                {id: 302, parents: 300, title: 'India'},
-                {id: 501, parents: 500, title: 'Bulgaria'},
-                {id: 601, parents: 600, title: 'USA'},
-                {id: 701, parents: 700, title: 'Mexico'}
-            ]
+            organization: organization.map(({value: id, label: title, ...org}) => ({id, title, ...org}))
         }),
         ...mock
     };

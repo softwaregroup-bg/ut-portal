@@ -27,10 +27,10 @@ export default ({
                         properties,
                         params: reports[id]?.params,
                         validation: reports[id]?.validation,
-                        columns: reports[id]?.columns,
-                        resultSet: 'resultSet' in reports[id] ? reports[id].resultSet : object,
+                        columns: reports[id]?.columns || cards?.browse?.properties,
+                        resultSet: reports?.[id]?.resultSet == null ? object : reports[id].resultSet,
                         onDropdown: names => portalDropdownList(names, utMeta()),
-                        fetch: params => utMethod(reports[id].fetchMethod)(params, utMeta())
+                        fetch: params => utMethod(reports?.[id]?.fetchMethod || `${subject}.${object}.fetch`)(params, utMeta())
                     };
                     return function ReportComponent() {
                         return <Report {...props}/>;
