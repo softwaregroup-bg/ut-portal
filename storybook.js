@@ -1,6 +1,6 @@
 const immutable = require('immutable');
 
-const main = async(config, name, path, params, handlers, dependencies) => {
+const main = async(config, name, path, params, handlers, dependencies, portal) => {
     // fix: Storybook tries to keep the old hash, which we do not want
     history.replaceState({}, '', `#${path}`);
 
@@ -29,7 +29,8 @@ const main = async(config, name, path, params, handlers, dependencies) => {
                     ]
                 };
             },
-            require('./browser')(...params)
+            require('./browser')(...params),
+            portal
         ].filter(Boolean),
         config: [{
             service: 'browser',
@@ -64,6 +65,35 @@ const main = async(config, name, path, params, handlers, dependencies) => {
         }, config],
         method: 'debug'
     });
+    const login = immutable.fromJS({
+        profile: {
+            initials: 'SA'
+        },
+        result: {
+            'identity.check': {
+                actorId: 1
+            },
+            person: {
+                firstName: 'Super',
+                lastName: 'Admin'
+            },
+            'permission.get': [{
+                actionId: 'granted'
+            }, {
+                actionId: 'page%'
+            }]
+        }
+    });
+    if (portal) {
+        const params = await importMethod('portal.params.get')({});
+        params.state = params.state || {};
+        params.state.login = login;
+        return {
+            page({theme = 'dark', backend}) {
+                return container(params);
+            }
+        };
+    }
     const page = await importMethod('component/' + name)({});
     page.path = path;
     page.params = params;
@@ -85,25 +115,7 @@ const main = async(config, name, path, params, handlers, dependencies) => {
                 portalName: 'Test Portal',
                 state: {
                     error: {},
-                    login: immutable.fromJS({
-                        profile: {
-                            initials: 'SA'
-                        },
-                        result: {
-                            'identity.check': {
-                                actorId: 1
-                            },
-                            person: {
-                                firstName: 'Super',
-                                lastName: 'Admin'
-                            },
-                            'permission.get': [{
-                                actionId: 'granted'
-                            }, {
-                                actionId: 'page%'
-                            }]
-                        }
-                    }),
+                    login,
                     portal: {
                         menu: [{title: ' 📚 '}],
                         tabs: [page]
@@ -132,7 +144,7 @@ const organization = [
     {value: 701, parents: 700, label: 'Mexico'}
 ];
 
-module.exports.app = (config = {}, mock, dependencies = []) => (name, id, params) => {
+module.exports.app = (config = {}, mock, dependencies = [], portal = []) => (name, id, params) => {
     mock = mock && {
         'core.translation.fetch': () => ({}),
         'customer.dropdown.list': () => ({
@@ -157,6 +169,6 @@ module.exports.app = (config = {}, mock, dependencies = []) => (name, id, params
     } else params = '';
     const path = name + ((id != null) ? '/' + id : '') + params;
     result.storyName = path;
-    result.loaders = [() => main(config, name, '/' + path, mainParams, mock, dependencies)];
+    result.loaders = [() => main(config, name, '/' + path, mainParams, mock, dependencies, portal)];
     return result;
 };
