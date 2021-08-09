@@ -1,3 +1,12 @@
+# [7.26.0](https://github.com/softwaregroup-bg/ut-portal/compare/v7.25.3...v7.26.0) (2021-08-09)
+
+
+### Features
+
+* predefined tabs #UTCORE-121 ([df0c7ab](https://github.com/softwaregroup-bg/ut-portal/commit/df0c7ab21d155262eec40ff369ed7216e19026d0)), closes [#UTCORE-121](https://github.com/softwaregroup-bg/ut-portal/issues/UTCORE-121)
+
+
+
 ## [7.25.3](https://github.com/softwaregroup-bg/ut-portal/compare/v7.25.2...v7.25.3) (2021-08-05)
 
 
