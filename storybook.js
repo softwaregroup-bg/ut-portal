@@ -144,7 +144,7 @@ const organization = [
     {value: 701, parents: 700, label: 'Mexico'}
 ];
 
-module.exports.app = (config = {}, mock, dependencies = [], portal = []) => (name, id, params) => {
+module.exports.app = (config = {}, mock, dependencies = [], portal) => (name, id, params) => {
     mock = mock && {
         'core.translation.fetch': () => ({}),
         'customer.dropdown.list': () => ({
