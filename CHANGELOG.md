@@ -1,3 +1,12 @@
+# [7.27.0](https://github.com/softwaregroup-bg/ut-portal/compare/v7.26.1...v7.27.0) (2021-08-10)
+
+
+### Features
+
+* proxy config #UTCORE-121 ([d507cf7](https://github.com/softwaregroup-bg/ut-portal/commit/d507cf7f36bd27283ba416324054142cac0739c7)), closes [#UTCORE-121](https://github.com/softwaregroup-bg/ut-portal/issues/UTCORE-121)
+
+
+
 ## [7.26.1](https://github.com/softwaregroup-bg/ut-portal/compare/v7.26.0...v7.26.1) (2021-08-09)
 
 
