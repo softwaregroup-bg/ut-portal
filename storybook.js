@@ -1,4 +1,5 @@
 const immutable = require('immutable');
+const merge = require('ut-function.merge');
 
 const main = async(config, name, path, params, handlers, dependencies, portal) => {
     // fix: Storybook tries to keep the old hash, which we do not want
@@ -65,7 +66,7 @@ const main = async(config, name, path, params, handlers, dependencies, portal) =
         }, config],
         method: 'debug'
     });
-    const login = immutable.fromJS({
+    const login = immutable.fromJS(merge({
         profile: {
             initials: 'SA'
         },
@@ -83,7 +84,7 @@ const main = async(config, name, path, params, handlers, dependencies, portal) =
                 actionId: 'page%'
             }]
         }
-    });
+    }, await handlers?.login?.()));
     if (portal) {
         const params = await importMethod('portal.params.get')({});
         params.state = params.state || {};
