@@ -1,3 +1,12 @@
+# [7.28.0](https://github.com/softwaregroup-bg/ut-portal/compare/v7.27.2...v7.28.0) (2021-08-22)
+
+
+### Features
+
+* playwright ([c3da94c](https://github.com/softwaregroup-bg/ut-portal/commit/c3da94c0ea72d1f56540bf36c24b5e95c9f7715b))
+
+
+
 ## [7.27.2](https://github.com/softwaregroup-bg/ut-portal/compare/v7.27.1...v7.27.2) (2021-08-17)
 
 
