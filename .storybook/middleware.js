@@ -1,3 +1,4 @@
+const playwrightMiddleware = require('storybook-addon-playwright/middleware').default;
 const { createProxyMiddleware } = require('http-proxy-middleware');
 const config = require('ut-config').load({config:{params: {appname: 'ut_portal_dev'}}});
 
@@ -13,4 +14,5 @@ module.exports = function expressMiddleware(router) {
             router.use(domain, createProxyMiddleware(domain, proxyConfig[domain]));
         }
     }
+    playwrightMiddleware(router);
 }

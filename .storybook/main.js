@@ -1,4 +1,6 @@
+const { setConfig } = require('storybook-addon-playwright/configs');
 const lazy = /(devextreme[/\\]dist[/\\]css[/\\]dx\.(?!common).+\.css$)|(primereact[/\\]resources[/\\]themes[/\\].+\.css$)/i;
+
 module.exports = {
     // TODO consider https://www.npmjs.com/package/neutrino-middleware-storybook
     webpackFinal: (config) => {
@@ -56,10 +58,11 @@ module.exports = {
     stories: [process.cwd().replace(/\\/g, '/') + '/portal/**/*.stories.js'],
     addons: [
         'storybook-readme',
-        '@storybook/addon-toolbars',
-        '@storybook/addon-actions',
-        '@storybook/addon-links',
-        '@storybook/addon-viewport',
+        '@storybook/addon-essentials',
+        '@storybook/addon-knobs',
+        'storybook-addon-playwright/preset',
+        'storybook-addon-playwright/register',
+        'storybook-addon-toolbar-actions/register',
         {
             name: '@storybook/addon-postcss',
             options: {
@@ -90,3 +93,16 @@ module.exports = {
         return config;
     },
 };
+
+const browser = {};
+setConfig({
+    storybookEndpoint: `http://localhost:6006/`,
+    async getPage(browserType, options) {
+        const playwright = require('playwright');
+        if (!browser[browserType]) browser[browserType] = await playwright['chromium'].launch();
+        return await browser[browserType].newPage(options);
+    },
+    async afterScreenshot(page) {
+        await page.close();
+    }
+});
