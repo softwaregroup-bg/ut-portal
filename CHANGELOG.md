@@ -1,3 +1,12 @@
+## [7.28.1](https://github.com/softwaregroup-bg/ut-portal/compare/v7.28.0...v7.28.1) (2021-08-26)
+
+
+### Bug Fixes
+
+* config validation ([3e138d6](https://github.com/softwaregroup-bg/ut-portal/commit/3e138d6184dac9579c8af45045ddb3f774bef48c))
+
+
+
 # [7.28.0](https://github.com/softwaregroup-bg/ut-portal/compare/v7.27.2...v7.28.0) (2021-08-22)
 
 
