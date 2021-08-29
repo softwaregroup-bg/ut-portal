@@ -10,7 +10,7 @@ export default ({
     properties,
     cards
 }) =>
-    /** @type { import("../handlers").handlerFactory } */
+    /** @type { import("../handlers").pageFactory } */
     ({
         utMeta,
         utMethod,

@@ -51,6 +51,7 @@ export default ({
         edit: {title: object, properties: [nameField, descriptionField]}
     }, cards);
     return {
+        /** @type { import("../handlers").pageSet } */
         components: () => [
             Edit({...editor, subject, object, objectTitle, keyField, properties, cards, layouts, addMethod, getMethod, editMethod}),
             subjectObjectBrowse({...browser, fetchMethod, deleteMethod, subject, object, objectTitle, keyField, nameField, tenantField, properties, cards, layouts}),

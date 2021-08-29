@@ -27,7 +27,7 @@ export default ({
     deleteMethod,
     navigatorFetchMethod = 'customerOrganizationGraphFetch'
 }) =>
-    /** @type { import("../handlers").handlerFactory } */
+    /** @type { import("../handlers").pageFactory } */
     ({
         utMeta,
         import: {
