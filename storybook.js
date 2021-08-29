@@ -103,11 +103,12 @@ const main = async(config, name, path, params, handlers, dependencies, portal) =
         page({theme = 'dark', backend}) {
             return container({
                 theme: {
+                    name: theme,
                     ut: {
                         classes: {}
                     },
                     palette: {
-                        type: theme,
+                        type: theme.split('-')[0],
                         background: {
                             // even: 'red'
                         }

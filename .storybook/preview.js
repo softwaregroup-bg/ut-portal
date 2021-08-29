@@ -32,7 +32,7 @@ export const globalTypes = {
         defaultValue: 'dark',
         toolbar: {
             icon: 'eye',
-            items: ['dark', 'light'],
+            items: ['dark', 'light', 'dark-compact', 'light-compact'],
             showName: false
         }
     }
