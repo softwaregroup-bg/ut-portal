@@ -2,6 +2,7 @@
 const {createElement} = require('react');
 const {render} = require('react-dom');
 const {renderToString} = require('react-dom/server');
+const merge = require('ut-function.merge');
 
 const App = require('ut-front-devextreme/core/App');
 
@@ -32,6 +33,10 @@ module.exports = ({
     },
     lib: {
         middleware
+    },
+    config: {
+        theme,
+        portalName
     }
 }) => ({
     async ready() {
@@ -55,11 +60,15 @@ module.exports = ({
         this.container = container;
 
         if (shouldRender !== undefined && !shouldRender) return;
+        const params = merge(await portalParamsGet({}, utMeta()), {
+            theme,
+            portalName
+        });
         // @ts-ignore
         if (typeof document !== 'undefined') {
-            render(this.container(await portalParamsGet({}, utMeta())), document.getElementById('root'));
+            render(this.container(params), document.getElementById('root'));
         } else {
-            console.log(renderToString(this.container(await portalParamsGet({}, utMeta())))); // eslint-disable-line
+            console.log(renderToString(this.container(params))); // eslint-disable-line
         }
     }
 });

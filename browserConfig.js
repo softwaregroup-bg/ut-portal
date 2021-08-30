@@ -12,7 +12,13 @@ module.exports = () => ({
             render: joi.boolean(),
             loginPage: joi.string(),
             favicon: joi.string(),
-            title: joi.string()
+            title: joi.string(),
+            theme: joi.object(),
+            portalName: joi.string().allow(''),
+            pages: joi.object().pattern(/\w*\.\w*\.\w*/, joi.object().keys({
+                icon: joi.string(),
+                title: joi.string()
+            }))
         })
     })
 });

@@ -1,7 +1,11 @@
 // @ts-check
 
 /** @type { import("../../handlers").handlerFactory } */
-module.exports = () => ({
+module.exports = ({
+    config: {
+        pages
+    } = {}
+}) => ({
     async 'portal.menu.item'(params) {
         const {id, title} = params;
         const component = typeof params === 'function' ? params : params.component;
@@ -14,10 +18,12 @@ module.exports = () => ({
                 disabled: true
             };
         }
+        const name = component.name.split('/').pop();
         return {
-            path: '/' + component.name.split('/').pop() + (id ? '/' + id : ''),
+            path: `/${name}${id ? '/' + id : ''}`,
             params: {id},
             ...page,
+            ...pages?.[name],
             ...title && {title}
         };
     }
