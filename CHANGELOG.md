@@ -1,3 +1,13 @@
+# [7.29.0](https://github.com/softwaregroup-bg/ut-portal/compare/v7.28.1...v7.29.0) (2021-08-30)
+
+
+### Features
+
+* primeflex 3 ([931c0fb](https://github.com/softwaregroup-bg/ut-portal/commit/931c0fbfb13a2f24b71f06ca05cf4f4f1c1c0fd2))
+* theming through configuration #UTCORE-121 ([1959825](https://github.com/softwaregroup-bg/ut-portal/commit/1959825c1aabab27cd32f033ba2d9c2bdf74f891)), closes [#UTCORE-121](https://github.com/softwaregroup-bg/ut-portal/issues/UTCORE-121)
+
+
+
 ## [7.28.1](https://github.com/softwaregroup-bg/ut-portal/compare/v7.28.0...v7.28.1) (2021-08-26)
 
 
