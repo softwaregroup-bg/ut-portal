@@ -23,7 +23,7 @@ const tabMenu = (state = {tabs: [], active: {}}, {type, payload}) => {
     };
 };
 
-/** @type { import("../../handlers").handlerFactory } */
+/** @type { import("../..").handlerFactory } */
 module.exports = ({
     utMeta,
     config: {render: shouldRender, ...config} = {},
