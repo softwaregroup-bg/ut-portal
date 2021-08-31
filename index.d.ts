@@ -79,7 +79,7 @@ export type portalFactory = ut.handlers<handlers, {
     'portal.params.get': () => Promise<{
         theme?: {},
         portalName: string,
-        portal: {
+        portal?: {
             menu: any,
             menuClass?: string,
             tabs: any,
