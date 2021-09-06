@@ -1,3 +1,12 @@
+# [7.30.0](https://github.com/softwaregroup-bg/ut-portal/compare/v7.29.1...v7.30.0) (2021-09-06)
+
+
+### Features
+
+* tree select ([ad2ecea](https://github.com/softwaregroup-bg/ut-portal/commit/ad2eceab5580f9ecc555b7b7149cc8dc44f94ae0))
+
+
+
 ## [7.29.1](https://github.com/softwaregroup-bg/ut-portal/compare/v7.29.0...v7.29.1) (2021-08-31)
 
 
