@@ -150,7 +150,7 @@ module.exports.app = (config = {}, mock, dependencies = [], portal) => (name, id
     mock = mock && {
         'core.translation.fetch': () => ({}),
         'customer.dropdown.list': () => ({
-            'customer.organization': organization
+            'customer.organizationTree': organization
         }),
         'customer.organization.graphFetch': () => ({
             organization: organization.map(({value: id, label: title, ...org}) => ({id, title, ...org}))

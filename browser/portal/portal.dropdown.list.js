@@ -1,11 +1,32 @@
-// @ts-check
+const parentField = 'parents';
+const keyField = 'value';
+
+const nodes = result => {
+    result = result.map(({
+        [keyField]: key,
+        [parentField]: parent,
+        ...item
+    }) => ({
+        ...item,
+        ...parent && {parent},
+        key
+    }));
+    const children = result.reduce((prev, item) => 'parent' in item ? ({
+        ...prev,
+        [item.parent]: (prev[item.parent] || []).concat(item)
+    }) : prev, {});
+    result.forEach(item => {
+        item.children = children[item.key];
+    });
+    return result.filter(item => item.parent == null);
+};
 
 /** @type { import("../..").handlerFactory } */
 module.exports = ({
     utMethod
 }) => ({
     async 'portal.dropdown.list'(names, $meta) {
-        return names?.length ? Object.assign(
+        const result = names?.length ? Object.assign(
             {},
             ...await Promise.all(
                 Array.from(
@@ -17,5 +38,11 @@ module.exports = ({
                 )
             )
         ) : {};
+        Object.entries(result).forEach(([name, value]) => {
+            if (name.endsWith('Tree')) {
+                result[name + 'Nodes'] = nodes(value);
+            }
+        });
+        return result;
     }
 });
