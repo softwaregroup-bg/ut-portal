@@ -92,12 +92,12 @@
     "ut-front-devextreme": "^1.34.0",
     "ut-login": "^7.13.1",
     "ut-port-script": "^7.2.0",
-    "ut-run": "^10.57.4",
-    "ut-tools": "^6.38.2"
+    "ut-run": "^10.63.0",
+    "ut-tools": "^6.39.0"
   },
   "peerDependencies": {
     "ut-port-script": "^7.2.0",
-    "ut-run": "^10.57.4"
+    "ut-run": "^10.63.0"
   },
   "description": "Microservice portal",
   "scripts": {

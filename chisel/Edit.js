@@ -16,7 +16,7 @@ export default ({
     getMethod,
     nested
 }) => {
-    /** @type { import("../handlers").libFactory } */
+    /** @type { import("..").libFactory } */
     const editor = ({
         utMeta,
         import: {

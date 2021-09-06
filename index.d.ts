@@ -19,7 +19,11 @@ export interface pageDescriptor {
     title: string,
     icon?: string,
     permission?: string | string[],
-    component: ({id: string}) => (Promise<React.FC> | React.FC)
+    component: (params?: {
+        id?: string,
+        type?: string,
+        layout?: string
+    }) => Promise<React.FC<{id?: string}>> | React.FC<{id?: string}>
 }
 
 export type remotePage = {

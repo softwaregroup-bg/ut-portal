@@ -1,6 +1,6 @@
 // @ts-check
 export default ({subject, object}) =>
-    /** @type { import("../handlers").pageFactory } */
+    /** @type { import("..").pageFactory<{}, {}> } */
     ({
         lib: {
             editor

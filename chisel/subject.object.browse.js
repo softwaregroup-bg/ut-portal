@@ -23,11 +23,11 @@ export default ({
     }],
     delete: remove,
     navigator,
-    fetchMethod,
-    deleteMethod,
+    fetchMethod = `${subject}.${object}.fetch`,
+    deleteMethod = `${subject}.${object}.delete`,
     navigatorFetchMethod = 'customerOrganizationGraphFetch'
 }) =>
-    /** @type { import("../handlers").pageFactory } */
+    /** @type { import("..").pageFactory<{}, {}> } */
     ({
         utMeta,
         import: {
