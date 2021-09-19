@@ -39,7 +39,7 @@ export default ({
     },
     layouts = {},
     reports = {},
-    editor = undefined
+    editor = null
 }) => {
     properties = merge({
         [keyField]: {title: 'key', validation: joi && joi.any()},
@@ -73,12 +73,12 @@ export default ({
             };
             const filter = async criteria => {
                 const condition = criteria && criteria[object] && Object.entries(criteria[object]);
-                let result = !condition ? instances : instances.filter(
+                const result = !condition ? instances : instances.filter(
                     instance => condition.every(
                         ([name, value]) => value === undefined || instance[name] === value || String(instance[name]).toLowerCase().includes(String(value).toLowerCase())
                     )
                 );
-                if (Array.isArray(criteria.orderBy) && criteria.orderBy.length) result = result.sort(compare(criteria.orderBy[0]));
+                if (Array.isArray(criteria.orderBy) && criteria.orderBy.length) result.sort(compare(criteria.orderBy[0]));
                 await new Promise((resolve, reject) => setTimeout(resolve, 100));
                 return Promise.resolve({
                     [object]: result.slice((criteria.paging.pageNumber - 1) * criteria.paging.pageSize, criteria.paging.pageNumber * criteria.paging.pageSize),
@@ -92,10 +92,11 @@ export default ({
                 [fetchMethod]: fetch ? fetch(filter) : filter,
                 [getMethod]: criteria => ({[object]: find(criteria)}),
                 [addMethod](instance) {
+                    maxId += 1;
                     const result = {
                         ...instance[object],
                         [tenantField]: 100,
-                        [keyField]: ++maxId
+                        [keyField]: maxId
                     };
                     instances.push(result);
                     return result;

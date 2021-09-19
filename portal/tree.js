@@ -1,4 +1,4 @@
-const treeFaimly = [
+const treeFamily = [
     {value: 10, label: 'Adoxaceae'},
     {value: 11, label: 'Araliaceae'},
     {value: 12, label: 'Araucariaceae'},
@@ -20,6 +20,8 @@ const treeFaimly = [
     {value: 28, label: 'Ulmaceae'}
 ];
 
+const threeCol = 'p-lg-6 p-xl-4';
+
 export const tree = joi => ({
     joi,
     subject: 'microservice',
@@ -29,7 +31,7 @@ export const tree = joi => ({
         create: [{
             title: 'Add'
         }, {
-            title: 'Add confier',
+            title: 'Add conifer',
             type: 'conifer'
         }, {
             title: 'Add broadleaf',
@@ -43,7 +45,7 @@ export const tree = joi => ({
         familyId: {
             title: 'Family',
             editor: {
-                type: 'dropdown', options: treeFaimly
+                type: 'dropdown', options: treeFamily
             }
         },
         maleCone: {
@@ -103,17 +105,17 @@ export const tree = joi => ({
         col1: {
             title: 'Column 1',
             properties: ['treeName'],
-            className: 'p-lg-6 p-xl-4'
+            className: threeCol
         },
         col2: {
             title: 'Column 2',
             properties: ['treeDescription'],
-            className: 'p-lg-6 p-xl-4'
+            className: threeCol
         },
         col3: {
             title: 'Column 3',
             properties: ['familyId'],
-            className: 'p-lg-6 p-xl-4'
+            className: threeCol
         },
         images: {
             properties: ['treeImages']
@@ -136,7 +138,7 @@ export const tree = joi => ({
         editFlat: ['edit', 'cone', 'fruit'],
         editNested: ['edit', ['cone', 'fruit']],
         edit3col: ['col1', 'col2', 'col3'],
-        editThumbindex: [{
+        editThumbIndex: [{
             icon: 'pi pi-file',
             items: [{
                 label: 'Main',
