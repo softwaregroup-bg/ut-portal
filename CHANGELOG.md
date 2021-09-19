@@ -1,3 +1,12 @@
+# [7.31.0](https://github.com/softwaregroup-bg/ut-portal/compare/v7.30.3...v7.31.0) (2021-09-19)
+
+
+### Features
+
+* field editors ([52ff0b7](https://github.com/softwaregroup-bg/ut-portal/commit/52ff0b71e4f93db919ddc6cdd7dc5c88bca882f7))
+
+
+
 ## [7.30.3](https://github.com/softwaregroup-bg/ut-portal/compare/v7.30.2...v7.30.3) (2021-09-14)
 
 
