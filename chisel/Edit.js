@@ -24,6 +24,9 @@ export default ({
             [editMethod]: objectEdit,
             [getMethod]: objectGet,
             portalDropdownList
+        },
+        lib: {
+            editors
         }
     }) => ({
         editor({id, type, layout: layoutName = type}) {
@@ -31,6 +34,7 @@ export default ({
                 object,
                 id,
                 properties,
+                editors,
                 type,
                 typeField,
                 cards,
