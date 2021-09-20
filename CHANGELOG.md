@@ -1,3 +1,12 @@
+# [7.32.0](https://github.com/softwaregroup-bg/ut-portal/compare/v7.31.1...v7.32.0) (2021-09-20)
+
+
+### Features
+
+* chisel backend ([ca9428a](https://github.com/softwaregroup-bg/ut-portal/commit/ca9428aad2008427365e3e9fb9a63b2f3b753134))
+
+
+
 ## [7.31.1](https://github.com/softwaregroup-bg/ut-portal/compare/v7.31.0...v7.31.1) (2021-09-19)
 
 
