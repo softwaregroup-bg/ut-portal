@@ -27,7 +27,7 @@ const trees = [
     'Zelkova      | https://en.wikipedia.org/wiki/Zelkova'
 ];
 
-export default ({
+module.exports = ({
     keyField,
     nameField,
     tenantField

@@ -1,15 +1,11 @@
 // @ts-check
-import Edit from './Edit';
-import subjectObjectBrowse from './subject.object.browse';
-import subjectObjectOpen from './subject.object.open';
-import subjectObjectNew from './subject.object.new';
-import subjectObjectReport from './subject.object.report';
-import merge from 'ut-function.merge';
-import trees from './trees';
+const commonJoi = require('ut-function.common-joi');
+const merge = require('ut-function.merge');
 
-import {capital} from './lib';
+const trees = require('./trees');
+const {capital} = require('./lib');
 
-export default ({
+module.exports = ({
     joi,
     subject,
     object,
@@ -52,13 +48,26 @@ export default ({
     }, cards);
     return {
         /** @type { import("..").pageSet<{}, {}> } */
-        components: () => [
-            Edit({...editor, subject, object, objectTitle, keyField, properties, cards, layouts, addMethod, getMethod, editMethod}),
-            subjectObjectBrowse({...browser, fetchMethod, deleteMethod, subject, object, objectTitle, keyField, nameField, tenantField, properties, cards, layouts}),
-            subjectObjectOpen({subject, object}),
-            subjectObjectNew({subject, object}),
-            subjectObjectReport({...report, subject, object, reports, properties, cards})
-        ],
+        components: () => require('./components').default({
+            editor,
+            subject,
+            object,
+            objectTitle,
+            keyField,
+            properties,
+            cards,
+            layouts,
+            addMethod,
+            getMethod,
+            editMethod,
+            browser,
+            fetchMethod,
+            deleteMethod,
+            report,
+            reports,
+            nameField,
+            tenantField
+        }),
         mock({
             objects: instances = trees({keyField, nameField, tenantField}),
             fetch = null,
@@ -118,6 +127,93 @@ export default ({
                 },
                 [reportMethod]: report ? report(filter) : filter
             };
+        },
+        validation({fields}) {
+            const {paging, orderBy, bigintNotNull} = commonJoi({joi});
+            const single = joi.object().keys(fields);
+            const filter = joi.object().keys(Object.fromEntries(Object.entries(fields).map(([name, schema]) => [name, schema.optional()])));
+            const multiple = joi.array().items(single);
+            const pagination = joi.object().keys({recordsTotal: bigintNotNull});
+            return {
+                [fetchMethod]: () => ({
+                    description: `Search ${objectTitle}`,
+                    params: joi.object().keys({
+                        [object]: filter,
+                        paging,
+                        orderBy
+                    }),
+                    result: joi.object().keys({
+                        [object]: multiple,
+                        pagination
+                    })
+                }),
+                [getMethod]: () => ({
+                    description: `Get ${objectTitle}`,
+                    params: joi.object().keys({
+                        [keyField]: bigintNotNull
+                    }),
+                    result: joi.object().keys({
+                        [object]: single
+                    })
+                }),
+                [addMethod]: () => ({
+                    description: `Add ${objectTitle}`,
+                    params: joi.object().keys({
+                        [object]: single
+                    }),
+                    result: multiple
+                }),
+                [editMethod]: () => ({
+                    description: `Update ${objectTitle}`,
+                    params: joi.object().keys({
+                        [object]: single
+                    }),
+                    result: joi.object().keys({
+                        [object]: multiple
+                    })
+                }),
+                [deleteMethod]: () => ({
+                    description: `Delete ${objectTitle}`,
+                    params: joi.object().keys({
+                        [keyField]: joi.array().items(bigintNotNull)
+                    }),
+                    result: multiple
+                }),
+                [reportMethod]: () => ({
+                    description: `${objectTitle} Report`,
+                    params: joi.object().keys({
+                        [object]: filter,
+                        paging,
+                        orderBy
+                    }),
+                    result: joi.object().keys({
+                        [object]: multiple,
+                        pagination
+                    })
+                })
+            };
+        },
+        steps() {
+            return Object.fromEntries([
+                [fetchMethod, 'Fetch'],
+                [getMethod, 'Get'],
+                [addMethod, 'Add'],
+                [editMethod, 'Update'],
+                [deleteMethod, 'Delete'],
+                [reportMethod, 'Report']
+            ].map(([method, verb]) => [
+                `steps.${method}`,
+                function(params, name = `${subject}${capital(object)}${verb}`) {
+                    return {
+                        name,
+                        method,
+                        params,
+                        result(result, assert) {
+                            assert.matchSnapshot(result, `Successful ${objectTitle} ${verb}`);
+                        }
+                    };
+                }
+            ]));
         }
     };
 };
