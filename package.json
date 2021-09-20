@@ -66,6 +66,7 @@
     "ut-browser": "^7.6.2",
     "ut-config": "^7.9.2",
     "ut-front-devextreme": "^1.39.1",
+    "ut-function.common-joi": "^1.6.0",
     "ut-function.dispatch": "^1.4.0",
     "ut-function.merge": "^1.5.6",
     "ut-port-http": "^8.8.0",
