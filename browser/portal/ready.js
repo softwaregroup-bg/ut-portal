@@ -37,7 +37,7 @@ module.exports = ({
     config: {
         theme,
         portalName
-    }
+    } = {}
 }) => ({
     async ready() {
         const reducers = Object.assign({}, ...await this.fireEvent('reducer', {}, 'asyncMap'), {pages, tabMenu});
