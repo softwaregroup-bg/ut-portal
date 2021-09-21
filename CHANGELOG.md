@@ -1,3 +1,12 @@
+## [7.32.1](https://github.com/softwaregroup-bg/ut-portal/compare/v7.32.0...v7.32.1) (2021-09-21)
+
+
+### Bug Fixes
+
+* bdb-1039 - default config on ready ([24ce5a2](https://github.com/softwaregroup-bg/ut-portal/commit/24ce5a207a43bd6436c7c6dc2e386d5d894ac5d2))
+
+
+
 # [7.32.0](https://github.com/softwaregroup-bg/ut-portal/compare/v7.31.1...v7.32.0) (2021-09-20)
 
 
