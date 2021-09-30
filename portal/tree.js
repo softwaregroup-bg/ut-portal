@@ -180,7 +180,7 @@ export const tree = joi => ({
             validation: joi?.object(),
             params: ['treeName', 'familyId'],
             columns: ['treeName', 'treeDescription'],
-            fetchMethod: 'microservice.tree.report'
+            fetch: 'microservice.tree.report'
         }
     }
 });

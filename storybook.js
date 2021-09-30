@@ -10,6 +10,8 @@ const main = async(config, name, path, params, handlers, dependencies, portal) =
             require('ut-login')(...params),
             require('ut-browser')(...params),
             ...dependencies,
+            require('./browser')(...params),
+            portal,
             function mock() {
                 return {
                     browser: [
@@ -19,19 +21,17 @@ const main = async(config, name, path, params, handlers, dependencies, portal) =
                                     ([method, handler]) => handler && method.split('.')[0]
                                 ).filter(Boolean))),
                                 send(params, {method}) {
-                                    return handlers[method] ? params : super.send(...arguments);
+                                    return this.methods.imported[method] ? params : super.send(...arguments);
                                 },
                                 receive(result, {method}) {
-                                    return handlers[method] ? result : super.receive(...arguments);
+                                    return this.methods.imported[method] ? result : super.receive(...arguments);
                                 },
                                 ...handlers
                             };
                         }
                     ]
                 };
-            },
-            require('./browser')(...params),
-            portal
+            }
         ].filter(Boolean),
         config: [{
             service: 'browser',

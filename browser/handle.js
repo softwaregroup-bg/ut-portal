@@ -42,6 +42,11 @@ module.exports = (...params) => class handle extends require('ut-port-script')(.
                         type: 'front.tab.show'
                     });
                 }
+            case 'handle.error.open':
+                return this.dispatch({
+                    type: 'front.error.open',
+                    error: params[0]
+                });
         }
         const reducer = method && this.findHandler(method + 'Reduce');
         return this.dispatch(async(dispatch, getState) => {
