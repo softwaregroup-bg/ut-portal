@@ -5,53 +5,57 @@ import Editor from 'ut-front-devextreme/core/Editor';
 export default ({
     subject,
     object,
-    resultSet,
     keyField,
     typeField,
     properties,
     cards,
     layouts,
-    addMethod,
-    editMethod,
-    getMethod,
-    nested
-}) => {
+    editor: {
+        resultSet,
+        nested
+    },
+    methods: {
+        add,
+        edit,
+        get
+    }
+}) =>
     /** @type { import("..").libFactory } */
-    const editor = ({
+    function ObjectEditor({
         utMeta,
         import: {
-            [addMethod]: objectAdd,
-            [editMethod]: objectEdit,
-            [getMethod]: objectGet,
+            [add]: objectAdd,
+            [edit]: objectEdit,
+            [get]: objectGet,
             portalDropdownList
         },
         lib: {
             editors
         }
-    }) => ({
-        editor({id, type, layout: layoutName = type}) {
-            const props = {
-                object,
-                id,
-                properties,
-                editors,
-                type,
-                typeField,
-                cards,
-                layouts,
-                layoutName,
-                nested,
-                keyField,
-                resultSet,
-                onDropdown: names => portalDropdownList(names, utMeta()),
-                onAdd: params => objectAdd(params, utMeta()),
-                onGet: params => objectGet(params, utMeta()),
-                onEdit: params => objectEdit(params, utMeta())
-            };
-            return function Edit() {
-                return <Editor {...props}/>;
-            };
-        }
-    });
-    return editor;
-};
+    }) {
+        return {
+            editor({id, type, layout: layoutName = type}) {
+                const props = {
+                    object,
+                    id,
+                    properties,
+                    editors,
+                    type,
+                    typeField,
+                    cards,
+                    layouts,
+                    layoutName,
+                    nested,
+                    keyField,
+                    resultSet,
+                    onDropdown: names => portalDropdownList(names, utMeta()),
+                    onAdd: params => objectAdd(params, utMeta()),
+                    onGet: params => objectGet(params, utMeta()),
+                    onEdit: params => objectEdit(params, utMeta())
+                };
+                return function Edit() {
+                    return <Editor {...props}/>;
+                };
+            }
+        };
+    };

@@ -7,28 +7,28 @@ import merge from 'ut-function.merge';
 export default ({
     subject,
     object,
-    resultSet,
-    objectTitle,
     keyField,
     nameField,
     tenantField,
     properties,
     cards,
-    layouts,
-    title = cards?.browse?.title || `${objectTitle} list`,
-    filter: defaultFilter = {},
-    fetch,
-    create = [{
-        title: 'Create'
-    }],
-    delete: remove,
-    navigator,
-    fetchMethod = `${subject}.${object}.fetch`,
-    deleteMethod = `${subject}.${object}.delete`,
-    navigatorFetchMethod = 'customerOrganizationGraphFetch'
+    browser: {
+        title,
+        create,
+        filter: defaultFilter,
+        fetch,
+        delete: remove,
+        resultSet,
+        navigator
+    },
+    methods: {
+        fetch: fetchMethod = 'fetch',
+        delete: deleteMethod = 'delete',
+        navigatorFetch: navigatorFetchMethod = 'customerOrganizationGraphFetch'
+    }
 }) =>
     /** @type { import("..").pageFactory<{}, {}> } */
-    ({
+    function subjectObjectBrowse({
         utMeta,
         import: {
             handleTabShow,
@@ -39,7 +39,7 @@ export default ({
             [fetchMethod]: objectFetch,
             [deleteMethod]: objectDelete
         }
-    }) => {
+    }) {
         properties = merge({
             [nameField]: {
                 action: ({id}) => handleTabShow([objectOpen, {id}], utMeta())
