@@ -23,8 +23,12 @@ module.exports = ({
                 fetch = null,
                 report = null
             } = {}
-        }
+        },
+        config: {
+            mock
+        } = {}
     } = {}) {
+        if (mock !== true && !mock?.[subjectObject]) return {};
         const byKey = criteria => instance => String(instance[keyField]) === String(criteria[keyField]);
         const find = criteria => instances.find(byKey(criteria));
         const compare = ({field, dir, smaller = {ASC: -1, DESC: 1}[dir]}) => function compare(a, b) {

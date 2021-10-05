@@ -8,6 +8,7 @@ const nodes = result => {
         ...item
     }) => ({
         ...item,
+        data: item,
         ...parent && {parent},
         key
     }));
