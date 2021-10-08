@@ -17,8 +17,8 @@ module.exports = ({
     /** @type { import("ut-run").validationFactory } */
     function subjectObjectValidation({joi, lib: {paging, orderBy, bigintNotNull}}) {
         // const fields = ;
-        const single = schema2joi(properties);
-        const filter = schema2joi(properties, 'optional');
+        const single = schema2joi(joi, properties);
+        const filter = schema2joi(joi, properties, 'optional');
         const multiple = joi.array().items(single);
         const pagination = joi.object().keys({recordsTotal: bigintNotNull});
         return {

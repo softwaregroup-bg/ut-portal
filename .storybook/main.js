@@ -30,6 +30,12 @@ module.exports = {
                 rule.use[1].options.modules.auto = /\.module\.css$|node_modules[/\\]ut-.+\.css|(?:^\/app\/|impl-[^/\\]+[/\\])(?!node_modules[/\\]).+\.css$/;
             }
         });
+        // config.module.rules.push({
+        //     test: /\.js$/,
+        //     enforce: "pre",
+        //     use: ["source-map-loader"]
+        // });
+        // config.devtool = 'source-map';
         config.plugins.forEach(plugin => {
             if (plugin?.options?.exclude?.toString().startsWith('/node_modules/')) {
                 plugin.options.exclude = /node_modules[\\/](?!(impl|ut)-)/i;
