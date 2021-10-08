@@ -1,3 +1,12 @@
+## [7.33.1](https://github.com/softwaregroup-bg/ut-portal/compare/v7.33.0...v7.33.1) (2021-10-08)
+
+
+### Bug Fixes
+
+* remove joi ([0f8373a](https://github.com/softwaregroup-bg/ut-portal/commit/0f8373abe4dea50c538b9ffcf59b96db3d26f645))
+
+
+
 # [7.33.0](https://github.com/softwaregroup-bg/ut-portal/compare/v7.32.5...v7.33.0) (2021-10-05)
 
 
