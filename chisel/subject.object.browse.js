@@ -3,6 +3,7 @@ import React from 'react';
 import Explorer from 'ut-front-devextreme/core/Explorer';
 import Navigator from 'ut-front-devextreme/core/Navigator';
 import merge from 'ut-function.merge';
+import lodashSet from 'lodash.set';
 
 export default ({
     subject,
@@ -10,7 +11,7 @@ export default ({
     keyField,
     nameField,
     tenantField,
-    properties,
+    schema,
     cards,
     browser: {
         title,
@@ -40,13 +41,11 @@ export default ({
             [deleteMethod]: objectDelete
         }
     }) {
-        properties = merge({
-            [nameField]: {
-                action: ({id}) => handleTabShow([objectOpen, {id}], utMeta())
-            }
-        }, properties);
+        schema = merge({
+            properties: lodashSet({}, nameField.replace(/\./g, '.properties.'), {action: ({id}) => handleTabShow([objectOpen, {id}], utMeta())})
+        }, schema);
         const details = {[nameField]: 'Name'};
-        const columns = ((cards?.browse?.properties) || [nameField]);
+        const columns = ((cards?.browse?.widgets) || [nameField]);
         const handleFetch = (typeof fetch === 'function') ? params => objectFetch(fetch(params), utMeta()) : params => objectFetch(params, utMeta());
         const handleNavigatorFetch = params => navigatorFetch(params, utMeta());
         function getActions(setFilter) {
@@ -77,6 +76,7 @@ export default ({
                 action: handleDelete
             }];
         }
+        const onDropdown = names => portalDropdownList(names, utMeta());
         const BrowserComponent = async() => {
             function Browse() {
                 const [tenant, setTenant] = React.useState(null);
@@ -87,19 +87,19 @@ export default ({
                         fetch={(!navigator || tenant != null) && handleFetch}
                         resultSet={resultSet || object}
                         keyField={keyField}
-                        properties={properties}
+                        schema={schema}
                         columns={columns}
                         details={details}
                         filter={navigator ? {...filter, [tenantField]: tenant} : filter}
                         actions={actions}
-                        onDropdown={names => portalDropdownList(names, utMeta())}
+                        onDropdown={onDropdown}
                     >
                         {navigator && <Navigator
                             fetch={handleNavigatorFetch}
                             onSelect={setTenant}
                             keyField='id'
                             field='title'
-                            title={properties?.[tenantField]?.title || 'Tenant'}
+                            title={schema?.properties?.[tenantField]?.title || 'Tenant'}
                             resultSet='organization'
                         />}
                     </Explorer>

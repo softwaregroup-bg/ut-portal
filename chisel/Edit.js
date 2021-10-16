@@ -7,12 +7,11 @@ export default ({
     object,
     keyField,
     typeField,
-    properties,
+    schema,
     cards,
     layouts,
     editor: {
-        resultSet,
-        nested
+        resultSet
     },
     methods: {
         add,
@@ -38,14 +37,13 @@ export default ({
                 const props = {
                     object,
                     id,
-                    properties,
+                    schema,
                     editors,
                     type,
                     typeField,
                     cards,
                     layouts,
                     layoutName,
-                    nested,
                     keyField,
                     resultSet,
                     onDropdown: names => portalDropdownList(names, utMeta()),

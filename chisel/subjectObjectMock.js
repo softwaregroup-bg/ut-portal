@@ -8,7 +8,7 @@ module.exports = ({
     tenantField,
     methods: {
         fetch: fetchMethod,
-        get,
+        get: getMethod,
         add,
         edit,
         delete: remove,
@@ -21,6 +21,7 @@ module.exports = ({
             [subjectObject]: {
                 objects: instances = trees({keyField, nameField, tenantField}),
                 fetch = null,
+                get = null,
                 report = null
             } = {}
         },
@@ -30,7 +31,10 @@ module.exports = ({
     } = {}) {
         if (mock !== true && !mock?.[subjectObject]) return {};
         const byKey = criteria => instance => String(instance[keyField]) === String(criteria[keyField]);
-        const find = criteria => instances.find(byKey(criteria));
+        const find = async criteria => {
+            await new Promise((resolve, reject) => setTimeout(resolve, 100));
+            return instances.find(byKey(criteria));
+        };
         const compare = ({field, dir, smaller = {ASC: -1, DESC: 1}[dir]}) => function compare(a, b) {
             if (a[field] < b[field]) return smaller;
             if (a[field] > b[field]) return -smaller;
@@ -55,7 +59,7 @@ module.exports = ({
         let maxId = instances.reduce((max, instance) => Math.max(max, Number(instance[keyField])), 0);
         return {
             [fetchMethod]: fetch ? fetch(filter) : filter,
-            [get]: criteria => ({[object]: find(criteria)}),
+            [getMethod]: get ? get(find) : async criteria => ({[object]: await find(criteria)}),
             [add](instance) {
                 maxId += 1;
                 const result = {
@@ -66,8 +70,8 @@ module.exports = ({
                 instances.push(result);
                 return result;
             },
-            [edit](edited) {
-                const result = find({[keyField]: edited[object][keyField]});
+            async [edit](edited) {
+                const result = await find({[keyField]: edited[object][keyField]});
                 return result && {
                     [object]: Object.assign(result, edited[object])
                 };

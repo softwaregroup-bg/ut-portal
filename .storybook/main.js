@@ -31,7 +31,8 @@ module.exports = {
             }
         });
         // config.module.rules.push({
-        //     test: /\.js$/,
+        //     test: /\.(js|mjs|jsx|ts|tsx|css)$/,
+        //     exclude: /@babel(?:\/|\\{1,2})runtime/,
         //     enforce: "pre",
         //     use: ["source-map-loader"]
         // });

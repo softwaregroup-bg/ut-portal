@@ -9,7 +9,7 @@ export default ({
         title
     },
     reports,
-    properties,
+    schema,
     cards
 }) =>
     /** @type { import("..").pageFactory<{}, {}> } */
@@ -26,7 +26,7 @@ export default ({
                 permission: `${subject}.${object}.report`,
                 component: async({id}) => {
                     const props = {
-                        properties,
+                        schema,
                         params: reports[id]?.params,
                         validation: reports[id]?.validation,
                         columns: reports[id]?.columns || cards?.browse?.properties,

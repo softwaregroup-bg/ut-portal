@@ -13,7 +13,7 @@ const defaults = (joi, {
     subjectObject = `${subject}${capital(object)}`,
     objectTitle = capital(object),
     keyField = `${object}Id`,
-    nameField = `${object}Name`,
+    nameField = `${object}.${object}Name`,
     descriptionField = `${object}Description`,
     tenantField = 'businessUnitId',
     ...rest
@@ -21,11 +21,17 @@ const defaults = (joi, {
     cards: {
         edit: {title: object, properties: [nameField, descriptionField]}
     },
-    properties: {
-        [keyField]: {title: 'key', validation: joi && joi.any()},
-        [tenantField]: {title: 'Tenant', validation: joi && joi.any()},
-        [nameField]: {title: `${capital(object)} Name`, filter: true, sort: true, validation: joi && joi.string().required().min(1)},
-        [descriptionField]: {title: `${capital(object)} Description`, filter: true, editor: {type: 'text'}}
+    schema: {
+        properties: {
+            [object]: {
+                properties: {
+                    [keyField]: {title: 'key', validation: joi && joi.any()},
+                    [tenantField]: {title: 'Tenant', validation: joi && joi.any()},
+                    [nameField.split('.').pop()]: {title: `${capital(object)} Name`, filter: true, sort: true, validation: joi && joi.string().required().min(1)},
+                    [descriptionField]: {title: `${capital(object)} Description`, filter: true, editor: {type: 'text'}}
+                }
+            }
+        }
     },
     methods: {
         fetch: `${subject}.${object}.fetch`,
