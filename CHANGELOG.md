@@ -1,3 +1,12 @@
+# [7.34.0](https://github.com/softwaregroup-bg/ut-portal/compare/v7.33.1...v7.34.0) (2021-10-16)
+
+
+### Features
+
+* schema ([f06bb1f](https://github.com/softwaregroup-bg/ut-portal/commit/f06bb1fe62f6f8229111565873fbd2e3871a3990))
+
+
+
 ## [7.33.1](https://github.com/softwaregroup-bg/ut-portal/compare/v7.33.0...v7.33.1) (2021-10-08)
 
 
