@@ -1,3 +1,7 @@
+## [7.34.4](https://github.com/softwaregroup-bg/ut-portal/compare/v7.34.3...v7.34.4) (2021-10-29)
+
+
+
 ## [7.34.3](https://github.com/softwaregroup-bg/ut-portal/compare/v7.34.2...v7.34.3) (2021-10-22)
 
 
