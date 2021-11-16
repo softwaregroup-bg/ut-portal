@@ -18,7 +18,10 @@ module.exports = () => ({
             pages: joi.object().pattern(/\w*\.\w*\.\w*/, joi.object().keys({
                 icon: joi.string(),
                 title: joi.string()
-            }))
+            })),
+            help: joi.object({
+                default: joi.string()
+            }).pattern(joi.string(), joi.string())
         })
     })
 });

@@ -54,16 +54,22 @@ export type tab = Promise<{
         id?: string
     }
 }>
+export type action = {
+    title?: string;
+    action: () => {} | void;
+}
 export interface handlers<location = ''> {
     [name: `component$${string}`]: remotePage,
     [name: `component/${string}`]: remotePage,
     handleTabShow?: (tab: remotePage | [remotePage, {id: string}] | {tabs: string, params: any}) => {},
     'portal.dropdown.list'?: ut.handler<dropdownParams, dropdownResult, location>,
     portalDropdownList?: ut.handler<dropdownParams, dropdownResult, location>,
-    'portal.menu.item'?: (page: pageParams) => Promise<menuItem>,
-    portalMenuItem?: (page: pageParams) => Promise<menuItem>,
-    'portal.tab.item'?: (page: pageParams) => Promise<tab>,
-    portalTabItem?: (page: pageParams) => Promise<tab>,
+    'portal.menu.item'?: (page: pageParams) => menuItem,
+    portalMenuItem?: (page: pageParams) => menuItem,
+    'portal.tab.item'?: (page: pageParams) => tab,
+    portalTabItem?: (page: pageParams) => tab,
+    'portal.menu.help'?: (options: {}) => action,
+    portalMenuHelp?: (options: {}) => action,
 }
 
 export interface errors {
