@@ -1,3 +1,12 @@
+# [7.35.0](https://github.com/softwaregroup-bg/ut-portal/compare/v7.34.4...v7.35.0) (2021-11-16)
+
+
+### Features
+
+* help menu ([031767c](https://github.com/softwaregroup-bg/ut-portal/commit/031767c68135aebcee8e5f3ed9b3618f0775d853))
+
+
+
 ## [7.34.4](https://github.com/softwaregroup-bg/ut-portal/compare/v7.34.3...v7.34.4) (2021-10-29)
 
 
