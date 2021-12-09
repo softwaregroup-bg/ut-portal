@@ -1,3 +1,12 @@
+## [7.35.3](https://github.com/softwaregroup-bg/ut-portal/compare/v7.35.2...v7.35.3) (2021-12-09)
+
+
+### Bug Fixes
+
+* use string keys for nodes ([9982ede](https://github.com/softwaregroup-bg/ut-portal/commit/9982edef631b228b4b1b670b8c66b3a233a3b2db))
+
+
+
 ## [7.35.2](https://github.com/softwaregroup-bg/ut-portal/compare/v7.35.1...v7.35.2) (2021-12-07)
 
 
