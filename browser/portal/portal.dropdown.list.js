@@ -10,7 +10,7 @@ const nodes = result => {
         ...item,
         data: item,
         ...parent && {parent},
-        key
+        key: key != null ? String(key) : key
     }));
     const children = result.reduce((prev, item) => 'parent' in item ? ({
         ...prev,
