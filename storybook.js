@@ -119,7 +119,10 @@ const main = async(config, name, path, params, handlers, dependencies, portal) =
                     error: {},
                     login,
                     portal: {
-                        menu: [{title: ' 📚 '}],
+                        menu: [{
+                            title: ' 🏠 ',
+                            action: () => ({type: 'test'})
+                        }],
                         tabs: [page]
                     }
                 }
