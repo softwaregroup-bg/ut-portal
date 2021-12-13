@@ -66,10 +66,8 @@ module.exports = {
     addons: [
         'storybook-readme',
         '@storybook/addon-essentials',
+        '@storybook/addon-interactions',
         '@storybook/addon-knobs',
-        'storybook-addon-playwright/preset',
-        'storybook-addon-playwright/register',
-        'storybook-addon-toolbar-actions/register',
         {
             name: '@storybook/addon-postcss',
             options: {
