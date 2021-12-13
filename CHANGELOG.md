@@ -1,3 +1,12 @@
+# [7.36.0](https://github.com/softwaregroup-bg/ut-portal/compare/v7.35.6...v7.36.0) (2021-12-13)
+
+
+### Features
+
+* storybook interactions ([35b32ee](https://github.com/softwaregroup-bg/ut-portal/commit/35b32ee842f98d0889f57b3bd3516cd743b45f86))
+
+
+
 ## [7.35.6](https://github.com/softwaregroup-bg/ut-portal/compare/v7.35.5...v7.35.6) (2021-12-10)
 
 
