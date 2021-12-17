@@ -1,4 +1,3 @@
-const { setConfig } = require('storybook-addon-playwright/configs');
 const lazy = /(devextreme[/\\]dist[/\\]css[/\\]dx\.(?!common).+\.css$)|(primereact[/\\]resources[/\\]themes[/\\].+\.css$)/i;
 
 module.exports = {
@@ -98,16 +97,3 @@ module.exports = {
         return config;
     },
 };
-
-const browser = {};
-setConfig({
-    storybookEndpoint: `http://localhost:6006/`,
-    async getPage(browserType, options) {
-        const playwright = require('playwright');
-        if (!browser[browserType]) browser[browserType] = await playwright['chromium'].launch();
-        return await browser[browserType].newPage(options);
-    },
-    async afterScreenshot(page) {
-        await page.close();
-    }
-});
