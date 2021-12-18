@@ -1,6 +1,6 @@
 import {addDecorator, addParameters} from '@storybook/react';
 import {addReadme} from 'storybook-readme';
-import './preview.css';
+if(process.env.NODE_ENV === 'production') require('./preview.css');
 
 addDecorator(addReadme);
 addParameters({
