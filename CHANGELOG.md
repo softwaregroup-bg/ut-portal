@@ -1,3 +1,12 @@
+# [7.37.0](https://github.com/softwaregroup-bg/ut-portal/compare/v7.36.5...v7.37.0) (2021-12-20)
+
+
+### Features
+
+* menu item parameters ([339db2f](https://github.com/softwaregroup-bg/ut-portal/commit/339db2fe6e79d11a36f97abcb1fa96cf4660a6e5))
+
+
+
 ## [7.36.5](https://github.com/softwaregroup-bg/ut-portal/compare/v7.36.4...v7.36.5) (2021-12-18)
 
 
