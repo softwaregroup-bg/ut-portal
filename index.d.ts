@@ -10,9 +10,10 @@ export interface dropdownResult {
 }
 
 interface component {
-    id: string,
+    id?: string,
     title: string,
-    component: remotePage
+    component: remotePage,
+    [name: string]: any
 }
 
 export interface pageDescriptor {

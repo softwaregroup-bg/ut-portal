@@ -82,6 +82,12 @@ const main = async(config, name, path, params, handlers, dependencies, portal) =
                 actionId: 'granted'
             }, {
                 actionId: 'page%'
+            }, {
+                actionId: '%.add'
+            }, {
+                actionId: '%.edit'
+            }, {
+                actionId: '%.delete'
             }]
         }
     }, await handlers?.login?.()));
