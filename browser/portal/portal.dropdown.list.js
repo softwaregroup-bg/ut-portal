@@ -1,4 +1,4 @@
-const parentField = 'parents';
+const parentField = 'parent';
 const keyField = 'value';
 
 const nodes = result => {
