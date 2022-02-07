@@ -108,7 +108,9 @@ program
             result.stderr.pipe(split()).on('data', tryMatch('error'));
             result.on('exit', async({code, signal}) => {
                 try {
-                    if (!await setStatus(code || signal ? 'failed' : 'success', details, url)) process.exit(1);
+                    if (!await setStatus(code || signal ? 'failed' : 'success', details, url)) {
+                        if (code || signal) process.exit(1);
+                    }
                 } catch (error) {
                     console.error(error);
                     process.exit(1);
