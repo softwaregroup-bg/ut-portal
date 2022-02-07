@@ -4,9 +4,10 @@
 /* eslint-disable no-process-env */
 
 const { program } = require('commander');
-const { spawnSync } = require('child_process');
+const { spawnSync, spawn } = require('child_process');
 const { resolve } = require('path');
 const got = require('got');
+const split = require('split2');
 
 program
     .command('storybook')
@@ -80,7 +81,7 @@ program
         console.log('Publishing storybook...');
         try {
             await setStatus('running');
-            const result = spawnSync(
+            const result = spawn(
                 process.argv[0],
                 [
                     resolve(require.resolve('chromatic/package.json'), '..', require('chromatic/package.json').bin.chromatic),
@@ -90,15 +91,33 @@ program
                     '--exit-once-uploaded master',
                     ...args
                 ], {
-                    stdio: 'inherit'
+                    stdio: ['inherit', 'pipe', 'pipe']
                 }
             );
-            const details = result.stdout.toString().match(DETAILS);
-            if (result.error || result.status || result.signal) {
-                if (!await setStatus('failed', details?.[0], details?.[1])) process.exit(1);
-            } else {
-                await setStatus('success', details?.[0], details?.[1]);
-            }
+            let details = '';
+            let url = '';
+            const tryMatch = level => line => {
+                const match = line.match(DETAILS);
+                if (match) {
+                    details = match[0];
+                    url = match[1];
+                }
+                console[level](line);
+            };
+            result.stdout.pipe(split()).on('data', tryMatch('log'));
+            result.stderr.pipe(split()).on('data', tryMatch('error'));
+            result.on('exit', async({code, signal}) => {
+                try {
+                    if (!await setStatus(code || signal ? 'failed' : 'success', details, url)) process.exit(1);
+                } catch (error) {
+                    console.error(error);
+                    process.exit(1);
+                }
+            });
+            result.on('error', error => {
+                console.error(error);
+                process.exit(1);
+            });
         } catch (error) {
             console.error(error);
             process.exit(1);
