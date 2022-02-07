@@ -127,6 +127,7 @@ const main = async(config, name, path, params, handlers, dependencies, portal) =
                     portal: {
                         menu: [{
                             title: ' 🏠 ',
+                            id: 'home',
                             action: () => ({type: 'test'})
                         }],
                         tabs: [page]

@@ -57,8 +57,8 @@ program
                 resolve(require.resolve('chromatic/package.json'), '..', require('chromatic/package.json').bin.chromatic),
                 '-d',
                 '.lint/storybook',
-                '--exit-zero-on-changes',
-                '--exit-once-uploaded',
+                '--exit-zero-on-changes master',
+                '--exit-once-uploaded master',
                 ...args
             ], {
                 stdio: 'inherit'
