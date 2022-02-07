@@ -57,7 +57,7 @@ const setStatus = async(state, description, url) => {
         await got.post(`https://git.softwaregroup.com/api/v4/projects/${encodeURIComponent(projectId)}/statuses/${process.env.GIT_COMMIT}`, {
             json: {
                 state,
-                name: 'UI Review',
+                name: 'UI tests - Chromatic',
                 description,
                 target_url: url
             },
@@ -106,7 +106,7 @@ program
             };
             result.stdout.pipe(split()).on('data', tryMatch('log'));
             result.stderr.pipe(split()).on('data', tryMatch('error'));
-            result.on('exit', async({code, signal}) => {
+            result.on('exit', async(code, signal) => {
                 try {
                     if (!await setStatus(code || signal ? 'failed' : 'success', details, url)) {
                         if (code || signal) process.exit(1);
