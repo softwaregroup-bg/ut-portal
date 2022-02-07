@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+/* eslint-disable no-console */
 /* eslint-disable no-process-env */
 
 const { program } = require('commander');
@@ -47,14 +48,16 @@ program
         );
     });
 
-const setStatus = async state => {
+const setStatus = async(state, description, url) => {
     const token = process.env.GITLAB_STATUS_TOKEN;
-    const projectId = String(process.env.GIT_URL).match(/git@git\.softwaregroup\.com:ut5(?:impl)?\/(.*)\.git/)?.[1];
+    const projectId = String(process.env.GIT_URL).match(/git@git\.softwaregroup\.com:(ut5(?:impl)?\/.*)\.git/)?.[1];
     if (token && projectId) {
         await got.post(`https://git.softwaregroup.com/api/v4/projects/${encodeURIComponent(projectId)}/statuses/${process.env.GIT_COMMIT}`, {
             json: {
                 state,
-                name: 'UI Review'
+                name: 'UI Review',
+                description,
+                target_url: url
             },
             headers: {
                 'PRIVATE-TOKEN': token
@@ -65,12 +68,15 @@ const setStatus = async state => {
     return false;
 };
 
+const DETAILS = /View build details at (.*)$/;
+
 program
     .command('publish')
     .description('Publish storybook')
     .allowUnknownOption()
     .allowExcessArguments()
     .action(async(_, {args}) => {
+        console.log('Publishing storybook...');
         await setStatus('running');
         const result = spawnSync(
             process.argv[0],
@@ -85,11 +91,12 @@ program
                 stdio: 'inherit'
             }
         );
+        const details = result.stdout.toString().match(DETAILS);
         if (result.error || result.status || result.signal) {
             // eslint-disable-next-line no-process-exit
-            if (!await setStatus('failed')) process.exit(1);
+            if (!await setStatus('failed', details?.[0], details?.[1])) process.exit(1);
         } else {
-            await setStatus('success');
+            await setStatus('success', details?.[0], details?.[1]);
         }
     });
 
