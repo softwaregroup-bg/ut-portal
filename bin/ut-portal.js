@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+/* eslint-disable no-process-exit */
 /* eslint-disable no-console */
 /* eslint-disable no-process-env */
 
@@ -77,26 +78,30 @@ program
     .allowExcessArguments()
     .action(async(_, {args}) => {
         console.log('Publishing storybook...');
-        await setStatus('running');
-        const result = spawnSync(
-            process.argv[0],
-            [
-                resolve(require.resolve('chromatic/package.json'), '..', require('chromatic/package.json').bin.chromatic),
-                '-d',
-                '.lint/storybook',
-                '--exit-zero-on-changes master',
-                '--exit-once-uploaded master',
-                ...args
-            ], {
-                stdio: 'inherit'
+        try {
+            await setStatus('running');
+            const result = spawnSync(
+                process.argv[0],
+                [
+                    resolve(require.resolve('chromatic/package.json'), '..', require('chromatic/package.json').bin.chromatic),
+                    '-d',
+                    '.lint/storybook',
+                    '--exit-zero-on-changes master',
+                    '--exit-once-uploaded master',
+                    ...args
+                ], {
+                    stdio: 'inherit'
+                }
+            );
+            const details = result.stdout.toString().match(DETAILS);
+            if (result.error || result.status || result.signal) {
+                if (!await setStatus('failed', details?.[0], details?.[1])) process.exit(1);
+            } else {
+                await setStatus('success', details?.[0], details?.[1]);
             }
-        );
-        const details = result.stdout.toString().match(DETAILS);
-        if (result.error || result.status || result.signal) {
-            // eslint-disable-next-line no-process-exit
-            if (!await setStatus('failed', details?.[0], details?.[1])) process.exit(1);
-        } else {
-            await setStatus('success', details?.[0], details?.[1]);
+        } catch (error) {
+            console.error(error);
+            process.exit(1);
         }
     });
 
