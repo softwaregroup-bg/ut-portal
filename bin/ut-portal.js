@@ -85,9 +85,9 @@ program
                 stdio: 'inherit'
             }
         );
-        if (result.error) {
+        if (result.error || result.status || result.signal) {
             // eslint-disable-next-line no-process-exit
-            if (!await setStatus('failed')) process.exit(result.error);
+            if (!await setStatus('failed')) process.exit(1);
         } else {
             await setStatus('success');
         }
