@@ -80,15 +80,15 @@ program
     .action(async(_, {args}) => {
         console.log('Publishing storybook...');
         try {
-            await setStatus('running');
+            await setStatus('pending');
             const result = spawn(
                 process.argv[0],
                 [
                     resolve(require.resolve('chromatic/package.json'), '..', require('chromatic/package.json').bin.chromatic),
                     '-d',
                     '.lint/storybook',
-                    '--exit-zero-on-changes master',
-                    '--exit-once-uploaded master',
+                    '--exit-zero-on-changes',
+                    '--exit-once-uploaded',
                     ...args
                 ], {
                     stdio: ['inherit', 'pipe', 'pipe']
@@ -108,7 +108,7 @@ program
             result.stderr.pipe(split()).on('data', tryMatch('error'));
             result.on('exit', async(code, signal) => {
                 try {
-                    if (!await setStatus(code || signal ? 'failed' : 'success', details, url)) {
+                    if (!await setStatus(code || signal ? 'failed' : 'running', details, url)) {
                         if (code || signal) process.exit(1);
                     }
                 } catch (error) {
