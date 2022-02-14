@@ -1,3 +1,12 @@
+## [7.37.10](https://github.com/softwaregroup-bg/ut-portal/compare/v7.37.9...v7.37.10) (2022-02-14)
+
+
+### Bug Fixes
+
+* build status handling #UTCORE-121 ([b21da7c](https://github.com/softwaregroup-bg/ut-portal/commit/b21da7cc6d0f942dc9c7a0ae508d0e55b24ede7f)), closes [#UTCORE-121](https://github.com/softwaregroup-bg/ut-portal/issues/UTCORE-121)
+
+
+
 ## [7.37.9](https://github.com/softwaregroup-bg/ut-portal/compare/v7.37.8...v7.37.9) (2022-02-07)
 
 
