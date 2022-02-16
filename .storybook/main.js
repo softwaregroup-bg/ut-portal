@@ -8,7 +8,7 @@ module.exports = {
             config.module.rules.splice(cssRule, 0, {
                 test: lazy,
                 use: [{
-                    loader: config.module.rules[cssRule].use[0].loader,
+                    loader: config.module.rules[cssRule].use[0].loader || config.module.rules[cssRule].use[0],
                     options: {
                         injectType: 'lazyStyleTag'
                     }
@@ -61,28 +61,16 @@ module.exports = {
         check: false,
         reactDocgen: false,
     },
+    features: {
+        // storyStoreV7: true,
+        // buildStoriesJson: true,
+        postcss: false
+    },
     stories: [process.cwd().replace(/\\/g, '/') + '/portal/**/*.stories.js'],
     addons: [
         'storybook-readme',
         '@storybook/addon-essentials',
         '@storybook/addon-interactions',
-        '@storybook/addon-knobs',
-        {
-            name: '@storybook/addon-postcss',
-            options: {
-                postcssLoaderOptions: {
-                    postcssOptions: {
-                        plugins: [
-                            require('postcss-import')({path: [__dirname]}),
-                            require('postcss-preset-env')({preserve: false}),
-                            require('postcss-assets')({relative: true}),
-                            require('postcss-merge-rules')(),
-                            require('postcss-clean')({level: 2, rebase: false})
-                        ]
-                    }
-                }
-            }
-        },
         '@storybook/addon-a11y',
         '@storybook/addon-storysource',
     ],
