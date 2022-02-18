@@ -54,7 +54,7 @@ const setStatus = async(state, description, url) => {
     const token = process.env.GITLAB_STATUS_TOKEN;
     const projectId = String(process.env.GIT_URL).match(/git@git\.softwaregroup\.com:(ut5(?:impl)?\/.*)\.git/)?.[1];
     if (token && projectId) {
-        await got.post(`https://git.softwaregroup.com/api/v4/projects/${encodeURIComponent(projectId)}/statuses/${process.env.GIT_COMMIT}`, {
+        await got.post(`https://git.softwaregroup.com/api/v4/projects/${encodeURIComponent(projectId)}/statuses/${process.env.GITLAB_CHECKOUT_SHA || process.env.GIT_COMMIT}`, {
             json: {
                 state,
                 name: 'UI tests - Chromatic',
