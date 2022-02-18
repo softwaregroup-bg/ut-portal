@@ -91,7 +91,13 @@ program
                     '--exit-once-uploaded',
                     ...args
                 ], {
-                    stdio: ['inherit', 'pipe', 'pipe']
+                    stdio: ['inherit', 'pipe', 'pipe'],
+                    ...process.env.GITLAB_OA_LAST_COMMIT_ID && {
+                        env: {
+                            ...process.env,
+                            CHROMATIC_SHA: process.env.GITLAB_OA_LAST_COMMIT_ID
+                        }
+                    }
                 }
             );
             let details = '';
