@@ -95,7 +95,8 @@ program
                     ...process.env.GITLAB_OA_LAST_COMMIT_ID && {
                         env: {
                             ...process.env,
-                            CHROMATIC_SHA: process.env.GITLAB_OA_LAST_COMMIT_ID
+                            CHROMATIC_SHA: process.env.GITLAB_OA_LAST_COMMIT_ID,
+                            CHROMATIC_BRANCH: process.env.GITLAB_OA_SOURCE_BRANCH
                         }
                     }
                 }
