@@ -1,3 +1,12 @@
+# [7.38.0](https://github.com/softwaregroup-bg/ut-portal/compare/v7.37.15...v7.38.0) (2022-02-21)
+
+
+### Features
+
+* playwright tests ([0a13060](https://github.com/softwaregroup-bg/ut-portal/commit/0a130603e3ff7c9f7272ea015a5349feba286380))
+
+
+
 ## [7.37.15](https://github.com/softwaregroup-bg/ut-portal/compare/v7.37.14...v7.37.15) (2022-02-18)
 
 
