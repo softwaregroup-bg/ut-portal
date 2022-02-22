@@ -1,4 +1,12 @@
-const { spawnSync } = require('child_process');
+const { spawn } = require('child_process');
+
+const exec = async(command, args, options) => {
+    return new Promise((resolve, reject) => {
+        const process = spawn(command, args, options);
+        process.on('error', err => reject(err));
+        process.on('exit', (code, signal) => code || signal ? reject(new Error(`${command} ${args.join(' ')} exited with code ${code} and signal ${signal}`)) : resolve(true));
+    });
+};
 
 module.exports = function steps({version, callSite, utBus}) {
     return {
@@ -18,7 +26,7 @@ module.exports = function steps({version, callSite, utBus}) {
                                     }
                                 },
                                 ...rest
-                            }) => spawnSync(
+                            }) => exec(
                                 'playwright',
                                 [
                                     'test',
@@ -42,7 +50,7 @@ module.exports = function steps({version, callSite, utBus}) {
                                 }
                             ),
                             result(result, assert) {
-                                assert.ok(!result.status && !result.signal, 'Playwright run without error');
+                                assert.ok(result, 'Playwright run without error');
                             }
                         }
                     ];

@@ -14,7 +14,7 @@ const cloneParams = (params) => {
     }
 };
 
-/** @type { import("../..").libFactory } */
+/** @type { import("../../handlers").libFactory } */
 module.exports = ({
     utMethod,
     utMeta
