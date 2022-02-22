@@ -1,3 +1,12 @@
+## [7.38.2](https://github.com/softwaregroup-bg/ut-portal/compare/v7.38.1...v7.38.2) (2022-02-22)
+
+
+### Bug Fixes
+
+* async exec #UTCORE-121 ([379bba1](https://github.com/softwaregroup-bg/ut-portal/commit/379bba1f40e944d24dfd9d0080a37ac7548be1c6)), closes [#UTCORE-121](https://github.com/softwaregroup-bg/ut-portal/issues/UTCORE-121)
+
+
+
 ## [7.38.1](https://github.com/softwaregroup-bg/ut-portal/compare/v7.38.0...v7.38.1) (2022-02-22)
 
 
