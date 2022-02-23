@@ -1,3 +1,12 @@
+## [7.38.3](https://github.com/softwaregroup-bg/ut-portal/compare/v7.38.2...v7.38.3) (2022-02-23)
+
+
+### Bug Fixes
+
+* use preinstalled chromium ([35c61ee](https://github.com/softwaregroup-bg/ut-portal/commit/35c61ee0160e45a75778d4403acc59764bcfb841))
+
+
+
 ## [7.38.2](https://github.com/softwaregroup-bg/ut-portal/compare/v7.38.1...v7.38.2) (2022-02-22)
 
 
