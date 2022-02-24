@@ -1,3 +1,12 @@
+## [7.38.4](https://github.com/softwaregroup-bg/ut-portal/compare/v7.38.3...v7.38.4) (2022-02-24)
+
+
+### Bug Fixes
+
+* playwright output ([9bc1aee](https://github.com/softwaregroup-bg/ut-portal/commit/9bc1aee2f3e3e7df412f81ddbe4004a322dea326))
+
+
+
 ## [7.38.3](https://github.com/softwaregroup-bg/ut-portal/compare/v7.38.2...v7.38.3) (2022-02-23)
 
 
