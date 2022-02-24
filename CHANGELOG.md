@@ -1,3 +1,12 @@
+## [7.38.5](https://github.com/softwaregroup-bg/ut-portal/compare/v7.38.4...v7.38.5) (2022-02-24)
+
+
+### Bug Fixes
+
+* testMatch ([046cd31](https://github.com/softwaregroup-bg/ut-portal/commit/046cd3187b7554aae10da17b599eb605d37eb2bc))
+
+
+
 ## [7.38.4](https://github.com/softwaregroup-bg/ut-portal/compare/v7.38.3...v7.38.4) (2022-02-24)
 
 
