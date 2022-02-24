@@ -16,7 +16,13 @@ const config = {
         username: process.env.UT_USERNAME,
         password: process.env.UT_PASSWORD
     },
-    testDir: resolve('.')
+    testDir: resolve('.'),
+    outputDir: '.lint/playwright',
+    reporter: [
+        [process.env.CI ? 'dot' : 'list'],
+        ['html', { open: 'never', outputFolder: '.lint/playwright-unit' }],
+        ['junit', { outputFile: '.lint/playwright-unit.xml' }]
+    ]
 };
 
 module.exports = config;
