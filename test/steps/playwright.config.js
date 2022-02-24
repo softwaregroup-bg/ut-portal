@@ -17,6 +17,7 @@ const config = {
         password: process.env.UT_PASSWORD
     },
     testDir: resolve('.'),
+    testMatch: /.*\.play\.(js|ts|mjs)/,
     outputDir: '.lint/playwright',
     reporter: [
         [process.env.CI ? 'dot' : 'list'],
