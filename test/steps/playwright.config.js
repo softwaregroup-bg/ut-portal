@@ -18,11 +18,11 @@ const config = {
     },
     testDir: resolve('.'),
     testMatch: /.*\.play\.(js|ts|mjs)/,
-    outputDir: '.lint/playwright',
+    outputDir: resolve('.lint/playwright'),
     reporter: [
         [process.env.CI ? 'dot' : 'list'],
-        ['html', { open: 'never', outputFolder: '.lint/playwright-unit' }],
-        ['junit', { outputFile: '.lint/playwright-unit.xml' }]
+        ['html', { open: 'never', outputFolder: resolve('.lint/playwright-unit') }],
+        ['junit', { outputFile: resolve('.lint/playwright-unit.xml') }]
     ]
 };
 
