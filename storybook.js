@@ -120,6 +120,7 @@ const main = async(config, name, path, params, handlers, dependencies, portal) =
                         }
                     }
                 },
+                devTool: true,
                 portalName: 'Test Portal',
                 state: {
                     error: {},

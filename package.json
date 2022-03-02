@@ -64,7 +64,7 @@
     "storybook-readme": "^5.0.9",
     "ut-browser": "^7.7.0",
     "ut-config": "^7.9.2",
-    "ut-front-devextreme": "^1.62.0",
+    "ut-front-devextreme": "^1.63.0",
     "ut-function.common-joi": "^1.6.1",
     "ut-function.dispatch": "^1.4.0",
     "ut-function.merge": "^1.5.6",
