@@ -61,7 +61,6 @@
     "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.4.0",
     "split2": "2.2.0",
-    "storybook-readme": "^5.0.9",
     "ut-browser": "^7.7.0",
     "ut-config": "^7.9.2",
     "ut-front-devextreme": "^1.63.0",
