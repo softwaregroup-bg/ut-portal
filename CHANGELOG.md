@@ -1,3 +1,12 @@
+## [7.38.9](https://github.com/softwaregroup-bg/ut-portal/compare/v7.38.8...v7.38.9) (2022-03-17)
+
+
+### Bug Fixes
+
+* show missing menus during development ([0feece5](https://github.com/softwaregroup-bg/ut-portal/commit/0feece52d68d454c51e24cb3571dbb4ddad555f5))
+
+
+
 ## [7.38.8](https://github.com/softwaregroup-bg/ut-portal/compare/v7.38.7...v7.38.8) (2022-03-11)
 
 
