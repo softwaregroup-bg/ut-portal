@@ -1,3 +1,12 @@
+## [7.38.10](https://github.com/softwaregroup-bg/ut-portal/compare/v7.38.9...v7.38.10) (2022-03-17)
+
+
+### Bug Fixes
+
+* warn about erroring menus ([806ad05](https://github.com/softwaregroup-bg/ut-portal/commit/806ad05ad308d41ccd2ca639be910e094accbed8))
+
+
+
 ## [7.38.9](https://github.com/softwaregroup-bg/ut-portal/compare/v7.38.8...v7.38.9) (2022-03-17)
 
 
