@@ -37,6 +37,10 @@ module.exports = function steps({version, callSite, utBus}) {
                                         .filter(([key]) => /\.playwright$/.test(key))
                                         .map(([, value]) => value.__dirname)
                                         .filter(Boolean)
+                                ).concat(
+                                    Object.entries(utBus.config.playwright || {})
+                                        .map(([key, value]) => value === true ? `--${key}` : [`--${key}`, `${value}`])
+                                        .flat()
                                 ),
                                 {
                                     stdio: 'inherit',
