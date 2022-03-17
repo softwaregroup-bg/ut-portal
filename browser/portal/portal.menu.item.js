@@ -13,7 +13,6 @@ module.exports = ({
         try {
             page = await component({});
         } catch (e) {
-            this.error(e, $meta);
             if (title) title = '💥' + title;
             page = {
                 title: '💥' + component.name,
@@ -21,7 +20,9 @@ module.exports = ({
                 disabled: true
             };
             // eslint-disable-next-line no-process-env
-            if (process.env.NODE_ENV !== 'production') page.component = () => {};
+            if (process.env.NODE_ENV !== 'production') {
+                this.log?.warn?.(`Menu item ${component.name} returned error ${e.message}`);
+            }
         }
         const name = component.name.split('/').pop();
         let query = '';
