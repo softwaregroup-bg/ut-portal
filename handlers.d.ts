@@ -30,6 +30,7 @@ export interface pageDescriptor {
 export type remotePage = {
     id: string,
     title: string,
+    [name: string]: string
     (params: {}): Promise<pageDescriptor>
 }
 
@@ -65,12 +66,12 @@ export interface handlers<location = ''> {
     handleTabShow?: (tab: remotePage | [remotePage, {id: string}] | {tabs: string, params: any}) => {},
     'portal.dropdown.list'?: ut.handler<dropdownParams, dropdownResult, location>,
     portalDropdownList?: ut.handler<dropdownParams, dropdownResult, location>,
-    'portal.menu.item'?: (page: pageParams) => menuItem,
-    portalMenuItem?: (page: pageParams) => menuItem,
-    'portal.tab.item'?: (page: pageParams) => tab,
-    portalTabItem?: (page: pageParams) => tab,
-    'portal.menu.help'?: (options: {}) => action,
-    portalMenuHelp?: (options: {}) => action,
+    'portal.menu.item'?: (this: ut.port, page: pageParams, $meta: ut.meta) => menuItem,
+    portalMenuItem?: (this: ut.port | void, page: pageParams) => menuItem,
+    'portal.tab.item'?: (this: ut.port | void, page: pageParams) => tab,
+    portalTabItem?: (this: ut.port | void, page: pageParams) => tab,
+    'portal.menu.help'?: (this: ut.port | void, options: {}) => action,
+    portalMenuHelp?: (this: ut.port | void, options: {}) => action,
 }
 
 export interface errors {
