@@ -5,7 +5,9 @@ const {resolve} = require('path');
 
 /** @type {import('@playwright/test').PlaywrightTestConfig<{ username: string, password: string }>} */
 const config = {
+    retries: 1,
     use: {
+        trace: 'on-first-retry',
         ...process.env.CHROME_BIN && {
             launchOptions: {
                 executablePath: process.env.CHROME_BIN

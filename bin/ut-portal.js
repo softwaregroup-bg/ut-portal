@@ -50,6 +50,23 @@ program
         );
     });
 
+program
+    .command('snapshot')
+    .description('Run snapshot tests')
+    .allowUnknownOption()
+    .allowExcessArguments()
+    .action((_, {args}) => {
+        spawnSync(
+            process.argv[0],
+            [
+                'ui.test',
+                ...args
+            ], {
+                stdio: 'inherit'
+            }
+        );
+    });
+
 const setStatus = async(state, description, url) => {
     const token = process.env.GITLAB_STATUS_TOKEN;
     const projectId = String(process.env.GIT_URL).match(/git@git\.softwaregroup\.com:(ut5(?:impl)?\/.*)\.git/)?.[1];
