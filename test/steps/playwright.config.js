@@ -18,7 +18,7 @@ const config = {
         username: process.env.UT_USERNAME,
         password: process.env.UT_PASSWORD
     },
-    testDir: resolve('.'),
+    testDir: resolve('.').replaceAll('\\', '/'),
     testMatch: /.*\.play\.(js|ts|mjs)/,
     outputDir: resolve('.lint/playwright'),
     reporter: [

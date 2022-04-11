@@ -73,14 +73,10 @@ module.exports = {
         '@storybook/addon-a11y',
         '@storybook/addon-storysource',
     ],
-    // core: {
-    //     builder: 'storybook-builder-vite',
-    // },
-    async viteFinal(config, { configType }) {
-        // customize the Vite config here
-        debugger;
-        config.plugins.splice(2, 1);
-        config.server.fsServe.root = 'K:/ut';
+    // core: { builder: "@storybook/builder-vite" },
+    async viteFinal(config) {
+        config.server.fs.strict = false;
+        config.root = process.cwd();
         return config;
     },
 };

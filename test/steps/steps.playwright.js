@@ -1,4 +1,5 @@
 const { spawn } = require('child_process');
+const { resolve, dirname } = require('path');
 
 const exec = async(command, args, options) => {
     return new Promise((resolve, reject) => {
@@ -27,15 +28,19 @@ module.exports = function steps({version, callSite, utBus}) {
                                 },
                                 ...rest
                             }) => exec(
-                                'playwright',
+                                '"' + process.execPath + '"',
                                 [
+                                    resolve(
+                                        dirname(require.resolve('@playwright/test/package.json')),
+                                        require('@playwright/test/package.json').bin.playwright
+                                    ),
                                     'test',
                                     '--config',
                                     require.resolve('./playwright.config')
                                 ].concat(
                                     Object.entries(rest)
                                         .filter(([key]) => /\.playwright$/.test(key))
-                                        .map(([, value]) => value.__dirname)
+                                        .map(([, value]) => value.__dirname.replace(/\\/g, '/'))
                                         .filter(Boolean)
                                 ).concat(
                                     Object.entries(utBus.config.playwright || {})
@@ -44,6 +49,7 @@ module.exports = function steps({version, callSite, utBus}) {
                                 ),
                                 {
                                     stdio: 'inherit',
+                                    shell: true,
                                     env: {
                                         // eslint-disable-next-line no-process-env
                                         ...process.env,
