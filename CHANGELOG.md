@@ -1,3 +1,12 @@
+## [7.38.13](https://github.com/softwaregroup-bg/ut-portal/compare/v7.38.12...v7.38.13) (2022-04-11)
+
+
+### Bug Fixes
+
+* run Playwright under Windows ([9eb6c36](https://github.com/softwaregroup-bg/ut-portal/commit/9eb6c36c11bbb22f6478316b9cc9ca5bf152ffd1))
+
+
+
 ## [7.38.12](https://github.com/softwaregroup-bg/ut-portal/compare/v7.38.11...v7.38.12) (2022-03-21)
 
 
