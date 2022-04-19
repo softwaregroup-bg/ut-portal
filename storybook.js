@@ -96,7 +96,7 @@ const main = async(config, name, path, params, handlers, dependencies, portal) =
         params.state = params.state || {};
         params.state.login = login;
         return {
-            page({theme = 'dark', backend}) {
+            page({theme = 'dark-compact', backend}) {
                 return container(params);
             }
         };
@@ -106,7 +106,7 @@ const main = async(config, name, path, params, handlers, dependencies, portal) =
     page.params = params;
     page.Component = await page.component(params);
     return {
-        page({theme = 'dark', backend}) {
+        page({theme = 'dark-compact', backend}) {
             return container({
                 theme: {
                     name: theme,
@@ -120,6 +120,7 @@ const main = async(config, name, path, params, handlers, dependencies, portal) =
                         }
                     }
                 },
+                devTool: true,
                 portalName: 'Test Portal',
                 state: {
                     error: {},
@@ -127,6 +128,7 @@ const main = async(config, name, path, params, handlers, dependencies, portal) =
                     portal: {
                         menu: [{
                             title: ' 🏠 ',
+                            id: 'home',
                             action: () => ({type: 'test'})
                         }],
                         tabs: [page]

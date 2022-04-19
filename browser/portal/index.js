@@ -1,5 +1,5 @@
 // @ts-check
-/** @type { import("../..").handlerSet } */
+/** @type { import("../../handlers").handlerSet } */
 module.exports = function portal() {
     return [
         require('./middleware'),

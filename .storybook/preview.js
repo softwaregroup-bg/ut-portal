@@ -1,15 +1,14 @@
-import {addDecorator, addParameters} from '@storybook/react';
-import {addReadme} from 'storybook-readme';
 if(process.env.NODE_ENV === 'production') require('./preview.global.css');
 
-addDecorator(addReadme);
-addParameters({
+export const parameters = ({
     layout: 'fullscreen',
     readme: {
-        codeTheme: 'github',
-        StoryPreview: ({
-            children
-        }) => children,
+        theme: {
+            textColor: 'white',
+            barBg: '#2b2b2b'
+        },
+        codeTheme: 'a11y-dark',
+        StoryPreview: ({children}) => children,
     },
 });
 
@@ -28,7 +27,7 @@ export const globalTypes = {
     theme: {
         name: 'Theme',
         description: 'Theme',
-        defaultValue: 'dark',
+        defaultValue: 'dark-compact',
         toolbar: {
             icon: 'eye',
             items: ['dark', 'light', 'dark-compact', 'light-compact'],

@@ -23,7 +23,7 @@ const tabMenu = (state = {tabs: [], active: {}}, {type, payload}) => {
     };
 };
 
-/** @type { import("../..").handlerFactory } */
+/** @type { import("../../handlers").handlerFactory } */
 module.exports = ({
     utMeta,
     config: {render: shouldRender, ...config} = {},
@@ -36,7 +36,8 @@ module.exports = ({
     },
     config: {
         theme,
-        portalName
+        portalName,
+        devTool
     } = {}
 }) => ({
     async ready() {
@@ -62,7 +63,8 @@ module.exports = ({
         if (shouldRender !== undefined && !shouldRender) return;
         const params = merge(await portalParamsGet({}, utMeta()), {
             theme,
-            portalName
+            portalName,
+            devTool
         });
         // @ts-ignore
         if (typeof document !== 'undefined') {

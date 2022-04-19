@@ -2,7 +2,7 @@
 // @ts-ignore
 const defaultIcon = require('./favicon.ico').default;
 
-/** @type { import("../..").handlerFactory } */
+/** @type { import("../../handlers").handlerFactory } */
 module.exports = ({
     config: {
         favicon,

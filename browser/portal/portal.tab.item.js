@@ -1,6 +1,6 @@
 // @ts-check
 
-/** @type { import("../..").handlerFactory } */
+/** @type { import("../../handlers").handlerFactory } */
 module.exports = ({
     config: {
         pages

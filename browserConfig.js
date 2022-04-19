@@ -15,6 +15,7 @@ module.exports = () => ({
             title: joi.string(),
             theme: joi.object(),
             portalName: joi.string().allow(''),
+            devTool: joi.boolean(),
             pages: joi.object().pattern(/\w*\.\w*\.\w*/, joi.object().keys({
                 icon: joi.string(),
                 title: joi.string()

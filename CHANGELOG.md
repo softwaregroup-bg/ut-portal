@@ -1,3 +1,152 @@
+## [7.38.13](https://github.com/softwaregroup-bg/ut-portal/compare/v7.38.12...v7.38.13) (2022-04-11)
+
+
+### Bug Fixes
+
+* run Playwright under Windows ([9eb6c36](https://github.com/softwaregroup-bg/ut-portal/commit/9eb6c36c11bbb22f6478316b9cc9ca5bf152ffd1))
+
+
+
+## [7.38.12](https://github.com/softwaregroup-bg/ut-portal/compare/v7.38.11...v7.38.12) (2022-03-21)
+
+
+
+## [7.38.11](https://github.com/softwaregroup-bg/ut-portal/compare/v7.38.10...v7.38.11) (2022-03-18)
+
+
+
+## [7.38.10](https://github.com/softwaregroup-bg/ut-portal/compare/v7.38.9...v7.38.10) (2022-03-17)
+
+
+### Bug Fixes
+
+* warn about erroring menus ([806ad05](https://github.com/softwaregroup-bg/ut-portal/commit/806ad05ad308d41ccd2ca639be910e094accbed8))
+
+
+
+## [7.38.9](https://github.com/softwaregroup-bg/ut-portal/compare/v7.38.8...v7.38.9) (2022-03-17)
+
+
+### Bug Fixes
+
+* show missing menus during development ([0feece5](https://github.com/softwaregroup-bg/ut-portal/commit/0feece52d68d454c51e24cb3571dbb4ddad555f5))
+
+
+
+## [7.38.8](https://github.com/softwaregroup-bg/ut-portal/compare/v7.38.7...v7.38.8) (2022-03-11)
+
+
+
+## [7.38.7](https://github.com/softwaregroup-bg/ut-portal/compare/v7.38.6...v7.38.7) (2022-03-02)
+
+
+
+## [7.38.6](https://github.com/softwaregroup-bg/ut-portal/compare/v7.38.5...v7.38.6) (2022-02-25)
+
+
+
+## [7.38.5](https://github.com/softwaregroup-bg/ut-portal/compare/v7.38.4...v7.38.5) (2022-02-24)
+
+
+### Bug Fixes
+
+* testMatch ([046cd31](https://github.com/softwaregroup-bg/ut-portal/commit/046cd3187b7554aae10da17b599eb605d37eb2bc))
+
+
+
+## [7.38.4](https://github.com/softwaregroup-bg/ut-portal/compare/v7.38.3...v7.38.4) (2022-02-24)
+
+
+### Bug Fixes
+
+* playwright output ([9bc1aee](https://github.com/softwaregroup-bg/ut-portal/commit/9bc1aee2f3e3e7df412f81ddbe4004a322dea326))
+
+
+
+## [7.38.3](https://github.com/softwaregroup-bg/ut-portal/compare/v7.38.2...v7.38.3) (2022-02-23)
+
+
+### Bug Fixes
+
+* use preinstalled chromium ([35c61ee](https://github.com/softwaregroup-bg/ut-portal/commit/35c61ee0160e45a75778d4403acc59764bcfb841))
+
+
+
+## [7.38.2](https://github.com/softwaregroup-bg/ut-portal/compare/v7.38.1...v7.38.2) (2022-02-22)
+
+
+### Bug Fixes
+
+* async exec #UTCORE-121 ([379bba1](https://github.com/softwaregroup-bg/ut-portal/commit/379bba1f40e944d24dfd9d0080a37ac7548be1c6)), closes [#UTCORE-121](https://github.com/softwaregroup-bg/ut-portal/issues/UTCORE-121)
+
+
+
+## [7.38.1](https://github.com/softwaregroup-bg/ut-portal/compare/v7.38.0...v7.38.1) (2022-02-22)
+
+
+
+# [7.38.0](https://github.com/softwaregroup-bg/ut-portal/compare/v7.37.15...v7.38.0) (2022-02-21)
+
+
+### Features
+
+* playwright tests ([0a13060](https://github.com/softwaregroup-bg/ut-portal/commit/0a130603e3ff7c9f7272ea015a5349feba286380))
+
+
+
+## [7.37.15](https://github.com/softwaregroup-bg/ut-portal/compare/v7.37.14...v7.37.15) (2022-02-18)
+
+
+
+## [7.37.14](https://github.com/softwaregroup-bg/ut-portal/compare/v7.37.13...v7.37.14) (2022-02-18)
+
+
+
+## [7.37.13](https://github.com/softwaregroup-bg/ut-portal/compare/v7.37.12...v7.37.13) (2022-02-18)
+
+
+
+## [7.37.12](https://github.com/softwaregroup-bg/ut-portal/compare/v7.37.11...v7.37.12) (2022-02-18)
+
+
+
+## [7.37.11](https://github.com/softwaregroup-bg/ut-portal/compare/v7.37.10...v7.37.11) (2022-02-16)
+
+
+
+## [7.37.10](https://github.com/softwaregroup-bg/ut-portal/compare/v7.37.9...v7.37.10) (2022-02-14)
+
+
+### Bug Fixes
+
+* build status handling #UTCORE-121 ([b21da7c](https://github.com/softwaregroup-bg/ut-portal/commit/b21da7cc6d0f942dc9c7a0ae508d0e55b24ede7f)), closes [#UTCORE-121](https://github.com/softwaregroup-bg/ut-portal/issues/UTCORE-121)
+
+
+
+## [7.37.9](https://github.com/softwaregroup-bg/ut-portal/compare/v7.37.8...v7.37.9) (2022-02-07)
+
+
+
+## [7.37.8](https://github.com/softwaregroup-bg/ut-portal/compare/v7.37.7...v7.37.8) (2022-02-07)
+
+
+
+## [7.37.7](https://github.com/softwaregroup-bg/ut-portal/compare/v7.37.6...v7.37.7) (2022-02-07)
+
+
+
+## [7.37.6](https://github.com/softwaregroup-bg/ut-portal/compare/v7.37.5...v7.37.6) (2022-02-07)
+
+
+
+## [7.37.5](https://github.com/softwaregroup-bg/ut-portal/compare/v7.37.4...v7.37.5) (2022-02-07)
+
+
+
+## [7.37.4](https://github.com/softwaregroup-bg/ut-portal/compare/v7.37.3...v7.37.4) (2022-02-07)
+
+
+
 ## [7.37.3](https://github.com/softwaregroup-bg/ut-portal/compare/v7.37.2...v7.37.3) (2022-01-24)
 
 
