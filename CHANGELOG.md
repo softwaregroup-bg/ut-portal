@@ -1,3 +1,12 @@
+## [8.0.2](https://github.com/softwaregroup-bg/ut-portal/compare/v8.0.1...v8.0.2) (2022-05-03)
+
+
+### Bug Fixes
+
+* css modules ([cd46740](https://github.com/softwaregroup-bg/ut-portal/commit/cd46740624117ca23e5f36641b81e00c815f3974))
+
+
+
 ## [8.0.1](https://github.com/softwaregroup-bg/ut-portal/compare/v7.38.14...v8.0.1) (2022-05-03)
 
 
