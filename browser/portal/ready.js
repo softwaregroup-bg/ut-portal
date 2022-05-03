@@ -4,7 +4,7 @@ const {render} = require('react-dom');
 const {renderToString} = require('react-dom/server');
 const merge = require('ut-function.merge');
 
-const App = require('ut-front-devextreme/core/App');
+const App = require('ut-prime/core/App');
 
 const {REDUCE} = require('./actionTypes');
 
