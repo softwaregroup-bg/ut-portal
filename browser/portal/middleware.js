@@ -1,13 +1,8 @@
 // @ts-check
-const {isImmutable, fromJS} = require('immutable');
+const merge = require('ut-function.merge');
 
-/**
- * Convert action.params to plain js when action.params is immutable
- */
 const cloneParams = (params) => {
-    if (isImmutable(params)) {
-        return params.toJS(); // no need to clone as toJS returns a new instance
-    } else if (params instanceof Array) {
+    if (params instanceof Array) {
         return params.slice();
     } else {
         return Object.assign({}, params);
@@ -52,12 +47,16 @@ module.exports = ({
         const rpc = store => next => action => {
             if (action.method) {
                 let importMethodParams = {};
-                const $meta = fromJS({$http: {mtid: ((action.mtid === 'notification' && 'notification') || 'request')}});
-                let methodParams = fromJS(cloneParams(action.params))
-                    .mergeDeep($meta);
+                const methodParams = merge(
+                    cloneParams(action.params), {
+                        $http: {
+                            mtid: action.mtid === 'notification' ? 'notification' : 'request'
+                        }
+                    }
+                );
 
                 if (action.$http) {
-                    methodParams = methodParams.mergeDeep(fromJS({$http: action.$http}));
+                    merge(methodParams, {$http: action.$http});
                 }
 
                 if (action.requestTimeout) {
@@ -71,7 +70,7 @@ module.exports = ({
                     return next(action);
                 }
 
-                return utMethod(action.method, importMethodParams)(methodParams.toJS(), utMeta())
+                return utMethod(action.method, importMethodParams)(methodParams, utMeta())
                     .then(result => {
                         action.result = result;
                         return result;

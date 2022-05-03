@@ -1,4 +1,3 @@
-const immutable = require('immutable');
 const merge = require('ut-function.merge');
 
 const main = async(config, name, path, params, handlers, dependencies, portal) => {
@@ -66,7 +65,7 @@ const main = async(config, name, path, params, handlers, dependencies, portal) =
         }, config],
         method: 'debug'
     });
-    const login = immutable.fromJS(merge({
+    const login = merge({
         profile: {
             initials: 'SA'
         },
@@ -90,7 +89,7 @@ const main = async(config, name, path, params, handlers, dependencies, portal) =
                 actionId: '%.delete'
             }]
         }
-    }, await handlers?.login?.()));
+    }, await handlers?.login?.());
     if (portal) {
         const params = await importMethod('portal.params.get')({});
         params.state = params.state || {};
