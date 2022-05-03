@@ -26,7 +26,7 @@ module.exports = {
                 rule.exclude = lazy;
                 rule.use[1].options = rule.use[1].options || {};
                 rule.use[1].options.modules = rule.use[1].options.modules || {}
-                rule.use[1].options.modules.auto = /\.module\.css$|node_modules[/\\]ut-.+(?!\.global)\.css|(?:^\/app\/|impl-[^/\\]+[/\\])(?!node_modules[/\\]).+(?!\.global)\.css$/;
+                rule.use[1].options.modules.auto = /\.module\.css$/;
             }
         });
         // config.module.rules.push({
