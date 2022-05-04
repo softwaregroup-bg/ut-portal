@@ -110,9 +110,11 @@ program
                 ], {
                     stdio: ['inherit', 'pipe', 'pipe'],
                     ...process.env.GITLAB_CHECKOUT_SHA && process.env.BRANCH_NAME && {
-                        ...process.env,
-                        CHROMATIC_SHA: process.env.GITLAB_CHECKOUT_SHA,
-                        CHROMATIC_BRANCH: process.env.BRANCH_NAME
+                        env: {
+                            ...process.env,
+                            CHROMATIC_SHA: process.env.GITLAB_CHECKOUT_SHA,
+                            CHROMATIC_BRANCH: process.env.BRANCH_NAME
+                        }
                     },
                     ...process.env.GITLAB_OA_LAST_COMMIT_ID && {
                         env: {
