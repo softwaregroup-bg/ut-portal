@@ -4,6 +4,8 @@ module.exports = ({mains = {}} = {}) => ({
         mains
     },
     use: [utBrowser({
+        postcss: false,
+        cssModules: /\.module\.css$/,
         csp: {
             nonceEnabled: {
                 'style-src': false
