@@ -1,3 +1,12 @@
+## [8.0.6](https://github.com/softwaregroup-bg/ut-portal/compare/v8.0.5...v8.0.6) (2022-05-12)
+
+
+### Bug Fixes
+
+* css modules defaults #UTCORE-121 ([b5fb7c9](https://github.com/softwaregroup-bg/ut-portal/commit/b5fb7c94400e1e53f2d8ab6aa062b6e7edf48871)), closes [#UTCORE-121](https://github.com/softwaregroup-bg/ut-portal/issues/UTCORE-121)
+
+
+
 ## [8.0.5](https://github.com/softwaregroup-bg/ut-portal/compare/v8.0.4...v8.0.5) (2022-05-04)
 
 
