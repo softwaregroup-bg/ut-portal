@@ -1,3 +1,12 @@
+## [8.0.9](https://github.com/softwaregroup-bg/ut-portal/compare/v8.0.8...v8.0.9) (2022-06-03)
+
+
+### Bug Fixes
+
+* config ([95da793](https://github.com/softwaregroup-bg/ut-portal/commit/95da79384a44f0fce78668700a7553da2bda5483))
+
+
+
 ## [8.0.8](https://github.com/softwaregroup-bg/ut-portal/compare/v8.0.7...v8.0.8) (2022-06-03)
 
 
