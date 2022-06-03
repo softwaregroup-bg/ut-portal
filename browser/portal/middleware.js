@@ -15,7 +15,7 @@ module.exports = ({
     utMeta
 }) => ({
     middleware() {
-        const route = store => next => async action => {
+        const route = store => next => action => {
             if (action.type !== 'portal.route.find') return next(action);
             const {pathname: path, searchParams} = new URL('ut-portal:' + action.path);
             if (typeof path !== 'string' || !path.includes('/')) return next(action);
