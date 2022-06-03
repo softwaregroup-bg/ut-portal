@@ -1,5 +1,13 @@
 module.exports = () => ({
     // environments
+    common: {
+        help: {
+            module: {
+                policy: 'ut-user',
+                bulk: 'ut-bulk-payment'
+            }
+        }
+    },
     storybook: {
         browser: true,
         portal: {
@@ -21,7 +29,8 @@ module.exports = () => ({
                 title: joi.string()
             })),
             help: joi.object({
-                default: joi.string()
+                default: joi.string(),
+                module: joi.object()
             }).pattern(joi.string(), joi.string())
         })
     })

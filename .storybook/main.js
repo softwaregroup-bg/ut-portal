@@ -1,4 +1,4 @@
-const lazy = /(devextreme[/\\]dist[/\\]css[/\\]dx\.(?!common).+\.css$)|(primereact[/\\]resources[/\\]themes[/\\].+\.css$)/i;
+const lazy = /primereact[/\\]resources[/\\]themes[/\\].+\.css$/i;
 
 module.exports = {
     // TODO consider https://www.npmjs.com/package/neutrino-middleware-storybook
@@ -59,14 +59,14 @@ module.exports = {
     },
     typescript: {
         check: false,
-        reactDocgen: false,
+        reactDocgen: 'react-docgen-typescript',
     },
     features: {
         // storyStoreV7: true,
         // buildStoriesJson: true,
         postcss: false
     },
-    stories: [process.cwd().replace(/\\/g, '/') + '/portal/**/*.stories.js'],
+    stories: [process.cwd().replace(/\\/g, '/') + '/portal/**/*.stories.(js|tsx|mdx)'],
     addons: [
         '@storybook/addon-essentials',
         '@storybook/addon-interactions',
