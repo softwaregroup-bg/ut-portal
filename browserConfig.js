@@ -1,10 +1,12 @@
 module.exports = () => ({
     // environments
     common: {
-        help: {
-            module: {
-                policy: 'ut-user',
-                bulk: 'ut-bulk-payment'
+        portal: {
+            help: {
+                module: {
+                    policy: 'ut-user',
+                    bulk: 'ut-bulk-payment'
+                }
             }
         }
     },
