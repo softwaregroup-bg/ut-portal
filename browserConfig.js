@@ -3,6 +3,7 @@ module.exports = () => ({
     common: {
         portal: {
             help: {
+                default: '/a/help',
                 module: {
                     policy: 'ut-user',
                     bulk: 'ut-bulk-payment'
