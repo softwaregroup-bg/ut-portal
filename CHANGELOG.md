@@ -1,3 +1,12 @@
+## [8.0.8](https://github.com/softwaregroup-bg/ut-portal/compare/v8.0.7...v8.0.8) (2022-06-03)
+
+
+### Bug Fixes
+
+* help url ([f13ac4d](https://github.com/softwaregroup-bg/ut-portal/commit/f13ac4df63f1fb62345928acb7195d59ade1c6be))
+
+
+
 ## [8.0.7](https://github.com/softwaregroup-bg/ut-portal/compare/v8.0.6...v8.0.7) (2022-05-19)
 
 
