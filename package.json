@@ -71,10 +71,10 @@
     "ut-port-script": "^7.2.0",
     "ut-prime": "^2.2.2",
     "ut-run": "^10.69.1",
-    "ut-tools": "^6.41.2"
+    "ut-tools": "^6.41.2",
+    "ut-webpack": "^6.41.2"
   },
   "peerDependencies": {
-    "ut-browser": "^7.7.2",
     "ut-login": "^7.19.5",
     "ut-port-http": "^8.9.3",
     "ut-port-jsonrpc": "^7.3.1",
