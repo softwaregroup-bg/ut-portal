@@ -1,9 +1,8 @@
-const utBrowser = require('ut-webpack/preset'); // eslint-disable-line
-module.exports = ({mains = {}} = {}) => ({
+module.exports = ({utWebpack}) => ({mains = {}} = {}) => ({
     options: {
         mains
     },
-    use: [utBrowser({
+    use: [utWebpack({
         postcss: false,
         cssModules: /\.module\.css$/,
         csp: {
