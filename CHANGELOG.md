@@ -1,3 +1,12 @@
+## [9.0.2](https://github.com/softwaregroup-bg/ut-portal/compare/v9.0.1...v9.0.2) (2022-06-12)
+
+
+### Bug Fixes
+
+* global ut-webpack ([eadafc0](https://github.com/softwaregroup-bg/ut-portal/commit/eadafc0b76364ab52862fb78580e74fd0b3a9954))
+
+
+
 ## [9.0.1](https://github.com/softwaregroup-bg/ut-portal/compare/v8.0.11...v9.0.1) (2022-06-12)
 
 
