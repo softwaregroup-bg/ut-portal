@@ -71,8 +71,7 @@
     "ut-port-script": "^7.2.0",
     "ut-prime": "^2.2.2",
     "ut-run": "^10.69.1",
-    "ut-tools": "^6.41.2",
-    "ut-webpack": "^8.0.1"
+    "ut-tools": "^6.41.2"
   },
   "peerDependencies": {
     "ut-login": "^7.19.5",
