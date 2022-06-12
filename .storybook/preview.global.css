@@ -1,4 +1,0 @@
-/* hide ink-bar for screenshots */
-:global(.p-tabview .p-tabview-nav .p-tabview-ink-bar) {
-    display: none !important;
-}
