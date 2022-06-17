@@ -1,3 +1,12 @@
+# [9.1.0](https://github.com/softwaregroup-bg/ut-portal/compare/v9.0.2...v9.1.0) (2022-06-17)
+
+
+### Features
+
+* handle.action ([385ab18](https://github.com/softwaregroup-bg/ut-portal/commit/385ab18a25ff756168b9da7a300e4f5e1e9ff816))
+
+
+
 ## [9.0.2](https://github.com/softwaregroup-bg/ut-portal/compare/v9.0.1...v9.0.2) (2022-06-12)
 
 
