@@ -1,5 +1,5 @@
 const {REDUCE} = require('./portal/actionTypes');
-
+const template = require('ut-function.template');
 module.exports = (...params) => class handle extends require('ut-port-script')(...params) {
     get defaults() {
         return {
@@ -23,30 +23,45 @@ module.exports = (...params) => class handle extends require('ut-port-script')(.
         return super.request(event, ...rest);
     }
 
-    exec(...params) {
-        const $meta = params && params.length > 1 && params[params.length - 1];
+    exec(...args) {
+        const $meta = args && args.length > 1 && args[args.length - 1];
         const method = ($meta && $meta.method);
         switch (method) {
             case 'handle.dispatch.set':
-                this.dispatch = params[0];
+                this.dispatch = args[0];
                 return true;
             case 'handle.tab.show':
-                if (typeof params[0] === 'function') {
-                    return this.dispatch({type: 'front.tab.show', tab: params[0]});
+                if (typeof args[0] === 'function') {
+                    return this.dispatch({type: 'front.tab.show', tab: args[0]});
                 } else {
                     return this.dispatch({
-                        ...(Array.isArray(params[0])) ? {
-                            tab: params[0][0],
-                            params: params[0][1]
-                        } : params[0],
+                        ...(Array.isArray(args[0])) ? {
+                            tab: args[0][0],
+                            params: args[0][1]
+                        } : args[0],
                         type: 'front.tab.show'
                     });
                 }
             case 'handle.error.open':
                 return this.dispatch({
                     type: 'front.error.open',
-                    error: params[0]
+                    error: args[0]
                 });
+            case 'handle.action': {
+                const [[action, params]] = args;
+                if (typeof action.action === 'function') return action.action(params);
+                const name = template(action.action, params);
+                const tabParams = action.params && JSON.parse(template(JSON.stringify(action.params), params, {}, 'json'));
+                switch (action.type || 'tab') {
+                    case 'tab':
+                        return this.dispatch({
+                            tab: this.bus.importMethod(`component/${name}`),
+                            params: tabParams,
+                            type: 'front.tab.show'
+                        });
+                }
+                return false;
+            }
         }
         const reducer = method && this.findHandler(method + 'Reduce');
         return this.dispatch(async(dispatch, getState) => {

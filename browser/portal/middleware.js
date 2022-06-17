@@ -1,6 +1,3 @@
-// @ts-check
-const merge = require('ut-function.merge');
-
 const cloneParams = (params) => {
     if (params instanceof Array) {
         return params.slice();
@@ -46,22 +43,6 @@ module.exports = ({
 
         const rpc = store => next => action => {
             if (action.method) {
-                let importMethodParams = {};
-                const methodParams = merge(
-                    cloneParams(action.params), {
-                        $http: {
-                            mtid: action.mtid === 'notification' ? 'notification' : 'request'
-                        }
-                    }
-                );
-
-                if (action.$http) {
-                    merge(methodParams, {$http: action.$http});
-                }
-
-                if (action.requestTimeout) {
-                    importMethodParams = Object.assign({}, importMethodParams, {timeout: action.requestTimeout});
-                }
                 action.methodRequestState = 'requested';
                 next(action);
 
@@ -70,7 +51,9 @@ module.exports = ({
                     return next(action);
                 }
 
-                return utMethod(action.method, importMethodParams)(methodParams, utMeta())
+                return utMethod(action.method, {
+                    timeout: action.requestTimeout
+                })(cloneParams(action.params), utMeta())
                     .then(result => {
                         action.result = result;
                         return result;
