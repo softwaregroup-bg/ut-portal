@@ -1,3 +1,12 @@
+## [9.1.5](https://github.com/softwaregroup-bg/ut-portal/compare/v9.1.4...v9.1.5) (2022-06-24)
+
+
+### Bug Fixes
+
+* neutrino ([f9e67c0](https://github.com/softwaregroup-bg/ut-portal/commit/f9e67c080834a8110738eb84c86dd286f7a2f92a))
+
+
+
 ## [9.1.4](https://github.com/softwaregroup-bg/ut-portal/compare/v9.1.3...v9.1.4) (2022-06-23)
 
 
