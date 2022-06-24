@@ -1,4 +1,4 @@
-module.exports = ({utWebpack}) => ({mains = {}} = {}) => ({
+module.exports = ({mains = {}} = {}) => ({utWebpack}) => ({
     options: {
         mains
     },
