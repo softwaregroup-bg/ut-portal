@@ -11,7 +11,7 @@ const exec = async(command, args, options) => {
 
 module.exports = function steps({version, callSite, utBus}) {
     return {
-        'steps.portal.playwright.run'() {
+        'steps.portal.playwright.run'(userStep = 'playwright.credentials') {
             return {
                 ...callSite?.(),
                 name: 'run playwright',
@@ -23,9 +23,13 @@ module.exports = function steps({version, callSite, utBus}) {
                             params: ({
                                 generateAdmin: {
                                     hash: {
-                                        identifier: username
+                                        identifier
                                     }
                                 },
+                                [userStep]: {
+                                    username = identifier,
+                                    password = '123'
+                                } = {},
                                 ...rest
                             }) => exec(
                                 '"' + process.execPath + '"',
@@ -55,7 +59,7 @@ module.exports = function steps({version, callSite, utBus}) {
                                         ...process.env,
                                         UT_URL: utBus.info().uri,
                                         UT_USERNAME: username,
-                                        UT_PASSWORD: '123'
+                                        UT_PASSWORD: password
                                     }
                                 }
                             ),
