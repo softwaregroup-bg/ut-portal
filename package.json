@@ -67,6 +67,7 @@
     "ut-cache": "^6.0.1",
     "ut-browser": "^7.7.4",
     "ut-dispatch-db": "^1.4.1",
+    "ut-db": "^8.5.6",
     "ut-login": "^7.19.6",
     "ut-port-http": "^8.9.3",
     "ut-port-jsonrpc": "^7.3.1",
