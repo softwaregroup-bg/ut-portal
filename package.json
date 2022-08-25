@@ -65,11 +65,14 @@
     "tslib": "^2.4.0",
     "typescript": "^4.7.3",
     "ut-browser": "^7.7.4",
+    "ut-dispatch-db": "^1.4.1",
     "ut-login": "^7.19.6",
     "ut-port-http": "^8.9.3",
     "ut-port-jsonrpc": "^7.3.1",
     "ut-port-script": "^7.2.0",
-    "ut-run": "^10.69.4"
+    "ut-port-sql": "^8.0.2",
+    "ut-run": "^10.70.6",
+    "uuid": "8.3.2"
   },
   "peerDependencies": {
     "ut-login": "^7.19.6",
@@ -97,7 +100,7 @@
     "pretest": "ut-pretest",
     "preversion": "ut-preversion",
     "test": "ut-test-parallel",
-    "version": "ut-storybook build && ut-storybook publish && ut-version",
+    "version": "node build && ut-storybook build && ut-storybook publish && git add handlers.d.ts system/api && ut-version",
     "jenkins": "ut-jenkins",
     "gitlab": "ut-gitlab"
   },
