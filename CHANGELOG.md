@@ -1,3 +1,12 @@
+## [9.1.9](https://github.com/softwaregroup-bg/ut-portal/compare/v9.1.8...v9.1.9) (2022-08-25)
+
+
+### Bug Fixes
+
+* move types ([6341d3a](https://github.com/softwaregroup-bg/ut-portal/commit/6341d3afc5dacce912ff0afa2e439924a52ccefe))
+
+
+
 ## [9.1.8](https://github.com/softwaregroup-bg/ut-portal/compare/v9.1.7...v9.1.8) (2022-08-24)
 
 
