@@ -1,12 +1,12 @@
 // @ts-check
 
-/** @type { import("../../handlers").handlerFactory } */
+/** @type { import("../..").handlerFactory } */
 module.exports = ({
     config: {
         pages
     } = {}
 }) => ({
-    async 'portal.menu.item'(params, $meta) {
+    async 'portal.menu.item'(params) {
         let {id, title, component: _, ...rest} = params;
         const component = typeof params === 'function' ? params : params.component;
         let page;

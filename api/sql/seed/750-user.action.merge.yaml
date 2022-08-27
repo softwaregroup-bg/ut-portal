@@ -1,5 +1,6 @@
 category:
   - name: 'portal'
 action:
+  - {category: 'portal', action: 'portal.component.get', description: 'Read UI configuration'}
   - {category: 'portal', action: 'portal.component.edit', description: 'Configure UI'}
   - {category: 'portal', action: 'portal.component.delete', description: 'Delete UI config'}

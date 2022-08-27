@@ -22,7 +22,7 @@ const nodes = result => {
     return result.filter(item => item.parent == null);
 };
 
-/** @type { import("../../handlers").handlerFactory } */
+/** @type { import("../..").handlerFactory } */
 module.exports = ({
     utMethod
 }) => ({

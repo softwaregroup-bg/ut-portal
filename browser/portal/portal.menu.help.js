@@ -1,12 +1,12 @@
 // @ts-check
 
-/** @type { import("../../handlers").handlerFactory } */
+/** @type { import("../..").handlerFactory } */
 module.exports = ({
     config: {
         help
     } = {}
 }) => ({
-    'portal.menu.help'(params) {
+    'portal.menu.help'() {
         return help && {
             title: 'Help',
             action: () => {

@@ -2,6 +2,7 @@ module.exports = () => ({
     // environments
     common: {
         portal: {
+            customization: true,
             help: {
                 default: '/a/help',
                 module: {
@@ -21,6 +22,7 @@ module.exports = () => ({
         browser: joi.boolean(),
         portal: joi.object({
             render: joi.boolean(),
+            customization: joi.boolean(),
             loginPage: joi.string(),
             favicon: joi.string(),
             title: joi.string(),

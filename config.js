@@ -2,19 +2,14 @@ const test = {
     sqlStandard: true
 };
 
-const key = ({componentId}) => ({
-    id: String(componentId),
-    segment: 'portal.component'
-});
-
 module.exports = () => ({
     // environments
     common: {
         portalDispatch: {
             import: {
-                'db/portal.component.edit': {cache: {key}},
-                'db/portal.component.delete': {cache: {key}},
-                'db/portal.component.get': {cache: {key}}
+                'db/portal.component.get': {cache: {key: ({componentId: id}) => ({id, segment: 'portal.component'})}},
+                'db/portal.component.edit': {cache: {key: ({component: {componentId: id}}) => ({id, segment: 'portal.component'})}},
+                'db/portal.component.delete': {cache: {key: ({componentId: [id]}) => ({id, segment: 'portal.component'})}}
             }
         }
     },
