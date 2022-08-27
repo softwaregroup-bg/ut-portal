@@ -123,7 +123,7 @@ interface methods extends core.handlers {}
 export type libFactory = ut.libFactory<methods, errors>
 export type handlerFactory = ut.handlerFactory<methods, errors, handlers<'local'>>
 export type handlerSet = ut.handlerSet<methods, errors, handlers<'local'>>
-export type test = ut.test<keyof methods | keyof handlers>
+export type test = ut.test<methods & handlers>
 
 import portal from 'ut-portal'
 export type pageFactory = portal.pageFactory<methods, errors>

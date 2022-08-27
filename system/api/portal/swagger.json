@@ -2,7 +2,7 @@
     "info": {
         "description": "UT Microservice API",
         "title": "portal",
-        "version": "9.2.0-db.0"
+        "version": "9.2.0-db.1"
     },
     "paths": {
         "/rpc/portal/component/delete": {
