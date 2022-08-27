@@ -2,7 +2,7 @@
     "info": {
         "description": "UT Microservice API",
         "title": "portal",
-        "version": "9.1.9"
+        "version": "9.2.0-db.0"
     },
     "openapi": "3.0.0",
     "paths": {
