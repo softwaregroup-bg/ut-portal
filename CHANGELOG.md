@@ -1,3 +1,12 @@
+# [9.2.0](https://github.com/softwaregroup-bg/ut-portal/compare/v9.1.9...v9.2.0) (2022-08-29)
+
+
+### Features
+
+* customization api ([ed5c035](https://github.com/softwaregroup-bg/ut-portal/commit/ed5c035617d3bd515a1cb2498ee5653a06747126))
+
+
+
 ## [9.1.9](https://github.com/softwaregroup-bg/ut-portal/compare/v9.1.8...v9.1.9) (2022-08-25)
 
 
