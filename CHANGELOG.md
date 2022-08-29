@@ -1,3 +1,12 @@
+## [9.2.3](https://github.com/softwaregroup-bg/ut-portal/compare/v9.2.2...v9.2.3) (2022-08-29)
+
+
+### Bug Fixes
+
+* core.component.get mock ([887724b](https://github.com/softwaregroup-bg/ut-portal/commit/887724be3917be032a1178224a2a036ef207c212))
+
+
+
 ## [9.2.2](https://github.com/softwaregroup-bg/ut-portal/compare/v9.2.1...v9.2.2) (2022-08-29)
 
 
