@@ -23,7 +23,7 @@ const tabMenu = (state = {tabs: [], active: {}}, {type, payload}) => {
     };
 };
 
-/** @type { import("../../handlers").handlerFactory } */
+/** @type { import("../..").handlerFactory } */
 module.exports = ({
     utMeta,
     config: {render: shouldRender, ...config} = {},
@@ -35,6 +35,7 @@ module.exports = ({
         middleware
     },
     config: {
+        customization,
         theme,
         portalName,
         devTool
@@ -44,9 +45,9 @@ module.exports = ({
         const reducers = Object.assign({}, ...await this.fireEvent('reducer', {}, 'asyncMap'), {pages, tabMenu});
 
         // @ts-ignore
-        const container = ({menu, rightMenu, rightMenuItems, portal, state, ...params} = {}) => createElement(App, {
+        const container = ({menu, rightMenu, rightMenuItems, portal, state, ...appParams} = {}) => createElement(App, {
             ...config,
-            ...params,
+            ...appParams,
             state: {
                 portal: {menu, rightMenu, rightMenuItems, ...portal},
                 ...state
@@ -62,6 +63,7 @@ module.exports = ({
 
         if (shouldRender !== undefined && !shouldRender) return;
         const params = merge(await portalParamsGet({}, utMeta()), {
+            customization,
             theme,
             portalName,
             devTool

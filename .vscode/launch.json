@@ -2,13 +2,32 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Test",
             "type": "node",
             "request": "launch",
-            "program": "${workspaceRoot}/test/index.test.js",
+            "name": "Storybook",
+            "runtimeExecutable": "npm",
+            "runtimeArgs": [
+                "run-script",
+                "storybook"
+            ],
+            "console": "integratedTerminal",
             "args": [
-                "--run.logLevel=trace",
-                "--utPort.logLevel=trace"
+                "test"
+            ],
+            "autoAttachChildProcesses": false,
+            "skipFiles": [
+                "<node_internals>/**"
+            ]
+        },
+        {
+            "name": "Test UI",
+            "type": "node",
+            "request": "launch",
+            "program": "${workspaceRoot}/ui.test.js",
+            "args": [
+                "--run.logLevel=trace"
+                // ,"--playwright.headed"
+                // ,"--playwright.update-snapshots"
             ],
             "cwd": "${workspaceRoot}",
             "console": "integratedTerminal",
@@ -20,6 +39,7 @@
             "env": {
                 "UT_ENV": "test",
                 "NODE_PATH": "dev"
+                // "PWDEBUG": 1
             },
             "outputCapture": "std"
         },
@@ -27,7 +47,7 @@
             "name": "Test single",
             "type": "node",
             "request": "launch",
-            "program": "${workspaceRoot}/test/index.test.js",
+            "program": "${workspaceRoot}/index.test.js",
             "args": [
                 "--run.logLevel=trace",
                 "--run.test.prompt"

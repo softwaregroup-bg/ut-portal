@@ -6,13 +6,13 @@ const cloneParams = (params) => {
     }
 };
 
-/** @type { import("../../handlers").libFactory } */
+/** @type { import("../..").libFactory } */
 module.exports = ({
     utMethod,
     utMeta
 }) => ({
     middleware() {
-        const route = store => next => action => {
+        const route = _store => next => action => {
             if (action.type !== 'portal.route.find') return next(action);
             const {pathname: path, searchParams} = new URL('ut-portal:' + action.path);
             if (typeof path !== 'string' || !path.includes('/')) return next(action);
@@ -41,7 +41,7 @@ module.exports = ({
             } : action);
         };
 
-        const rpc = store => next => action => {
+        const rpc = _store => next => action => {
             if (action.method) {
                 action.methodRequestState = 'requested';
                 next(action);

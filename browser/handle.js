@@ -23,6 +23,35 @@ module.exports = (...params) => class handle extends require('ut-port-script')(.
         return super.request(event, ...rest);
     }
 
+    action(...args) {
+        const [[action, actionParams]] = args;
+        if (typeof action.action === 'function') return action.action(actionParams);
+        const name = template(action.action, actionParams);
+        const tabParams = action.params && JSON.parse(template(JSON.stringify(action.params), actionParams, {}, 'json'));
+        if ((action.type || 'tab') === 'tab') {
+            return this.dispatch({
+                tab: this.bus.importMethod(`component/${name}`),
+                params: tabParams,
+                type: 'front.tab.show'
+            });
+        }
+        return false;
+    }
+
+    tab(...args) {
+        if (typeof args[0] === 'function') {
+            return this.dispatch({type: 'front.tab.show', tab: args[0]});
+        } else {
+            return this.dispatch({
+                ...(Array.isArray(args[0])) ? {
+                    tab: args[0][0],
+                    params: args[0][1]
+                } : args[0],
+                type: 'front.tab.show'
+            });
+        }
+    }
+
     exec(...args) {
         const $meta = args && args.length > 1 && args[args.length - 1];
         const method = ($meta && $meta.method);
@@ -30,41 +59,17 @@ module.exports = (...params) => class handle extends require('ut-port-script')(.
             case 'handle.dispatch.set':
                 this.dispatch = args[0];
                 return true;
-            case 'handle.tab.show':
-                if (typeof args[0] === 'function') {
-                    return this.dispatch({type: 'front.tab.show', tab: args[0]});
-                } else {
-                    return this.dispatch({
-                        ...(Array.isArray(args[0])) ? {
-                            tab: args[0][0],
-                            params: args[0][1]
-                        } : args[0],
-                        type: 'front.tab.show'
-                    });
-                }
+            case 'handle.tab.show': return this.tab(...args);
             case 'handle.error.open':
                 return this.dispatch({
                     type: 'front.error.open',
                     error: args[0]
                 });
-            case 'handle.action': {
-                const [[action, params]] = args;
-                if (typeof action.action === 'function') return action.action(params);
-                const name = template(action.action, params);
-                const tabParams = action.params && JSON.parse(template(JSON.stringify(action.params), params, {}, 'json'));
-                switch (action.type || 'tab') {
-                    case 'tab':
-                        return this.dispatch({
-                            tab: this.bus.importMethod(`component/${name}`),
-                            params: tabParams,
-                            type: 'front.tab.show'
-                        });
-                }
-                return false;
-            }
+            case 'handle.action': return this.action(...args);
+            default:
         }
         const reducer = method && this.findHandler(method + 'Reduce');
-        return this.dispatch(async(dispatch, getState) => {
+        return this.dispatch(async(dispatch, _) => {
             const payload = await super.exec(...arguments);
             if (reducer) dispatch({type: REDUCE, reducer, payload});
             return payload;

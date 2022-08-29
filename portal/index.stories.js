@@ -5,7 +5,7 @@ export default {
     title: 'Portal'
 };
 
-const page = app({
+const appPage = app({
     implementation: 'portal',
     utPortal: true,
     utCore: true
@@ -39,4 +39,4 @@ const page = app({
     }
 ]);
 
-export const TreeBrowse = page('portal.demo.open');
+export const TreeBrowse = appPage('portal.demo.open');

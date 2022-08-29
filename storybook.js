@@ -5,11 +5,11 @@ const main = async(config, name, path, params, handlers, dependencies, portal) =
     history.replaceState({}, '', `#${path}`);
 
     const {portsMap: {'utPortal.ui': {container}}, serviceBus: {publicApi: {importMethod}}} = await require('ut-run').run({
-        main: (...params) => [
-            require('ut-login')(...params),
-            require('ut-browser')(...params),
+        main: (...layerParams) => [
+            require('ut-login')(...layerParams),
+            require('ut-browser')(...layerParams),
             ...dependencies,
-            require('./browser')(...params),
+            require('./browser')(...layerParams),
             portal,
             function mock() {
                 return {
@@ -19,8 +19,8 @@ const main = async(config, name, path, params, handlers, dependencies, portal) =
                                 namespace: Array.from(new Set(Object.entries(handlers).map(
                                     ([method, handler]) => handler && method.split('.')[0]
                                 ).filter(Boolean))),
-                                send(params, {method}) {
-                                    return this.methods.imported[method] ? params : super.send(...arguments);
+                                send(methodParams, {method}) {
+                                    return this.methods.imported[method] ? methodParams : super.send(...arguments);
                                 },
                                 receive(result, {method}) {
                                     return this.methods.imported[method] ? result : super.receive(...arguments);
@@ -91,12 +91,12 @@ const main = async(config, name, path, params, handlers, dependencies, portal) =
         }
     }, await handlers?.login?.());
     if (portal) {
-        const params = await importMethod('portal.params.get')({});
-        params.state = params.state || {};
-        params.state.login = login;
+        const portalParams = await importMethod('portal.params.get')({});
+        portalParams.state = portalParams.state || {};
+        portalParams.state.login = login;
         return {
-            page({theme = 'dark-compact', backend}) {
-                return container(params);
+            page() {
+                return container(portalParams);
             }
         };
     }
@@ -105,7 +105,7 @@ const main = async(config, name, path, params, handlers, dependencies, portal) =
     page.params = params;
     page.Component = await page.component(params);
     return {
-        page({theme = 'dark-compact', backend}) {
+        page({theme = 'dark-compact', _backend}) {
             return container({
                 theme: {
                     name: theme,
@@ -143,7 +143,7 @@ module.exports.app = (config = {}, mock, dependencies = [], portal) => (name, id
         'core.translation.fetch': () => ({}),
         ...mock
     };
-    const result = (args, {loaded: {page}, globals}) => page(globals);
+    const result = (_args, {loaded: {page}, globals}) => page(globals);
     if (id && typeof id === 'object') {
         params = id;
         id = undefined;

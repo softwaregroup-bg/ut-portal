@@ -11,9 +11,15 @@ module.exports = () => ({
             }
         }
     },
+    dev: {
+        portal: {
+            customization: true
+        }
+    },
     storybook: {
         browser: true,
         portal: {
+            customization: true,
             render: false
         }
     },
@@ -21,6 +27,7 @@ module.exports = () => ({
         browser: joi.boolean(),
         portal: joi.object({
             render: joi.boolean(),
+            customization: joi.boolean(),
             loginPage: joi.string(),
             favicon: joi.string(),
             title: joi.string(),
