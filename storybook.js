@@ -141,6 +141,7 @@ const main = async(config, name, path, params, handlers, dependencies, portal) =
 module.exports.app = (config = {}, mock, dependencies = [], portal) => (name, id, params) => {
     mock = mock && {
         'core.translation.fetch': () => ({}),
+        'core.component.get': () => ({component: null}),
         ...mock
     };
     const result = (_args, {loaded: {page}, globals}) => page(globals);
