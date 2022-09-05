@@ -2,6 +2,7 @@
 // @ts-check
 
 const {resolve} = require('path');
+const rc = require('ut-config').load({config: {params: {appname: 'ut_playwright_dev'}}});
 
 /** @type {import('@playwright/test').PlaywrightTestConfig<{ username: string, password: string }>} */
 const config = {
@@ -13,10 +14,10 @@ const config = {
                 executablePath: process.env.CHROME_BIN
             }
         },
-        baseURL: process.env.UT_URL,
+        baseURL: process.env.UT_URL || rc.url,
         viewport: { width: 1600, height: 900 },
-        username: process.env.UT_USERNAME,
-        password: process.env.UT_PASSWORD
+        username: process.env.UT_USERNAME || String(rc.username),
+        password: process.env.UT_PASSWORD || String(rc.password)
     },
     testDir: resolve('.').replaceAll('\\', '/'),
     testMatch: /.*\.play\.(js|ts|mjs)/,
