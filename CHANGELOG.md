@@ -1,3 +1,12 @@
+# [9.3.0](https://github.com/softwaregroup-bg/ut-portal/compare/v9.2.5...v9.3.0) (2022-09-05)
+
+
+### Features
+
+* ut_playwright_devrc config ([6f70ed2](https://github.com/softwaregroup-bg/ut-portal/commit/6f70ed23060707bd3bf67ec1ed2f3907a7399b5c))
+
+
+
 ## [9.2.5](https://github.com/softwaregroup-bg/ut-portal/compare/v9.2.4...v9.2.5) (2022-09-02)
 
 
