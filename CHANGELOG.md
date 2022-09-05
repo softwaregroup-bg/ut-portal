@@ -1,3 +1,12 @@
+## [9.3.1](https://github.com/softwaregroup-bg/ut-portal/compare/v9.3.0...v9.3.1) (2022-09-05)
+
+
+### Bug Fixes
+
+* ut-config compatibility ([d494078](https://github.com/softwaregroup-bg/ut-portal/commit/d4940780190267108a3df36a20ae20fca096415f))
+
+
+
 # [9.3.0](https://github.com/softwaregroup-bg/ut-portal/compare/v9.2.5...v9.3.0) (2022-09-05)
 
 
