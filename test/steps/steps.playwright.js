@@ -39,7 +39,7 @@ module.exports = function steps({version, callSite, utBus}) {
                                         require('@playwright/test/package.json').bin.playwright
                                     ),
                                     'test',
-                                    '--config',
+                                    '-c',
                                     require.resolve('./playwright.config')
                                 ].concat(
                                     Object.entries(rest)
