@@ -1,3 +1,12 @@
+# [9.4.0](https://github.com/softwaregroup-bg/ut-portal/compare/v9.3.3...v9.4.0) (2022-09-07)
+
+
+### Features
+
+* registration page ([4897da0](https://github.com/softwaregroup-bg/ut-portal/commit/4897da009ed9bd8032f9bb723808690bc95bbcb0))
+
+
+
 ## [9.3.3](https://github.com/softwaregroup-bg/ut-portal/compare/v9.3.2...v9.3.3) (2022-09-05)
 
 
