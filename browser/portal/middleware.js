@@ -32,6 +32,10 @@ module.exports = ({
             });
         };
 
+        const page = _store => next => action => (action.type === 'portal.component.get')
+            ? utMethod('component/' + action.page)({}, utMeta()).then(({component}) => component(action.params || {}))
+            : next(action);
+
         const closeLegacyTab = store => next => action => {
             if (String(action.type) !== 'Symbol(REMOVE_TAB)') return next(action);
             const data = store.getState()?.portal?.tabs?.find?.(({path}) => path === action.pathname);
@@ -75,6 +79,6 @@ module.exports = ({
             return next(action);
         };
 
-        return [route, closeLegacyTab, rpc];
+        return [route, page, closeLegacyTab, rpc];
     }
 });

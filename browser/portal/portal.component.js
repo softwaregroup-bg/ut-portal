@@ -17,11 +17,11 @@ module.exports = ({
         return value;
     };
     return {
-        'portal.component.get': (componentId, $meta) =>
+        'portal.customization.get': (componentId, $meta) =>
             memo(() => coreComponentGet(componentId, $meta), componentId),
-        'portal.component.edit': (component, $meta) =>
+        'portal.customization.edit': (component, $meta) =>
             memo(() => coreComponentEdit(component, $meta), component.component.componentId),
-        'portal.component.delete': (criteria, $meta) => {
+        'portal.customization.delete': (criteria, $meta) => {
             criteria.componentId.forEach(componentId => delete cache[componentId]);
             return coreComponentDelete(criteria, $meta);
         }

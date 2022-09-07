@@ -28,6 +28,7 @@ module.exports = () => ({
         portal: joi.object({
             render: joi.boolean(),
             customization: joi.boolean(),
+            registrationPage: joi.string(),
             loginPage: joi.string(),
             favicon: joi.string(),
             title: joi.string(),
