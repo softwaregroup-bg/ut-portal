@@ -14,6 +14,7 @@ const config = {
                 executablePath: process.env.CHROME_BIN
             }
         },
+        colorScheme: 'dark',
         baseURL: process.env.UT_URL || rc.url,
         viewport: { width: 1600, height: 900 },
         username: process.env.UT_USERNAME || String(rc.username),
