@@ -1,3 +1,12 @@
+## [9.4.2](https://github.com/softwaregroup-bg/ut-portal/compare/v9.4.1...v9.4.2) (2022-09-08)
+
+
+### Bug Fixes
+
+* tests in dark mode by default ([ffd7c7b](https://github.com/softwaregroup-bg/ut-portal/commit/ffd7c7b9b9afbc7c449324b8ea07db8bb5895d83))
+
+
+
 ## [9.4.1](https://github.com/softwaregroup-bg/ut-portal/compare/v9.4.0...v9.4.1) (2022-09-08)
 
 
