@@ -6,7 +6,7 @@ module.exports = function portal() {
         require('./portal.menu.item'),
         require('./portal.menu.help'),
         require('./portal.tab.item'),
-        require('./portal.component'),
+        require('./portal.customization'),
         require('./portal.dropdown.list'),
         require('./start'),
         require('./ready')

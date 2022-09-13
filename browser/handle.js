@@ -26,12 +26,10 @@ module.exports = (...params) => class handle extends require('ut-port-script')(.
     action(...args) {
         const [[action, actionParams]] = args;
         if (typeof action.action === 'function') return action.action(actionParams);
-        const name = template(action.action, actionParams);
-        const tabParams = action.params && JSON.parse(template(JSON.stringify(action.params), actionParams, {}, 'json'));
         if ((action.type || 'tab') === 'tab') {
             return this.dispatch({
-                tab: this.bus.importMethod(`component/${name}`),
-                params: tabParams,
+                tab: this.bus.importMethod(`component/${template(action.action, actionParams)}`),
+                params: action.params && JSON.parse(template(JSON.stringify(action.params), actionParams, {}, 'json')),
                 type: 'front.tab.show'
             });
         }
