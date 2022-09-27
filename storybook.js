@@ -105,9 +105,10 @@ const main = async(config, name, path, params, handlers, dependencies, portal) =
     page.params = params;
     page.Component = await page.component(params);
     return {
-        page({theme = 'dark-compact', _backend}) {
+        page({theme = 'dark-compact', dir, _backend}) {
             return container({
                 theme: {
+                    dir,
                     name: theme,
                     ut: {
                         classes: {}
