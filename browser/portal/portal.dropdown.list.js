@@ -12,7 +12,7 @@ const nodes = result => {
         ...parent && {parent},
         key: key != null ? String(key) : key
     }));
-    const children = result.reduce((prev, item) => 'parent' in item ? ({
+    const children = result.reduce((prev, item) => item.parent ? ({
         ...prev,
         [item.parent]: (prev[item.parent] || []).concat(item)
     }) : prev, {});
