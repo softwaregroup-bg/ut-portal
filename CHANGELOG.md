@@ -1,3 +1,12 @@
+## [9.4.13](https://github.com/softwaregroup-bg/ut-portal/compare/v9.4.12...v9.4.13) (2022-09-27)
+
+
+### Bug Fixes
+
+* rtl support #UTCORE-121 ([ae3014e](https://github.com/softwaregroup-bg/ut-portal/commit/ae3014e0c98b79aaa0d8e11a62ca262e6272be91)), closes [#UTCORE-121](https://github.com/softwaregroup-bg/ut-portal/issues/UTCORE-121)
+
+
+
 ## [9.4.12](https://github.com/softwaregroup-bg/ut-portal/compare/v9.4.11...v9.4.12) (2022-09-27)
 
 
