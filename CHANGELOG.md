@@ -1,3 +1,12 @@
+## [9.4.12](https://github.com/softwaregroup-bg/ut-portal/compare/v9.4.11...v9.4.12) (2022-09-27)
+
+
+### Bug Fixes
+
+* parent check ([3124818](https://github.com/softwaregroup-bg/ut-portal/commit/3124818f65b728f5d140bab38f3762c1d8b7aaea))
+
+
+
 ## [9.4.11](https://github.com/softwaregroup-bg/ut-portal/compare/v9.4.10...v9.4.11) (2022-09-26)
 
 
