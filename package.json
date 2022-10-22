@@ -11,7 +11,7 @@
   "dependencies": {
     "@hookform/devtools": "^4.1.0",
     "@hookform/resolvers": "^2.9.1",
-    "@playwright/test": "^1.22.2",
+    "@playwright/test": "^1.27.1",
     "@types/react": "^17.0.47",
     "@types/react-dom": "^17.0.17",
     "chart.js": "^3.8.0",
@@ -45,7 +45,7 @@
     "ut-function.dispatch": "^1.4.1",
     "ut-function.merge": "^1.5.6",
     "ut-function.template": "^1.7.1",
-    "ut-prime": "^2.29.0"
+    "ut-prime": "^2.31.0"
   },
   "devDependencies": {
     "@rollup/plugin-babel": "^5.3.1",
