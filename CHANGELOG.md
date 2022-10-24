@@ -1,3 +1,7 @@
+## [9.4.28](https://github.com/softwaregroup-bg/ut-portal/compare/v9.4.27...v9.4.28) (2022-10-24)
+
+
+
 ## [9.4.27](https://github.com/softwaregroup-bg/ut-portal/compare/v9.4.26...v9.4.27) (2022-10-22)
 
 
