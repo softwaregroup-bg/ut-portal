@@ -25,7 +25,7 @@ declare namespace Portal {
             id?: string,
             type?: string,
             layout?: string
-        }) => Promise<React.FC<{id?: string}>> | React.FC<{id?: string}>
+        }) => Promise<React.FC<Record<string, any>>> | React.FC<Record<string, any>>
     }
 
     export type remotePage = {
