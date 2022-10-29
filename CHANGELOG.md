@@ -1,3 +1,12 @@
+## [9.4.33](https://github.com/softwaregroup-bg/ut-portal/compare/v9.4.32...v9.4.33) (2022-10-29)
+
+
+### Bug Fixes
+
+* clear cookies #UTCORE-121 ([2172ecb](https://github.com/softwaregroup-bg/ut-portal/commit/2172ecb4a7173349dcee1ff4b49cd532f5d60d60)), closes [#UTCORE-121](https://github.com/softwaregroup-bg/ut-portal/issues/UTCORE-121)
+
+
+
 ## [9.4.32](https://github.com/softwaregroup-bg/ut-portal/compare/v9.4.31...v9.4.32) (2022-10-28)
 
 
