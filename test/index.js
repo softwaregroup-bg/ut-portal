@@ -5,7 +5,8 @@ module.exports = {
     test: playwright.test.extend({
         username: ['', {scope: 'worker', option: true}],
         password: ['', {scope: 'worker', option: true}],
-        async portal({page, username, password}, use) {
+        async portal({page, context, username, password}, use) {
+            context.clearCookies();
             page.on('console', msg => {
                 // eslint-disable-next-line no-console
                 if (msg.type() === 'error') console.log(msg.text());
