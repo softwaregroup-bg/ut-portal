@@ -1,3 +1,12 @@
+## [9.4.37](https://github.com/softwaregroup-bg/ut-portal/compare/v9.4.36...v9.4.37) (2022-11-01)
+
+
+### Bug Fixes
+
+* react-hook-form ([fecd0a1](https://github.com/softwaregroup-bg/ut-portal/commit/fecd0a123d8b2f6e8415eb200d3047dfe8d37e66))
+
+
+
 ## [9.4.36](https://github.com/softwaregroup-bg/ut-portal/compare/v9.4.35...v9.4.36) (2022-10-31)
 
 
