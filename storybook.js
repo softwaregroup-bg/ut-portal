@@ -1,3 +1,5 @@
+const classes = require('./storybook.module.css');
+
 const merge = require('ut-function.merge');
 
 const main = async(config, name, path, params, handlers, dependencies, portal) => {
@@ -111,7 +113,7 @@ const main = async(config, name, path, params, handlers, dependencies, portal) =
                     dir,
                     name: theme,
                     ut: {
-                        classes: {}
+                        classes
                     },
                     languages: {
                         ar: {
