@@ -1,8 +1,9 @@
+const React = require('react');
 const classes = require('./storybook.module.css');
 
 const merge = require('ut-function.merge');
 
-const main = async(config, name, path, params, handlers, dependencies, portal) => {
+const main = async(config, name, path, params, handlers, dependencies, portal, backend) => {
     // fix: Storybook tries to keep the old hash, which we do not want
     history.replaceState({}, '', `#${path}`);
 
@@ -58,8 +59,9 @@ const main = async(config, name, path, params, handlers, dependencies, portal) =
             },
             configFilenames: [
                 'common',
-                'storybook'
-            ],
+                'storybook',
+                backend
+            ].filter(Boolean),
             utBrowser: true,
             utPortal: true,
             utLogin: true,
@@ -107,7 +109,7 @@ const main = async(config, name, path, params, handlers, dependencies, portal) =
     page.params = params;
     page.Component = await page.component(params);
     return {
-        page({theme = 'dark-compact', dir, _backend}) {
+        page({theme = 'dark-compact', dir}) {
             return container({
                 theme: {
                     dir,
@@ -260,6 +262,18 @@ const main = async(config, name, path, params, handlers, dependencies, portal) =
     };
 };
 
+const Page = ({globals, config, name, mainParams, mock, path, dependencies, portal}) => {
+    const [page, setPage] = React.useState(null);
+    React.useEffect(() => {
+        async function loadPage() {
+            const {page} = await main(config, name, '/' + path, mainParams, mock, dependencies, portal, globals.backend);
+            setPage(page(globals));
+        }
+        loadPage();
+    }, [config, dependencies, globals, mainParams, mock, name, path, portal]);
+    return page;
+};
+
 module.exports.app = (config = {}, mock, dependencies = [], portal) => (name, id, params) => {
     mock = mock && {
         'core.portal.get': () => ({
@@ -273,7 +287,17 @@ module.exports.app = (config = {}, mock, dependencies = [], portal) => (name, id
         'core.component.get': () => ({component: null}),
         ...mock
     };
-    const result = (_args, {loaded: {page}, globals}) => page(globals);
+    const result = (args, {globals}) => <Page
+        globals={globals}
+        config={config}
+        name={name}
+        mainParams={mainParams}
+        mock={mock}
+        path={path}
+        dependencies={dependencies}
+        portal={portal}
+        key={globals.backend + globals.dir + globals.theme}
+    />;
     if (id && typeof id === 'object') {
         params = id;
         id = undefined;
@@ -287,6 +311,5 @@ module.exports.app = (config = {}, mock, dependencies = [], portal) => (name, id
     } else params = '';
     const path = name + ((id != null) ? '/' + id : '') + params;
     result.storyName = path;
-    result.loaders = [() => main(config, name, '/' + path, mainParams, mock, dependencies, portal)];
     return result;
 };
