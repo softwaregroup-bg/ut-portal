@@ -1,3 +1,12 @@
+## [9.4.57](https://github.com/softwaregroup-bg/ut-portal/compare/v9.4.56...v9.4.57) (2022-12-07)
+
+
+### Bug Fixes
+
+* preserve path on reload ([b06714e](https://github.com/softwaregroup-bg/ut-portal/commit/b06714e363ec0e810aa00f32cf25a34b16d80b65))
+
+
+
 ## [9.4.56](https://github.com/softwaregroup-bg/ut-portal/compare/v9.4.55...v9.4.56) (2022-12-05)
 
 
