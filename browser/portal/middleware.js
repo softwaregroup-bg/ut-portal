@@ -21,14 +21,12 @@ module.exports = ({
             next({
                 type: 'front.tab.show',
                 tab: utMethod('component/' + method),
-                ...rest.length > 0 && {
-                    params: {
-                        ...Object.fromEntries(searchParams.entries()),
-                        id: rest.join('/')
-                    }
+                params: {
+                    ...Object.fromEntries(searchParams.entries()),
+                    ...rest.length > 0 && {id: rest.join('/')}
                 },
                 title: method,
-                path
+                path: action.path
             });
         };
 
