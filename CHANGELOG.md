@@ -1,3 +1,12 @@
+## [9.4.61](https://github.com/softwaregroup-bg/ut-portal/compare/v9.4.60...v9.4.61) (2022-12-10)
+
+
+### Bug Fixes
+
+* chromatic delay ([efcf2cc](https://github.com/softwaregroup-bg/ut-portal/commit/efcf2cc3dcee064a9915695fed8e6b2642dc3d59))
+
+
+
 ## [9.4.60](https://github.com/softwaregroup-bg/ut-portal/compare/v9.4.59...v9.4.60) (2022-12-09)
 
 
