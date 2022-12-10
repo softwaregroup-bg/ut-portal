@@ -311,5 +311,6 @@ module.exports.app = (config = {}, mock, dependencies = [], portal) => (name, id
     } else params = '';
     const path = name + ((id != null) ? '/' + id : '') + params;
     result.storyName = path;
+    result.parameters = {chromatic: { delay: 5000 }};
     return result;
 };
