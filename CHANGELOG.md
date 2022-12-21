@@ -1,3 +1,12 @@
+# [9.5.0](https://github.com/softwaregroup-bg/ut-portal/compare/v9.4.66...v9.5.0) (2022-12-21)
+
+
+### Features
+
+* allow simpler components ([a16cb9a](https://github.com/softwaregroup-bg/ut-portal/commit/a16cb9ad0e6e022e1979ffd07889741a5c71770a))
+
+
+
 ## [9.4.66](https://github.com/softwaregroup-bg/ut-portal/compare/v9.4.65...v9.4.66) (2022-12-20)
 
 
