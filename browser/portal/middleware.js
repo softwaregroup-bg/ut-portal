@@ -31,7 +31,7 @@ module.exports = ({
         };
 
         const page = _store => next => action => (action.type === 'portal.component.get')
-            ? utMethod('component/' + action.page)({}, utMeta()).then(({component}) => component(action.params || {}))
+            ? utMethod('component/' + action.page)({}, utMeta()).then(result => result?.component ? result.component(action.params || {}) : result)
             : next(action);
 
         const closeLegacyTab = store => next => action => {
