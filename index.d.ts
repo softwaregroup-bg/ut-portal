@@ -65,6 +65,7 @@ declare namespace Portal {
         [name: `component$${string}`]: remotePage,
         [name: `component/${string}`]: remotePage,
         handleTabShow?: (tab: remotePage | [remotePage, {id: string}] | {tabs: string, params: any}) => {},
+        'portal.dialog.confirm'?: () => Promise<void>
         'portal.customization.get'?: ut.handler<string, unknown, location>,
         'portal.customization.edit'?: ut.handler<{component: {componentId: string}}, unknown, location>,
         'portal.customization.delete'?: ut.handler<{componentId: string[]}, unknown, location>,

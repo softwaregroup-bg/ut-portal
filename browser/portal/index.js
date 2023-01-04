@@ -8,6 +8,7 @@ module.exports = function portal() {
         require('./portal.tab.item'),
         require('./portal.customization'),
         require('./portal.dropdown.list'),
+        require('./portal.dialog.confirm'),
         require('./start'),
         require('./ready')
     ];
