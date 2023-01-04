@@ -1,3 +1,12 @@
+# [9.6.0](https://github.com/softwaregroup-bg/ut-portal/compare/v9.5.4...v9.6.0) (2023-01-04)
+
+
+### Features
+
+* portal.dialog.confirm ([bab1f59](https://github.com/softwaregroup-bg/ut-portal/commit/bab1f59a7ca7855eaebc6852005d81f3ac32f3bd))
+
+
+
 ## [9.5.4](https://github.com/softwaregroup-bg/ut-portal/compare/v9.5.3...v9.5.4) (2023-01-03)
 
 
