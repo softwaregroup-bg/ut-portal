@@ -1,3 +1,7 @@
+## [9.6.19](https://github.com/softwaregroup-bg/ut-portal/compare/v9.6.18...v9.6.19) (2023-01-30)
+
+
+
 ## [9.6.18](https://github.com/softwaregroup-bg/ut-portal/compare/v9.6.17...v9.6.18) (2023-01-30)
 
 
