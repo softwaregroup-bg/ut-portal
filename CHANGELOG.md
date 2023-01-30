@@ -1,3 +1,12 @@
+## [9.6.16](https://github.com/softwaregroup-bg/ut-portal/compare/v9.6.15...v9.6.16) (2023-01-30)
+
+
+### Bug Fixes
+
+* add date-fns as devDependency ([91fb9c1](https://github.com/softwaregroup-bg/ut-portal/commit/91fb9c16a0318fc5e54d1db73fa67fc8b49ec037))
+
+
+
 ## [9.6.15](https://github.com/softwaregroup-bg/ut-portal/compare/v9.6.14...v9.6.15) (2023-01-27)
 
 
