@@ -26,7 +26,7 @@ for updating the screenshots of any module. Here are the instructions to install
 
 1. [Install WSL 2](https://docs.microsoft.com/en-us/windows/wsl/install)
 2. Download from Google Drive the UT WSL distribution
-   [ut-gallium.zip](https://drive.google.com/file/d/1z-jpLE5-wKzxPMWmQ8Aa7UvBE0FSyWI5/view?usp=sharing).
+   [ut-gallium.zip](https://drive.google.com/file/d/1xagdFPd-OrnuegWRoYCteueXGe7QIIpE/view?usp=sharing).
 3. Extract the archive and run `wsl --import` in the folder
    where you extracted it:
    ![import](./import.png)
@@ -37,9 +37,11 @@ Prerequisites before updating the snapshots are :
 
 - Install all dependencies (`npm install`)
 - Build the front end (usually with `npm run build`)
-- Have a `.devrc` file for accessing the SQL server
+- Have a `.testrc` file for accessing the SQL server
   somewhere in the path to the module. Putting it in
   the home folder or other place will not work.
+  If you use a hostname to connect to the database,
+  you will need to specify the FQDN, i.e. `xxx.softwaregroup-bg.com`
 - Have an existing database
   (usually created when running `node .` and when
   db schema updates are enabled in the config)
@@ -48,7 +50,8 @@ To update the snapshots use these steps:
 
 1. Open a command prompt in the folder of a module
 2. Start the imported distribution with `wsl -d ut`
-3. Update the snapshot with `npm run snapshot`
+3. If needed update playwright with `npx playwright install`
+4. Update the snapshot with `npm run snapshot`
    ![snapshot](./snapshot.png)
 
 ### Advanced usage
