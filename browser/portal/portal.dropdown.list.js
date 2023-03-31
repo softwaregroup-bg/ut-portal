@@ -22,6 +22,8 @@ const nodes = result => {
     return result.filter(item => item.parent == null);
 };
 
+const cache = {};
+
 /** @type { import("../..").handlerFactory } */
 module.exports = ({
     utMethod
@@ -35,7 +37,10 @@ module.exports = ({
                         names.map(name => name.split('.')[0] + '.dropdown.list')
                     )
                 ).map(
-                    method => utMethod(method)({}, $meta)
+                    method => {
+                        const api = cache[method] = cache[method] || utMethod(method)({}, $meta);
+                        return api;
+                    }
                 )
             )
         ) : {};
