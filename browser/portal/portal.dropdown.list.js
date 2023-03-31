@@ -37,7 +37,7 @@ module.exports = ({
                         names.map(name => name.split('.')[0] + '.dropdown.list')
                     )
                 ).map(
-                    async method => {
+                    method => {
                         const api = cache[method] = cache[method] || utMethod(method)({}, $meta);
                         return api;
                     }
