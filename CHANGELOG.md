@@ -1,3 +1,13 @@
+## [9.6.31](https://github.com/softwaregroup-bg/ut-portal/compare/v9.6.30...v9.6.31) (2023-03-31)
+
+
+### Bug Fixes
+
+* **CBI-1072:** dropdowns cache ([afa2edd](https://github.com/softwaregroup-bg/ut-portal/commit/afa2edd073acc1a462a003dc46a85ab6b7b5eb34))
+* **CBI-1072:** remove async ([c8bbaed](https://github.com/softwaregroup-bg/ut-portal/commit/c8bbaed77b68e4ffb045e98a1654308f31a9c24d))
+
+
+
 ## [9.6.30](https://github.com/softwaregroup-bg/ut-portal/compare/v9.6.29...v9.6.30) (2023-03-15)
 
 
