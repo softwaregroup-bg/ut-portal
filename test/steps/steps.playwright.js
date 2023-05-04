@@ -17,7 +17,8 @@ module.exports = function steps({version, callSite, utBus}) {
                 name: 'run playwright',
                 steps: () => {
                     return [
-                        'Generate admin user',
+                        // eslint-disable-next-line no-process-env
+                        process.env.UT_USERNAME && 'Generate admin user',
                         {
                             name: 'run playwright',
                             params: ({
@@ -29,7 +30,12 @@ module.exports = function steps({version, callSite, utBus}) {
                                 [userStep]: {
                                     username = identifier,
                                     password = '123'
-                                } = {},
+                                } = {
+                                    // eslint-disable-next-line no-process-env
+                                    username: process.env.UT_USERNAME,
+                                    // eslint-disable-next-line no-process-env
+                                    password: process.env.UT_PASSWORD
+                                },
                                 ...rest
                             }) => exec(
                                 '"' + process.execPath + '"',
@@ -55,11 +61,11 @@ module.exports = function steps({version, callSite, utBus}) {
                                     stdio: 'inherit',
                                     shell: true,
                                     env: {
-                                        // eslint-disable-next-line no-process-env
-                                        ...process.env,
                                         UT_URL: utBus.info().uri,
                                         UT_USERNAME: username,
-                                        UT_PASSWORD: password
+                                        UT_PASSWORD: password,
+                                        // eslint-disable-next-line no-process-env
+                                        ...process.env
                                     }
                                 }
                             ),
@@ -67,7 +73,7 @@ module.exports = function steps({version, callSite, utBus}) {
                                 assert.ok(result, 'Playwright run without error');
                             }
                         }
-                    ];
+                    ].filter(Boolean);
                 }
             };
         }

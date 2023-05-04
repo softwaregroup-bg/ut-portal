@@ -4,7 +4,7 @@
 const {resolve} = require('path');
 const rc = require('ut-config').load({config: {params: {appname: 'ut_playwright_dev'}}});
 
-/** @type {import('@playwright/test').PlaywrightTestConfig<{ username: string, password: string }>} */
+/** @type {import('@playwright/test').PlaywrightTestConfig<{ username: string, password: string, loginPageUrl: string }>} */
 const config = {
     retries: 1,
     use: {
@@ -18,7 +18,8 @@ const config = {
         baseURL: process.env.UT_URL || rc.url,
         viewport: { width: 1600, height: 900 },
         username: process.env.UT_USERNAME || String(rc.username),
-        password: process.env.UT_PASSWORD || String(rc.password)
+        password: process.env.UT_PASSWORD || String(rc.password),
+        loginPageUrl: process.env.UT_LOGIN_PAGE_URL || rc.loginPageUrl || '/a/browser/adminPortal#/login'
     },
     testDir: resolve('.').replaceAll('\\', '/'),
     testMatch: /.*\.play\.(js|ts|mjs)/,
