@@ -46,7 +46,8 @@ module.exports = ({
         ) : {};
         Object.entries(result).forEach(([name, value]) => {
             if (name.endsWith('Tree')) {
-                result[name + 'Nodes'] = nodes(value);
+                const key = name + 'Nodes'
+                result[key] = cache[key] = cache[key] || nodes(value);
             }
         });
         return result;
