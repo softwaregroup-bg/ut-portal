@@ -1,3 +1,12 @@
+## [9.6.46](https://github.com/softwaregroup-bg/ut-portal/compare/v9.6.45...v9.6.46) (2023-06-13)
+
+
+### Bug Fixes
+
+* **CBI-999:** dropdown trees cache ([#5](https://github.com/softwaregroup-bg/ut-portal/issues/5)) ([c28bc4c](https://github.com/softwaregroup-bg/ut-portal/commit/c28bc4cbfab27c4ae0352340016c6c3ff720ecd6))
+
+
+
 ## [9.6.45](https://github.com/softwaregroup-bg/ut-portal/compare/v9.6.44...v9.6.45) (2023-06-05)
 
 
