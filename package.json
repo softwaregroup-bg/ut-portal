@@ -38,6 +38,7 @@
     "react-router": "^5.3.3",
     "react-to-print": "2.13.0",
     "react-tooltip": "^5.16.1",
+    "react-webcam": "^7.1.1",
     "redux": "^4.2.0",
     "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.4.1",
@@ -47,7 +48,7 @@
     "ut-function.dispatch": "^1.4.1",
     "ut-function.merge": "^1.5.6",
     "ut-function.template": "^1.7.3",
-    "ut-prime": "^2.79.2"
+    "ut-prime": "^2.80.0"
   },
   "devDependencies": {
     "@rollup/plugin-babel": "^5.3.1",
