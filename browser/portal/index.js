@@ -2,6 +2,7 @@
 /** @type { import("../..").handlerSet } */
 module.exports = function portal() {
     return [
+        require('./cache'),
         require('./middleware'),
         require('./portal.menu.item'),
         require('./portal.menu.help'),

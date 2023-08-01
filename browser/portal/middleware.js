@@ -9,7 +9,10 @@ const cloneParams = (params) => {
 /** @type { import("../..").libFactory } */
 module.exports = ({
     utMethod,
-    utMeta
+    utMeta,
+    lib: {
+        resetCache
+    }
 }) => ({
     middleware() {
         const route = _store => next => action => {
@@ -41,6 +44,11 @@ module.exports = ({
                 type: 'front.tab.close',
                 data
             } : action);
+        };
+
+        const resetCacheOnLogout = _ => next => action => {
+            if (String(action.type) === 'Symbol(LOGOUT)') resetCache();
+            return next(action);
         };
 
         const rpc = _store => next => action => {
@@ -77,6 +85,6 @@ module.exports = ({
             return next(action);
         };
 
-        return [route, page, closeLegacyTab, rpc];
+        return [route, page, closeLegacyTab, rpc, resetCacheOnLogout];
     }
 });
