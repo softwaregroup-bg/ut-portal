@@ -47,8 +47,8 @@
     "ut-function.common-joi": "^1.10.0",
     "ut-function.dispatch": "^1.4.1",
     "ut-function.merge": "^1.5.6",
-    "ut-function.template": "^1.7.3",
-    "ut-prime": "^2.80.3"
+    "ut-function.template": "^1.7.5",
+    "ut-prime": "^2.80.4"
   },
   "devDependencies": {
     "@rollup/plugin-babel": "^5.3.1",
