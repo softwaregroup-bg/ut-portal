@@ -22,11 +22,13 @@ const nodes = result => {
     return result.filter(item => item.parent == null);
 };
 
-const cache = {};
-
 /** @type { import("../..").handlerFactory } */
 module.exports = ({
-    utMethod
+    utMethod,
+    lib: {
+        getCache,
+        setCache
+    }
 }) => ({
     async 'portal.dropdown.list'(names, $meta) {
         const result = names?.length ? Object.assign(
@@ -38,7 +40,11 @@ module.exports = ({
                     )
                 ).map(
                     method => {
-                        const api = cache[method] = cache[method] || utMethod(method)({}, $meta);
+                        let api = getCache(method);
+                        if (!api) {
+                            api = utMethod(method)({}, $meta);
+                            setCache(method, api);
+                        }
                         return api;
                     }
                 )
@@ -47,7 +53,11 @@ module.exports = ({
         Object.entries(result).forEach(([name, value]) => {
             if (name.endsWith('Tree')) {
                 const key = name + 'Nodes';
-                result[key] = cache[key] = cache[key] || nodes(value);
+                result[key] = getCache(key);
+                if (!result[key]) {
+                    result[key] = nodes(value);
+                    setCache(key, result[key]);
+                }
             }
         });
         return result;

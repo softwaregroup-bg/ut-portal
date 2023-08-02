@@ -48,7 +48,7 @@
     "ut-function.dispatch": "^1.4.1",
     "ut-function.merge": "^1.5.6",
     "ut-function.template": "^1.7.5",
-    "ut-prime": "^2.80.4"
+    "ut-prime": "^2.80.5"
   },
   "devDependencies": {
     "@rollup/plugin-babel": "^5.3.1",
