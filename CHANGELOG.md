@@ -1,3 +1,12 @@
+## [9.6.58](https://github.com/softwaregroup-bg/ut-portal/compare/v9.6.57...v9.6.58) (2023-08-02)
+
+
+### Bug Fixes
+
+* **CBI-3320:** reset cache on logout ([#9](https://github.com/softwaregroup-bg/ut-portal/issues/9)) ([973bb30](https://github.com/softwaregroup-bg/ut-portal/commit/973bb30123db4f345815861b8fbe1bcccc58c2be))
+
+
+
 ## [9.6.57](https://github.com/softwaregroup-bg/ut-portal/compare/v9.6.56...v9.6.57) (2023-08-01)
 
 
