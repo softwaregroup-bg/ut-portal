@@ -7,6 +7,7 @@ const rc = require('ut-config').load({config: {params: {appname: 'ut_playwright_
 /** @type {import('@playwright/test').PlaywrightTestConfig<{ username: string, password: string }>} */
 const config = {
     retries: 1,
+    updateSnapshots: rc.updateSnapshots,
     use: {
         trace: 'on-first-retry',
         ...process.env.CHROME_BIN && {
