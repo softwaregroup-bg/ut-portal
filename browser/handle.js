@@ -1,6 +1,7 @@
 const {REDUCE} = require('./portal/actionTypes');
 const template = require('ut-function.template');
-module.exports = (...params) => class handle extends require('ut-port-script')(...params) {
+const script = require('ut-port-script');
+module.exports = (...params) => class handle extends script(...params) {
     get defaults() {
         return {
             logLevel: 'warn',

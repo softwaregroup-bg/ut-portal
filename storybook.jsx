@@ -274,7 +274,7 @@ const Page = ({globals, config, name, mainParams, mock, path, dependencies, port
     return page;
 };
 
-module.exports.app = (config = {}, mock, dependencies = [], portal) => (name, id, params) => {
+exports.app = (config = {}, mock, dependencies = [], portal) => (name, id, params) => {
     mock = mock && {
         'core.portal.get': () => ({
             configuration: {

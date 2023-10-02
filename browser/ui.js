@@ -1,4 +1,5 @@
-module.exports = (...params) => class ui extends require('ut-port-script')(...params) {
+const script = require('ut-port-script');
+module.exports = (...params) => class ui extends script(...params) {
     get defaults() {
         return {
             logLevel: 'trace',
