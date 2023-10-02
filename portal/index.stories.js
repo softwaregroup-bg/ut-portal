@@ -1,5 +1,5 @@
 import React from 'react';
-import {app} from '../storybook';
+import {app} from '../storybook.jsx';
 
 export default {
     title: 'Portal'
