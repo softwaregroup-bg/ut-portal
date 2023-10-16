@@ -287,17 +287,17 @@ exports.app = (config = {}, mock, dependencies = [], portal) => (name, id, param
         'core.component.get': () => ({component: null}),
         ...mock
     };
-    const result = (args, {globals}) => <Page
-        globals={globals}
-        config={config}
-        name={name}
-        mainParams={mainParams}
-        mock={mock}
-        path={path}
-        dependencies={dependencies}
-        portal={portal}
-        key={globals.backend + globals.dir + globals.theme}
-    />;
+    const result = (args, {globals}) => React.createElement(Page, {
+        globals,
+        config,
+        name,
+        mainParams,
+        mock,
+        path,
+        dependencies,
+        portal,
+        key: globals.backend + globals.dir + globals.theme
+    });
     if (id && typeof id === 'object') {
         params = id;
         id = undefined;

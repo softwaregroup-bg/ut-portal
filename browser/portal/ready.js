@@ -3,8 +3,8 @@ const {createElement} = require('react');
 const {render} = require('react-dom');
 const {renderToString} = require('react-dom/server');
 const merge = require('ut-function.merge');
-
-const App = require('ut-prime/core/App');
+const app = require('ut-prime/core/App');
+const App = app.default || app; // for vite
 
 const {REDUCE} = require('./actionTypes');
 
