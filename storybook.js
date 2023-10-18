@@ -104,10 +104,12 @@ const main = async(config, name, path, params, handlers, dependencies, portal, b
             }
         };
     }
-    const page = await importMethod('component/' + name)({});
-    page.path = path;
-    page.params = params;
-    page.Component = await page.component(params);
+    const page = !name.startsWith('p/') && await importMethod('component/' + name)({});
+    if (page) {
+        page.path = path;
+        page.params = params;
+        page.Component = await page.component(params);
+    }
     return {
         page({theme = 'dark-compact', dir}) {
             return container({
