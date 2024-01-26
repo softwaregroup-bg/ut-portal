@@ -1,3 +1,12 @@
+## [9.6.75](https://github.com/softwaregroup-bg/ut-portal/compare/v9.6.74...v9.6.75) (2024-01-26)
+
+
+### Bug Fixes
+
+* expose cache methods ([337ead7](https://github.com/softwaregroup-bg/ut-portal/commit/337ead7ae69c2e20cfc1deaa370bc589db40de9d))
+
+
+
 ## [9.6.74](https://github.com/softwaregroup-bg/ut-portal/compare/v9.6.73...v9.6.74) (2023-12-01)
 
 
