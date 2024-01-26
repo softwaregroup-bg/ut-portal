@@ -61,5 +61,8 @@ module.exports = ({
             }
         });
         return result;
+    },
+    'portal.dropdown.nodes'(msg, $meta) {
+        return nodes(msg);
     }
 });
