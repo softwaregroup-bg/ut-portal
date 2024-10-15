@@ -42,7 +42,15 @@ module.exports = () => ({
             help: joi.object({
                 default: joi.string(),
                 module: joi.object()
-            }).pattern(joi.string(), joi.string())
+            }).pattern(joi.string(), joi.string()),
+            ui: [
+                joi.object(),
+                joi.boolean()
+            ],
+            handle: [
+                joi.object(),
+                joi.boolean()
+            ]
         })
     })
 });
