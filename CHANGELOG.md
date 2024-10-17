@@ -1,3 +1,12 @@
+## [9.6.79](https://github.com/softwaregroup-bg/ut-portal/compare/v9.6.78...v9.6.79) (2024-10-17)
+
+
+### Bug Fixes
+
+* browser config validation ([5a3086e](https://github.com/softwaregroup-bg/ut-portal/commit/5a3086ed695c7e597b56d15767eebe17e885fd15))
+
+
+
 ## [9.6.78](https://github.com/softwaregroup-bg/ut-portal/compare/v9.6.77...v9.6.78) (2024-10-15)
 
 
