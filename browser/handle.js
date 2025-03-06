@@ -1,6 +1,7 @@
 const {REDUCE} = require('./portal/actionTypes');
 const template = require('ut-function.template');
 const script = require('ut-port-script');
+const { CHANGE_LANGUAGE } = require('ut-prime/core/Login/actions');
 module.exports = (...params) => class handle extends script(...params) {
     get defaults() {
         return {
@@ -65,6 +66,11 @@ module.exports = (...params) => class handle extends script(...params) {
                     error: args[0]
                 });
             case 'handle.action': return this.action(...args);
+            case 'handle.language.change':
+                return this.dispatch({
+                    type: CHANGE_LANGUAGE,
+                    result: args[0]
+                });
             default:
         }
         const reducer = method && this.findHandler(method + 'Reduce');
