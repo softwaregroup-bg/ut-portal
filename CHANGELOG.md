@@ -1,3 +1,12 @@
+# [9.7.0](https://github.com/softwaregroup-bg/ut-portal/compare/v9.6.80...v9.7.0) (2025-03-06)
+
+
+### Features
+
+* **UT-999:** dispatch change language for primes reducer ([b77edb8](https://github.com/softwaregroup-bg/ut-portal/commit/b77edb8d02c451e36203a1f669e34390f3f6521c))
+
+
+
 ## [9.6.80](https://github.com/softwaregroup-bg/ut-portal/compare/v9.6.79...v9.6.80) (2025-02-12)
 
 
