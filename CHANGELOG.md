@@ -1,3 +1,12 @@
+## [9.7.1](https://github.com/softwaregroup-bg/ut-portal/compare/v9.7.0...v9.7.1) (2025-08-12)
+
+
+### Bug Fixes
+
+* last playwright version compatible with node 16 ([a10f71a](https://github.com/softwaregroup-bg/ut-portal/commit/a10f71ada129b45613239f2436ebf7a3f8255070))
+
+
+
 # [9.7.0](https://github.com/softwaregroup-bg/ut-portal/compare/v9.6.80...v9.7.0) (2025-03-06)
 
 
