@@ -32,6 +32,7 @@ module.exports = (...params) => [
 
 ## Portal menu
 
+Rebuild
 To provide configuration for the portal, include it in
 a portal configuration module after `ut-portal`:
 
