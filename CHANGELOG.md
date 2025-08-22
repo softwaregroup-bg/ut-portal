@@ -1,3 +1,12 @@
+## [9.7.2](https://github.com/softwaregroup-bg/ut-portal/compare/v9.7.1...v9.7.2) (2025-08-22)
+
+
+### Bug Fixes
+
+* install playwright dependencies ([e0f1576](https://github.com/softwaregroup-bg/ut-portal/commit/e0f1576e19300304d28b0904877f84c57bdb76d5))
+
+
+
 ## [9.7.1](https://github.com/softwaregroup-bg/ut-portal/compare/v9.7.0...v9.7.1) (2025-08-12)
 
 
