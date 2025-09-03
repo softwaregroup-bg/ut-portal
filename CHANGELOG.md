@@ -1,3 +1,7 @@
+## [9.7.3](https://github.com/softwaregroup-bg/ut-portal/compare/v9.7.2...v9.7.3) (2025-09-03)
+
+
+
 ## [9.7.2](https://github.com/softwaregroup-bg/ut-portal/compare/v9.7.1...v9.7.2) (2025-08-22)
 
 
