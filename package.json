@@ -90,7 +90,7 @@
     "check": "ut-check",
     "cover": "ut-cover-parallel",
     "lint-js": "ut-lint-js .",
-    "postinstall": "npx playwright install",
+    "postinstall": "npx playwright@1.53 install",
     "postpublish": "ut-postpublish",
     "postversion": "ut-postversion",
     "precommit": "ut-precommit",
